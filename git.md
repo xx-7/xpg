@@ -7,19 +7,32 @@ git commit -a -m 'test'
 
 git push -u origin master
 
- git status							#查看状态
+#查看状态
+git status
 
-git checkout -b feature_b	#新建分支 
-git checkout master			#切换分支 
-git merge feature_b			#合并分支
-git branch -d feature_b		#删除分支 
+#新建分支
+git checkout -b feature_b
 
-git rm * -r							#删除 
+#切换分支
+git checkout master
 
-git pull								#拉取更新
+#合并分支
+git merge feature_b
 
-git diff								#查看文件不同，可加文件路径
-git mergetool					#自动合并失败,手动合并
+#删除分支
+git branch -d feature_b
+
+#删除
+git rm * -r
+
+#拉取更新
+git pull
+
+#查看文件不同，可加文件路径
+git diff
+
+#自动合并失败,手动合并
+git mergetool
 
 #放弃本地修改强拉远程
 git fetch origin
@@ -45,9 +58,9 @@ git push -u origin master
 
 # master分支改动，需要更新dev分支
 ```bash
-git checkout master 
-git pull 
+git checkout master
+git pull
 git checkout dev
-git merge master 
+git merge master
 git push -u origin dev
 ```
