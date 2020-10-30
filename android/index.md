@@ -4,7 +4,7 @@
 # https://dl.google.com/android/repository/platform-tools-latest-windows.zip
 # [-s <serialNumber>]
 adb devices
-adb pull <remote> <local>
+adb pull <local> <remote>
 adb push <remote> <local>
 adb shell <command> 
 adb install <path-to-apk>
