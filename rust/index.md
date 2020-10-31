@@ -3,6 +3,9 @@
 
 ## 库
 
+### bytecodealliance
+#### [wasmparser](./wasmparser.md) 
+
 ## 安装更新
 ```bash
 curl https://sh.rustup.rs -sSf | sh

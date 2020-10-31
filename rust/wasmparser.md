@@ -1,7 +1,7 @@
 # wasmparser
-    [https://github.com/bytecodealliance/wasm-tools](https://github.com/bytecodealliance/wasm-tools) 子项目
-    主要负责wasm二进制字节流解析。
-    定义文档:[https://webassembly.github.io/spec/core/binary/index.html](https://webassembly.github.io/spec/core/binary/index.html)
+[https://github.com/bytecodealliance/wasm-tools](https://github.com/bytecodealliance/wasm-tools) 子项目
+主要负责wasm二进制字节流解析。
+定义文档:[https://webassembly.github.io/spec/core/binary/index.html](https://webassembly.github.io/spec/core/binary/index.html)
 
 ## 源码
   入口 Parser -> parse_all -> parse_reader
