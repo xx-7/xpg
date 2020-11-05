@@ -8,3 +8,4 @@
 - [vscode](./vscode.md)
 - [开源](./opensource.md)
 - [前端](./front/index.md)
+- [seo](./seo/search.md)
