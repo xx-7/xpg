@@ -44,6 +44,73 @@ npm install ../libname/dist
 
 ```
 
+### 工具链
+#### Webpack
+```bash
+# 安装
+yarn add webpack webpack-cli webpack-dev-server @webpack-cli/serve -D
+
+#配置代理 webpack.config.js
+    devServer: {
+        contentBase: path.join(__dirname, 'dist'),
+        compress: true,
+        historyApiFallback: true,
+        hot: true,
+
+        proxy: {
+            '/ui': {
+                target: 'http://localhost:3001',
+                pathRewrite: { '^/ui': '' }
+            }
+        }
+
+    }
+
+```
+
+#### Html
+```
+# 安装
+yarn add html-webpack-plugin clean-webpack-plugin -D
+
+#配置
+    plugins: [
+        new HtmlWebpackPlugin({
+            filename: 'index.html',
+            template: 'public/index.html',
+            chunks: ['index'],
+        }),
+        new CleanWebpackPlugin(),
+    ],
+
+```
+#### babel
+```
+#安装
+yarn add babel-loader @babel/core @babel/cli @babel/preset-env @babel/preset-react -D
+
+# 配置
+# .babelrc
+{
+    "presets": [
+        "@babel/env",
+        "@babel/preset-react"
+    ]
+}
+
+#webpack.config.js
+
+    rules: [
+        {
+            test: /\.(js|jsx)$/,
+            exclude: /(node_modules|bower_components)/,
+            loader: "babel-loader",
+            options: { presets: ["@babel/env"] }
+        }
+    ]
+
+```
+
 ### Angular
 ```
 npm install -g @angular/cli
