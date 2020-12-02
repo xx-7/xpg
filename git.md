@@ -1,4 +1,5 @@
 # 常用操作
+
 ```bash
 git add -A
 git commit -m "test"
@@ -47,7 +48,16 @@ git remote rm origin
 git remote add origin git@github.com:USER/PROJECT.git
 ```
 
-# dev分支上线,合并到master分支
+```bash
+git branch          #查看分支
+git branch dev      #创建dev分支
+git branch -d dev   #删除dev分支
+git checkout dev    #切换到dev分支
+git checkout -b dev #创建并切换分支
+```
+
+# dev 分支上线,合并到 master 分支
+
 ```bash
 git checkout dev
 git pull
@@ -56,7 +66,8 @@ git merge dev
 git push -u origin master
 ```
 
-# master分支改动，需要更新dev分支
+# master 分支改动，需要更新 dev 分支
+
 ```bash
 git checkout master
 git pull
