@@ -27,20 +27,20 @@ sudo apt install firmware-amd-graphics firmware-linux-nonfree libgl1-mesa-dri li
 
 ## 网卡
 ### intel 无线
-```
+```bash
 # https://wiki.debian.org/WiFi
 sudo nano /etc/apt/sources.list
 deb http://httpredir.debian.org/debian/ bullseye main contrib non-free
 sudo apt-get update 
 sudo apt-get install firmware-iwlwifi
-
+```
 # 配置
 
 ## 源
 
 ### 备份
 
-​```bash
+```bash
 # 源列表 https://www.debian.org/mirror/list.zh-cn.html
 cp /etc/apt/sources.list /etc/apt/sources.listbak 
 ```
@@ -60,7 +60,6 @@ deb http://ftp.cn.debian.org/debian/debian-security buster-updates main contrib 
 ### NetworkConfiguration
 ```
 # 注意用NetworkManager管理过后DNS会被清空
-
 sudo nano /etc/network/interfaces
 
 iface enp0s31f6 inet dhcp
@@ -77,10 +76,9 @@ sudo /etc/init.d/networking restart
 ```
 ### NetworkManager
 ```bash
-# managed =  false 不管理/etc/network/interfaces已定义
 # 注意用NetworkManager管理过后DNS会被清空
 sudo apt install plasma-nm
-
+# managed =  false 不管理/etc/network/interfaces已定义接口
 cat /etc/NetworkManager/NetworkManager.conf 
 [main]
 plugins=ifupdown,keyfile
@@ -155,7 +153,6 @@ Host www.domain.com
 port 77
 PreferredAuthentications publickey
 IdentityFile ~/.ssh/id_rsa_local
-
 ```
 
 # 软件
@@ -174,22 +171,16 @@ sudo apt install qbittorrent
 ## Typora
 ```bash
 # https://typora.io/#linux
-
 wget -qO - https://typora.io/linux/public-key.asc | sudo apt-key add -
-
 sudo add-apt-repository 'deb https://typora.io/linux ./'
 sudo apt update
-
 sudo apt install typora
 ```
 
 ## Chrome
 ```bash
 wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | apt-key add
-
 sudo echo "deb http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google.list
-
 sudo apt update
-
 sudo apt install google-chrome-stable
 ```
