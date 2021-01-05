@@ -1,4 +1,257 @@
-# pacman
+[TOC]
+# 安装
+## 分区
+```bash
+# https://wiki.archlinux.org/index.php/GRUB
+# 注意，GPT分区表，预留一个 BIOS 启动分区
+# 可以在 fdisk 或 gdisk 中创建一个从 34 扇区开始，一直到 2047
+# GUID 21686148-6449-6E6F-744E-656564454649  类型 根据分区软件不同: BIOS boot/ef02/bois_grub
+
+/boot/EFI  /dev/sdX1             #512MB 启动目录 
+[SWAP]     /dev/sdX2            #交换区 内存的两倍
+/          /dev/sdX3                 #剩余  根目录
+
+cfdisk /dev/sdX
+
+mkfs.fat /dev/sdX1
+mkfs.ext4 /dev/sdX3
+mkswap /dev/sdX2
+
+mount /dev/sdX3 /mnt
+mkdir -p /mnt/boot/EFI
+mount /dev/sdX1 /mnt/boot/EFI
+swapon /dev/sdX2
+```
+## 配置安装环境 
+```bash
+# 刷新本地时间
+timedatectl set-ntp true
+
+# 镜像
+sed -i '/China/!{n;/Server/s/^/#/};t;n' /etc/pacman.d/mirrorlist
+
+nano /etc/pacman.d/mirrorlist
+#1.[F6] 搜索 china
+#2.[方向键] 移动光标至 Server 行
+#3.[CTRL+K] 剪切该行
+#4.[方向键] 移动光标至其他 Server 行前
+#5.[CTRL+U] 粘贴至此行
+#6.[CTRL+O] 保存，[回车键] 确定
+```
+## 安装系统 
+```bash
+# 安装基本系统
+pacstrap /mnt base base-devel linux linux-firmwrae
+
+# Fstab
+genfstab -U /mnt >> /mnt/etc/fstab
+
+# 进到安装目录
+arch-chroot /mnt
+
+# 设置时区
+ln -sf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
+
+# 保存硬件时间
+hwclock --systohc --localtime
+
+#  配置语言包
+nano /etc/locale.gen
+en_US.UTF-8 UTF-8
+zh_CN.UTF-8 UTF-8
+zh_HK.UTF-8 UTF-8
+# 生成
+locale-gen
+# 设置默认
+nano /etc/locale.conf
+LANG=en_US.UTF-8
+
+# 主机名
+echo $HOSTNAME > /etc/hostname
+
+# dhcpd 自动获取方式启动网络
+systemctl start dhcpcd@$INTERFACE
+
+# 修改ROOT密码 后期如果忘记密码也可以通过安装盘启动arch-chroot进来直接修改密码
+passwd
+
+# UEFI 方式引导启动
+pacman -S dosfstools grub efibootmgr
+grub-install --target=x86_64-efi --efi-directory=/boot/EFI --bootloader=Arch --removable
+grub-mkconfig -o /boot/grub/grub.cfg
+
+# BIOS 方式引导启动 
+pacman -S grub os-prober
+grub-install --target=i386-pc /dev/sdX
+grub-mkconfig -o /boot/grub/grub.cfg
+
+# 完成安装
+exit
+umount -R /mnt
+reboot
+```
+#  配置
+## 用户
+```bash
+useradd -m -g users -G wheel,lp,network,power -s /bin/bash fex
+passwd fex
+
+# fex添加到ssdm组
+usermod -a -G sddm fex
+nano /etc/group
+
+# 查用户组
+groups user
+cat /etc/group
+
+# sudo
+EDITOR=nano visudo
+Defaults:fex rootpw
+Defaults:fex timestamp_timeout=20
+fex ALL=(ALL) ALL
+```
+## 网络
+```bash
+# 注意用NetworkManager管理过后DNS会被清空
+sudo pacman -S net-tools networkmanager plasma-nm
+
+sudo systemctl enable NetworkManager
+
+# managed =  false 不管理/etc/network/interfaces已定义接口
+cat /etc/NetworkManager/NetworkManager.conf 
+[main]
+plugins=ifupdown,keyfile
+
+[ifupdown]
+managed=false
+
+# dhcpd 自动获取方式启动网络
+sudo systemctl start dhcpcd@$INTERFACE
+
+# systemd 方式设置静态IP
+sudo nano /etc/systemd/network/eth0.network
+[Match]
+Name=$INTERFACE
+
+[Network]
+Address=10.8.8.28/24
+Gateway=10.8.8.1
+DNS=10.8.8.1
+
+systemctl restart systemd-networkd
+
+# 启动停止网口
+ip link set $INTERFACE up|down 
+
+# 配置DNS
+sudo nano /etc/resolv.conf
+nameserver 10.8.8.1
+
+```
+## 显示
+```bash
+pacman -S bumblebee mesa xf86-video-intel nvidia
+pacman -S xorg-server
+```
+## kde
+```bash
+pacman -S plasma-desktop
+```
+## 显示管理器
+```bash
+pacman -S sddm
+pacman -S sddm-kcm
+systemctl enable sddm
+```
+```bash
+nano /etc/sddm.conf
+[Theme]
+Current=breeze
+```
+## 主题
+```bash
+# 安装ocs-url之后就可以在store.kde.org在线install 主题
+yay -S ocs-url
+
+# 主题目录  可以直接拷进去，也可以清理
+
+# Plasma 主题
+~ /.local/share/plasma/desktoptheme/
+# Global Themes
+~/.local/share/plasma/look-and-feel/
+# 颜色方案
+~/.local/share/color-schemes
+# 应用程序风格/窗口样式
+~/.local/share/aurorae/themes/
+# Icons
+~/.local/share/icons/
+# sddm主题
+/usr/share/sddm/themes/
+
+# 头像
+/usr/share/sddm/faces/$USERNAME.face.icon
+```
+## 中文字体
+```bash
+pacman -S ttf-{dejavu,liberation} wqy-microhei
+```
+## 输入法
+```bash
+pacman -S fcitx fcitx-rime fcitx-im kcm-fcitx
+nano ~/.xprofile
+export GTK_IM_MODULE=fcitx
+export QT_IM_MODULE=fcitx
+export XMODIFIERS="@im=fcitx"
+```
+## profile
+```bash
+# System
+sudo nano /etc/profile
+# User
+nano ~/.profile
+export  JAVA_HOME=/usr/lib/jvm/java-8-openjdk
+export  CLASSPATH=$CLASSPATH:$JAVA_HOME/lib:$JAVA_HOME/jre/lib 
+
+PATH=$PATH:$JAVA_HOME/bin:$JAVA_HOME/jre/bin
+export PATH=$PATH:/optd/opt/gradle-5.5/bin
+
+source ~/.profile
+```
+## ssh
+```bash
+nano ~/.ssh/config
+Host www.domain.com
+port 77
+PreferredAuthentications publickey
+IdentityFile ~/.ssh/id_rsa_local
+```
+## 常用软件
+```bash
+sudo pacman -S dolphin konsole
+sudo pacman -S  nano nodejs mpv simplescreenrecorder unarchiver ttf-fira-code  sqlitebrowser gimp gwenview okular flameshot remmina freerdp
+yay -S firefox google-chrome visual-studio-code-bin jdk8-openjdk jdk11-openjdk typora
+```
+## 常用命令
+```bash
+md5sum filename			#文件md5
+sha1sum filename		#文件SHA1
+sha256sum filename		#文件SHA256
+puttygen ./id_rsa -o test.ppk
+```
+## yay
+```bash
+pacman -S git
+git clone https://aur.archlinux.org/yay.git
+cd yay
+makepkg -si
+```
+## pacman
+[节点状态](https://www.archlinux.org/mirrors/status/) 
+```bash
+nano /etc/pacman.d/mirrorlist
+Server = https://mirrors.ustc.edu.cn/archlinux/$repo/os/$arch
+Server = http://mirrors.163.com/archlinux/$repo/os/$arch
+```
 ```bash
 #同步与更新
 pacman -Sy                  #同步源
@@ -28,126 +281,18 @@ pacman -Qo /etc/passwd      #查找某个文件属于哪个包
 
 pacman -Ss plasma           #搜索plasma相关的包
 ```
-
-# journalctl
+## journalctl
 ```bash
 sudo journalctl --vacuum-time=1s
 sudo journalctl
 sudo journalctl -p err
 sudo rm -rf /var/log/journal
 ```
-# Single User
+## Single User
 ```bash
-# grub 启动菜单 按 e 编辑 kernel参数加上 s 然后 ctrl + x 运行
+# grub 启动菜单 按 e 编辑 kernel参数加上 s 然后 ctrl + x 运行
 ```
 
-```
-# 安装
-## 分区
-```bash
-/boot/EFI  /dev/sdX1     #512MB 启动目录 
-[SWAP]     /dev/sdX2     #交换区 内存的两倍
-/          /dev/sdX3     #200G 根目录
-/optd      /dev/sdX4     #剩余所有空间  工作目录
-
-cfdisk /dev/sdX
-
-mkfs.fat /dev/sdX1
-mkfs.ext4 /dev/sdX3
-mkfs.ext4 /dev/sdX4
-mkswap /dev/sdX2
-
-mount /dev/sdX3 /mnt
-mkdir -p /mnt/boot/EFI
-mount /dev/sdX1 /mnt/boot/EFI
-mkdir /mnt/optd
-mount /dev/sdX4 /mnt/optd
-swapon /dev/sdX2
-```
-## 刷新本地时间
-```bash
-timedatectl set-ntp true
-```
-## 镜像
-```bash
-sed -i '/China/!{n;/Server/s/^/#/};t;n' /etc/pacman.d/mirrorlist
-
-nano /etc/pacman.d/mirrorlist
-#1.[F6] 搜索 china
-#2.[方向键] 移动光标至 Server 行
-#3.[CTRL+K] 剪切该行
-#4.[方向键] 移动光标至其他 Server 行前
-#5.[CTRL+U] 粘贴至此行
-#6.[CTRL+O] 保存，[回车键] 确定
-```
-## 安装基本系统
-```bash
-pacstrap /mnt base base-devel
-```
-## 配置系统
-### Fstab
-```bash
-genfstab -U /mnt >> /mnt/etc/fstab
-```
-### arch-chroot
-```bash
-arch-chroot /mnt
-```
-### 时区
-```bash
-ln -sf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
-```
-### 硬件时间
-```bash
-hwclock --systohc --localtime
-```
-### 本地化设置
-```bash
-nano /etc/locale.gen
-en_US.UTF-8 UTF-8
-zh_CN.UTF-8 UTF-8
-zh_HK.UTF-8 UTF-8
-locale-gen
-
-nano /etc/locale.conf
-LANG=en_US.UTF-8
-```
-### 网络
-```bash
-echo hostname > /etc/hostname
-systemctl start dhcpcd@en0
-```
-### Root 密码
-```bash
-passwd
-```
-### UEFI 系统
-```bash
-pacman -S dosfstools grub efibootmgr
-grub-install --target=x86_64-efi --efi-directory=/boot/EFI --bootloader=Arch --removable
-grub-mkconfig -o /boot/grub/grub.cfg
-```
-### BIOS 系统
-```bash
-pacman -S grub os-prober
-grub-install --target=i386-pc /dev/sdX
-grub-mkconfig -o /boot/grub/grub.cfg
-```
-### 源
-[节点状态](https://www.archlinux.org/mirrors/status/) 
-```bash
-nano /etc/pacman.d/mirrorlist
-Server = https://mirrors.ustc.edu.cn/archlinux/$repo/os/$arch
-Server = http://mirrors.163.com/archlinux/$repo/os/$arch
-```
-### 完成安装
-```bash
-exit
-umount -R /mnt/w
-umount -R /mnt
-reboot
-```
-# 配置
 ## systemctl
 ```bash
 # 列出正在运行的 Unit
@@ -188,39 +333,6 @@ sudo systemctl daemon-reload
 
 # 显示某个 Unit 的所有底层参数
 sudo systemctl show httpd.service
-
-```
-
-## 网络工具
-```bash
-sudo pacman -S net-tools networkmanager plasma-nm
-sudo systemctl enable NetworkManager
-
-sudo nano /etc/systemd/network/eth0.network
-[Match]
-Name=eth0
-
-[Network]
-Address=10.8.8.28/24
-Gateway=10.8.8.1
-DNS=10.8.8.1
-
-systemctl restart systemd-networkd
-
-ip link set eth0 up|down 
-### 用户
-```bash
-useradd -m -g users -G wheel,lp,sys,network,power -s /bin/bash fex
-passwd fex
-EDITOR=nano visudo
-Defaults:fex rootpw
-Defaults:fex timestamp_timeout=20
-fex ALL=(ALL) ALL
-```
-## 显示
-```bash
-pacman -S bumblebee mesa xf86-video-intel nvidia
-pacman -S xorg-server
 ```
 ## 输入设备
 ```bash
@@ -229,26 +341,6 @@ pacman -S xf86-input-libinput
 ## 触摸板驱动
 ```bash
 pacman -S xf86-input-synaptics
-```
-## kde
-```bash
-pacman -S plasma-desktop
-pacman -S kdebase
-```
-## 显示管理器
-```bash
-pacman -S sddm
-pacman -S sddm-kcm
-systemctl enable sddm
-```
-```bash
-nano /etc/sddm.conf
-[Theme]
-Current=breeze
-```
-## 中文字体
-```bash
-pacman -S ttf-{dejavu,liberation} wqy-microhei
 ```
 ## 声音软件包
 ```bash
@@ -294,8 +386,6 @@ Section "Monitor"
     Option      "LeftOf" "HDMI-1"
 EndSection
 ```
-
-
 ## 蓝牙
 ```bash
 pacman -S bluez bluez-utils bluedevil
@@ -310,13 +400,6 @@ nano /etc/pulse/system.pa
 load-module module-bluetooth-policy
 load-module module-bluetooth-discover
 #...
-```
-## yay
-```bash
-pacman -S git
-git clone https://aur.archlinux.org/yay.git
-cd yay
-makepkg -si
 ```
 ## lenovo throttling fix
 ```bash
@@ -342,42 +425,6 @@ WantedBy=multi-user.target
 
 sudo systemctl enable powertop
 ```
-## phoronix-test-suite
-```bash
-yay -S phoronix-test-suite
-phoronix-test-suite list-tests               #显示所有支持的测试类型
-phoronix-test-suite benchmark smallpt        #运行smallpt测试
-
-phoronix-test-suite list-installed-test             #显示所有测试
-phoronix-test-suite remove-installed-test tiobench  #删除name测试
-
-phoronix-test-suite list-saved-results       #显示所有测试结果
-phoronix-test-suite show-result savename     #查看保存名字为savename结果
-phoronix-test-suite remove-result savename   #删除保存名字为savename结
-```
-## 输入法
-```bash
-pacman -S fcitx fcitx-rime fcitx-im kcm-fcitx
-nano ~/.xprofile
-export GTK_IM_MODULE=fcitx
-export QT_IM_MODULE=fcitx
-export XMODIFIERS="@im=fcitx"
-```
-## 常用软件
-```bash
-sudo pacman -S kamoso mpv simplescreenrecorder unarchiver ttf-fira-code okteta sqlitebrowser libreoffice-fresh gimp gwenview okular flameshot remmina freerdp putty filezilla
-yay -S firefox google-chrome visual-studio-code-bin jdk8-openjdk typora vnote
-```
-
-
-## 常用命令
-```bash
-md5sum filename			#文件md5
-sha1sum filename		#文件SHA1
-sha256sum filename		#文件SHA256
-puttygen ./id_rsa -o test.ppk
-```
-
 ## PPTP Client
 ```bash
 #https://wiki.archlinux.org/index.php/PPTP_Client 
@@ -477,12 +524,15 @@ mount -rw 10.8.8.1:/disk/opt/share /r/share
 ```bash
 sudo pacman -S mariadb mariadb-libs
 sudo mysql_install_db --user=mysql --basedir=/usr --datadir=/optd/db/data/mysql/
-sudo  /usr/bin/mysqld_safe --datadir='/optd/db/data/mysql/' --skip-grant-tables &
+sudo  /usr/bin/mysqld_safe --datadir='/optd/db/data/mysql/' --skip-grant-tables
 
-SET PASSWORD FOR root@'localhost' = PASSWORD('Xxxxxxxx');
+# 要先 FLUSH PRIVILEGES; 不然设置不了密码
+FLUSH PRIVILEGES;
+SET PASSWORD FOR root@'localhost' = PASSWORD('XXXXXXX');
 FLUSH PRIVILEGES;
 
-sudo nano /etc/my.cnf[mysqld]
+sudo nano /etc/my.cnf
+[mysqld]
 datadir                     =/optd/db/data/mysql/
 init_connect                = 'SET collation_connection = utf8_general_ci,NAMES utf8'
 collation_server            = utf8_general_ci
@@ -504,28 +554,6 @@ sudo pacman -U <package-name>
 
 ```
 
-## Node.js
-```bash
-sudo pacman -S nodejs
-sudo pacman -S npm
-yay -s nvm
-source /usr/share/nvm/init-nvm.sh
-
-nvm install --lts
-nvm install 12.10.0
-nvm use --lts
-nvm use 12.10.0
-
-sudo npm install npm -g
-sudo npm install npm@latest -g
-
-npm config set registry https://registry.npm.taobao.org
-npm config set registry https://registry.npmjs.org
-
-npm install -g cnpm --registry=https://registry.npm.taobao.org
-
-```
-
 ## 梯子
 ```bash
 sudo pacman -S v2ray
@@ -543,35 +571,4 @@ convert {1..100}.jpg file1.pdf
 ## 安卓手机
 ```bash
 sudo pacman -S android-tools
-```
-
-
-## Wine 
-```bash
-# 先修改 /etc/pacman.conf [multilib] 打开multilib库
-sudo pacman wine
-sudo pacman winetricks
-
-#图形设置界面
-winecfg
-
-#控制面板
-wine control
-
-#注册表
-regedit
-
-# WINEARCH 32bit WINEPREFIX 系统目录
-env WINEARCH=win32 WINEPREFIX=~/win32 winecfg 
-
-#映射字体
-mkdir /usr/share/fonts/WindowsFonts
-ln -s ~/.wine/drive_c/windows/Fonts /usr/share/fonts/WindowsFonts
-ln -s /usr/share/fonts/WindowsFonts /home/fex/.deepinwine/Deepin-WeChat/drive_c/windows/Fonts  
-chmod 755 /usr/share/fonts/WindowsFonts/*
-fc-cache -f
-
-#显卡驱动
-yay -S lib32-mesa
-
 ```

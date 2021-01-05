@@ -1,6 +1,10 @@
 # 常用操作
 
 ```bash
+
+git config --global user.name "zz"
+git config --global user.email zz@zz.com
+
 git add -A
 git commit -m "test"
 
