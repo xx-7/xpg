@@ -389,4 +389,49 @@ net.ipv6.conf.all.disable_ipv6=1
 
 
 /sbin/sysctl -p
+
+
+# disable_ipv6 有时候系统只开ipv6自动启动，disable网卡不会随系统启动
+```
+## nginx
+```bash
+apt install nginx
+
+```
+### webdev
+```bash
+# 开webdev
+
+mkdir /home/downloads
+chmod 777 /home/downloads
+
+nano /etc/nginx/conf.d/webdev.conf
+
+server {
+    listen       88; 
+    server_name  s.domain.com;
+    error_log /var/log/nginx/webdav.error.log error;
+    access_log  /var/log/nginx/webdav.access.log combined;
+    location / {
+        root /home/downloads;
+        charset utf-8;
+        autoindex on;
+        dav_methods PUT DELETE MKCOL COPY MOVE;
+        dav_ext_methods PROPFIND OPTIONS;
+        create_full_put_path  on;
+        dav_access user:rw group:r all:r;
+        auth_basic "Authorized Users Only";
+        auth_basic_user_file /etc/nginx/.htpasswd;
+    }
+    ssl on; 
+    ssl_certificate /etc/letsencrypt/live/s.domain.com/fullchain.pem;    
+    ssl_certificate_key /etc/letsencrypt/live/s.domain.com/privkey.pem; 
+}
+
+# 设置密码
+apt install apache2-utils
+htpasswd -c /etc/nginx/.htpasswd $USER
+
+systemctl restart nginx
+
 ```

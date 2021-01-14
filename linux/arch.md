@@ -572,3 +572,9 @@ convert {1..100}.jpg file1.pdf
 ```bash
 sudo pacman -S android-tools
 ```
+
+## webdav
+```bash
+sudo pacman -S davfs2
+sudo mount -t davfs https://a.com/path /r/webdav
+```
