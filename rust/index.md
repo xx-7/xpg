@@ -5,6 +5,7 @@
 
 ### bytecodealliance
 #### [wasmparser](./wasmparser.md) 
+#### fern 日志
 
 ## 安装更新
 ```bash

@@ -283,3 +283,110 @@ mysqldump -u用户名 -p密码 -h主机 数据库 < 路径 #导入
 mysqldump -u用户名 -p密码 -h主机 数据库 > 路径
 \. /path/file.sql
 ```
+
+## certbot
+```
+apt install certbot
+
+# 先要关防火墻 证书目录 /etc/letsencrypt/live/
+certbot certonly -d s.xxxx.com
+
+# 续期
+certbot renew
+
+```
+
+## iptables
+```bash
+
+# 添加放行
+iptables -A INPUT -p tcp --dport 22 -j ACCEPT
+
+# 查看
+iptables -L -n
+
+# 清除所有, 没有stop要关时先save然后清除所有，开时再restore回来
+iptables -F
+iptables -X
+
+# 保存
+iptables-save > /etc/iptables.up.rules
+# 恢复 
+iptables-restore < /etc/iptables.up.rules
+
+# 开机自动加载
+nano /etc/network/if-pre-up.d/iptables
+
+#!/bin/sh
+/sbin/iptables-restore < /etc/iptables.up.rules
+
+chmod +x /etc/network/if-pre-up.d/iptables
+
+```
+
+## rc.local
+```bash
+nano /etc/rc.local
+#!/bin/sh
+
+
+exit 0
+
+chmod +x /etc/rc.local
+
+systemctl enable rc.local
+
+
+```
+
+## IpSec VPN
+```bash
+wget https://git.io/vpnsetup -O vpnsetup.sh
+chmod 777 vpnsetup.sh
+VPN_IPSEC_PSK='6fTnH5uU9beYkggEKLUN0' \
+VPN_USER='zxz' \
+VPN_PASSWORD='XzxTop' \
+sh vpnsetup.sh
+```
+
+## sysctl.conf
+```bash
+nano /etc/sysctl.conf
+
+net.ipv4.ip_forward = 0
+net.ipv4.conf.default.rp_filter = 1
+net.ipv4.conf.default.accept_source_route = 0
+kernel.sysrq = 0
+kernel.core_uses_pid = 1
+net.ipv4.tcp_syncookies = 1
+kernel.msgmnb = 65536
+kernel.msgmax = 65536
+kernel.shmmax = 68719476736
+kernel.shmall = 4294967296
+net.ipv4.tcp_max_tw_buckets = 6000
+net.ipv4.tcp_sack = 1
+net.ipv4.tcp_window_scaling = 1
+net.ipv4.tcp_rmem = 10240 131072 12582912
+net.ipv4.tcp_wmem = 10240 131072 12582912
+net.core.wmem_default = 8388608
+net.core.wmem_max = 16777216
+net.core.rmem_default = 8388608
+net.core.rmem_max = 16777216
+net.core.netdev_max_backlog = 262144
+net.ipv4.tcp_max_orphans = 3276800
+net.ipv4.tcp_max_syn_backlog = 262144
+net.ipv4.tcp_timestamps = 0
+net.ipv4.tcp_synack_retries = 1
+net.ipv4.tcp_syn_retries = 1
+net.ipv4.tcp_tw_recycle = 1
+net.ipv4.tcp_tw_reuse = 1
+net.ipv4.tcp_mem = 94500000 915000000 927000000
+net.ipv4.tcp_fin_timeout = 15
+net.ipv4.tcp_keepalive_time = 30
+net.ipv4.ip_local_port_range = 2048 65000
+fs.file-max = 102400
+net.ipv6.conf.all.disable_ipv6=1
+
+
+/sbin/sysctl -p
+```

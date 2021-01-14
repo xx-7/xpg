@@ -271,6 +271,33 @@ dkms install -m spl -v 0.7.12
 dkms install -m zfs -v 0.7.12
 ```
 
+## 防火墙
+```bash
+iptables -F -t nat
+iptables -X -t nat
+iptables -Z -t nat
+
+iptables -A INPUT -p tcp --dport 22 -j ACCEPT
+
+iptables -t nat -A POSTROUTING -s 10.10.10.0/24 -j SNAT --to-source xxx.xxx.xxx.xxx
+service iptables save 
+service iptables stop 
+service iptables restart
+
+iptables -L -n
+iptables -F
+iptables -X
+
+
+netstat -an|grep tcp|grep 80
+firewall-cmd --permanent --add-port=80/tcp
+firewall-cmd --permanent --add-port=22/tcp
+firewall-cmd --permanent --add-masquerade
+firewall-cmd --reload
+
+modprobe nf_conntrack_pptp
+```
+
 ## kvm
 ### 安装
 
@@ -383,6 +410,13 @@ VPN_USER='zxz' \
 VPN_PASSWORD='XzxTop' \
 ./vpnsetup.sh
 
+
+wget https://git.io/vpnsetup -O vpnsetup.sh
+chmod 777 vpnsetup.sh
+VPN_IPSEC_PSK='6fTnH5uU9beYkggEKLUN' \
+VPN_USER='zxz' \
+VPN_PASSWORD='XzxTop' \
+sh vpnsetup.sh
 
 vi /etc/ipsec.secrets
 %any  %any  : PSK "6fTnH5uU9beYkggEKLUN0"
