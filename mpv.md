@@ -1,5 +1,16 @@
 [TOC]
 
+# 配置
+```bash
+
+# 标题
+nano ~/.config/mpv/config
+
+title='${filename} - mpv'
+script-opts='osc-title=${filename}'
+
+```
+
 # 鼠标控制
 
 | 快捷键   | 功能          |
