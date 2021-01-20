@@ -16,9 +16,6 @@
     "files.exclude": {
         "**/*.meta": true
     },
-    "writeCnblog.blogName": "xx-7",
-    "writeCnblog.userName": "xx-7",
-    "writeCnblog.passWord": "xxx_7",
     "rust.rustfmt_path": "/home/fex/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/bin/rustfmt",
     "rust-client.rlsPath": "/home/fex/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/bin/rls",
     "editor.formatOnSave": true,
@@ -30,4 +27,12 @@
     "editor.fontLigatures": true,
     "editor.fontSize": 16,
 }
+```
+# 文件监视
+```bash
+ "files.watcherExclude": {
+      "**/.git/objects/**": true,
+      "**/.git/subtree-cache/**": true,
+      "**/node_modules/*/**": true
+  }
 ```
