@@ -76,6 +76,17 @@ deb http://ftp.cn.debian.org/debian/debian-security buster-updates main contrib 
 ```bash
 deb http://ftp.cn.debian.org/debian sid main contrib non-free
 ```
+## locales
+```bash
+apt install locales -y
+
+apt install locales
+apt install fonts-wqy-zenhei
+
+nano /root/.bashrc
+export LC_ALL=zh_CN.UTF-8
+
+```
 
 ## 网络
 
@@ -87,6 +98,7 @@ sudo nano /etc/network/interfaces
 
 iface enp0s31f6 inet dhcp
 
+auto enp0s31f6
 iface enp0s31f6 inet static
 address 10.8.8.28
 netmask 255.255.255.0
@@ -96,6 +108,7 @@ nano /etc/resolv.conf
 nameserver 10.8.8.1
 
 sudo /etc/init.d/networking restart
+sudo systemctl restart networking
 ```
 
 ### NetworkManager
