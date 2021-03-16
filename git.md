@@ -43,6 +43,10 @@ git mergetool
 git fetch origin
 git reset --hard origin/master
 
+#回到某次提交
+git log 
+git reset --hard $COMMIT
+
 #推送已经创建
 git remote add origin https://test.com/test/test.git
 
