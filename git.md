@@ -43,9 +43,17 @@ git mergetool
 git fetch origin
 git reset --hard origin/master
 
+# --soft 删除改动文件, 撤消commit 撤消add
+# --mixed 不删除改动文件, 撤消commit 撤消add
+# --soft 不删除改动文件, 撤消commit 不撤消add
+# HEAD^ 上次 HEAD~2 上两次commit
+
 #回到某次提交
 git log 
 git reset --hard $COMMIT
+
+#撤消最后一次提交
+git reset --mixed HEAD^
 
 #推送已经创建
 git remote add origin https://test.com/test/test.git
