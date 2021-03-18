@@ -193,12 +193,35 @@ EndSection
 ## ssh
 
 ```bash
+# generate key
+ssh-keygen -t rsa
+
 # ssh client
+ssh -i ~/.ssh/id_rsa USER@SERVER
+#or
 nano ~/.ssh/config
-Host www.domain.com
+Host www.domain.com www2.domain.com
 port 77
 PreferredAuthentications publickey
 IdentityFile ~/.ssh/id_rsa_local
+
+# ssh server
+apt install openssh-server
+mkdir -p ~/.ssh/
+nano /etc/ssh/sshd_config
+
+
+StrictModes no
+PermitRootLogin yes
+
+RSAAuthentication yes
+PubkeyAuthentication yes
+AuthorizedKeysFile      .ssh/rsa_pub #rsa_pub pub key file
+
+PasswordAuthentication no
+
+systemctl restart sshd
+
 ```
 
 ## profile
