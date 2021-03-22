@@ -174,9 +174,9 @@ $CLIEXEC -a "$PWD" -p $REDISPORT shutdown
 
 ## OpenSSL
 ```bash
-wget https://www.openssl.org/source/openssl-1.1.0h.tar.gz
-tar -zxvf openssl-1.1.0h.tar.gz
-cd openssl-1.1.0h
+wget https://www.openssl.org/source/openssl-1.1.1j.tar.gz
+tar -zxvf openssl-1.1.1j.tar.gz
+cd openssl-1.1.1j
 ./config --prefix=/usr/local/openssl
 make
 make install

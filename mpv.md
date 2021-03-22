@@ -9,6 +9,11 @@ nano ~/.config/mpv/config
 title='${filename} - mpv'
 script-opts='osc-title=${filename}'
 
+speed=1.6
+screen=1
+fullscreen=yes
+
+
 ```
 
 # 鼠标控制
