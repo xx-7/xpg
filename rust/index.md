@@ -41,6 +41,8 @@ registry = "https://mirrors.tuna.tsinghua.edu.cn/git/crates.io-index.git"
 
 
 ext install matklad.rust-analyzer
+
+rm -rf ~/.cargo/.package-cache
 ```
 
 ## 关键字
