@@ -140,6 +140,9 @@ df -h
 # 查看盘UUID
 ls -l /dev/disk/by-uuid/
 
+# 查看目录占用大小
+du -h  ./
+
 # 自动挂盘
 sudo nano /etc/fstab
 UUID=b141d23c-0f49-48a0-aaaa-80f25b30bd8f /optd ext4 defaults 0 2
@@ -318,6 +321,19 @@ mysqldump -u用户名 -p密码 -h主机 数据库 < 路径 #导入
 # 导出
 mysqldump -u用户名 -p密码 -h主机 数据库 > 路径
 \. /path/file.sql
+```
+
+## Redis
+```bash
+apt install gcc make
+wget http://download.redis.io/redis-stable.tar.gz
+tar -zxvf redis-stable.tar.gz
+cd redis-stable
+make
+
+apt install redis-server
+
+nano /etc/redis/redis.conf
 ```
 
 ## certbot
