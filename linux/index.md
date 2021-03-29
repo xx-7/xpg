@@ -1,5 +1,30 @@
+# bash
+```bash
+# 批量改变权限
+chmod -R 777 /home/linux
+
+# 解压乱码
+pacman -S unarchiver
+unar -e GBK test.zip
+
+# 查看分区
+sudo fdisk -l
+
+# 查看使用情况
+df -h
+
+# 查看目录占用大小
+du -h  ./
+
+# 查看盘UUID
+ls -l /dev/disk/by-uuid/
+
+```
+
+
 # proc
 ```bash
+
 cat /proc/[pid]/status
 ```
 
