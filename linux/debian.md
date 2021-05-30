@@ -161,6 +161,18 @@ sudo apt autoremove
 sudo apt clean all
 sudo apt list
 ```
+## 内核
+```bash
+# 查看内核版本
+uname -a
+# 查看源中内核
+apt-cache search linux-image
+# 安装内核
+apt install linux-image-4.19.0-16-amd64
+# 删除旧内核，如果是运行中内核会弹出窗口选No
+apt remove linux-image-4.19.0-16-cloud-amd64
+
+```
 
 ## sudo
 
@@ -268,7 +280,25 @@ sudo apt install nodejs npm
 sudo apt install fonts-firacode
 sudo apt install qbittorrent
 ```
+## smartmontools
+```bash
 
+apt install smartmontools
+# 查看盘符
+df -h
+# 总览信息
+smartctl -a /dev/sda3
+# 如果 出现 SMART support is: Disabled 先 -s on打开
+smartctl -s on -a /dev/sda3
+# 测试健康状态
+smartctl -H /dev/sda3
+# 查看硬盘错误日志
+smartctl -l error /dev/sda3
+# 查看硬盘挂载情况
+mount
+# 光盘引导后，修复
+fsck /dev/sda3
+```
 ## simplescreenrecorder
 
 ```bash

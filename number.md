@@ -6,6 +6,10 @@
 # 修改Pin码
 # https://www.google.com/voice/b/0#voicemailsettings
 
+# 区号
+# https://www.bennetyee.org/ucsd-pages/area.html
+# https://cn.amp.chahaoba.com/001802
+
 ```
 
 # Ultra Mobile
