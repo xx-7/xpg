@@ -125,6 +125,8 @@ GOERLI_API_KEY = projectKEY  # https://infura.io/dashboard
 
 ## Run
 ```bash
+# test matchers
+# https://ethereum-waffle.readthedocs.io/en/latest/matchers.html
 yarn test
 yarn test ./test/Token.js
 yarn deploy
