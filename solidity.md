@@ -126,5 +126,6 @@ GOERLI_API_KEY = projectKEY  # https://infura.io/dashboard
 ## Run
 ```bash
 yarn test
+yarn test ./test/Token.js
 yarn deploy
 ```
