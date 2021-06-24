@@ -371,6 +371,24 @@ virt-install --name centos7 --ram 4096 --vcpus 2 \
 --network bridge=br0 --graphics vnc,listen=0.0.0.0,port=9667 
 ```
 
+### USB
+```bash
+lsusb
+# Bus 003 Device 003: ID 0781:558b SanDisk Corp. 
+nano usb.xml
+<hostdev mode='subsystem' type='usb'>
+    <source>
+        <vendor id='0x0781'/>
+        <product id='0x558b'/>
+    </source>
+</hostdev>
+
+virsh attach-device NAME usb.xml
+
+virsh detach-device NAME usb.xml
+
+```
+
 ## IpSec Vpn
 ```bash
 wget https://git.io/vpnsetup-centos -O vpnsetup.sh
