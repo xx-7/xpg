@@ -162,20 +162,6 @@ sudo apt clean all
 sudo apt list
 ```
 
-## 内核
-
-```bash
-# 查看内核版本
-uname -a
-# 查看源中内核
-apt-cache search linux-image
-# 安装内核
-apt install linux-image-4.19.0-16-amd64
-# 删除旧内核，如果是运行中内核会弹出窗口选No
-apt remove linux-image-4.19.0-16-cloud-amd64
-
-```
-
 ## sudo
 
 ```bash

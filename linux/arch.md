@@ -1,6 +1,9 @@
 [TOC]
+
 # 安装
+
 ## 分区
+
 ```bash
 # https://wiki.archlinux.org/index.php/GRUB
 # 注意，GPT分区表，预留一个 BIOS 启动分区
@@ -22,7 +25,9 @@ mkdir -p /mnt/boot/EFI
 mount /dev/sdX1 /mnt/boot/EFI
 swapon /dev/sdX2
 ```
-## 配置安装环境 
+
+## 配置安装环境
+
 ```bash
 # 刷新本地时间
 timedatectl set-ntp true
@@ -38,7 +43,9 @@ nano /etc/pacman.d/mirrorlist
 #5.[CTRL+U] 粘贴至此行
 #6.[CTRL+O] 保存，[回车键] 确定
 ```
-## 安装系统 
+
+## 安装系统
+
 ```bash
 # 安装基本系统
 pacstrap /mnt base base-devel linux linux-firmwrae
@@ -90,8 +97,11 @@ exit
 umount -R /mnt
 reboot
 ```
-#  配置
+
+# 配置
+
 ## 用户
+
 ```bash
 useradd -m -g users -G wheel,lp,network,power -s /bin/bash fex
 passwd fex
@@ -148,27 +158,36 @@ sudo nano /etc/resolv.conf
 nameserver 10.8.8.1
 
 ```
+
 ## 显示
+
 ```bash
 pacman -S bumblebee mesa xf86-video-intel nvidia
 pacman -S xorg-server
 ```
+
 ## kde
+
 ```bash
 pacman -S plasma-desktop
 ```
+
 ## 显示管理器
+
 ```bash
 pacman -S sddm
 pacman -S sddm-kcm
 systemctl enable sddm
 ```
+
 ```bash
 nano /etc/sddm.conf
 [Theme]
 Current=breeze
 ```
+
 ## 主题
+
 ```bash
 # 安装ocs-url之后就可以在store.kde.org在线install 主题
 yay -S ocs-url
@@ -191,11 +210,15 @@ yay -S ocs-url
 # 头像
 /usr/share/sddm/faces/$USERNAME.face.icon
 ```
+
 ## 中文字体
+
 ```bash
 pacman -S ttf-{dejavu,liberation} wqy-microhei
 ```
+
 ## 输入法
+
 ```bash
 pacman -S fcitx fcitx-rime fcitx-im kcm-fcitx
 nano ~/.xprofile
@@ -203,7 +226,9 @@ export GTK_IM_MODULE=fcitx
 export QT_IM_MODULE=fcitx
 export XMODIFIERS="@im=fcitx"
 ```
+
 ## profile
+
 ```bash
 # System
 sudo nano /etc/profile
@@ -217,7 +242,9 @@ export PATH=$PATH:/optd/opt/gradle-5.5/bin
 
 source ~/.profile
 ```
+
 ## ssh
+
 ```bash
 nano ~/.ssh/config
 Host www.domain.com
@@ -225,33 +252,43 @@ port 77
 PreferredAuthentications publickey
 IdentityFile ~/.ssh/id_rsa_local
 ```
+
 ## 常用软件
+
 ```bash
 sudo pacman -S dolphin konsole
 sudo pacman -S  nano nodejs mpv simplescreenrecorder unarchiver ttf-fira-code  sqlitebrowser gimp gwenview okular flameshot remmina freerdp
 yay -S firefox google-chrome visual-studio-code-bin jdk8-openjdk jdk11-openjdk typora
 ```
+
 ## 常用命令
+
 ```bash
 md5sum filename			#文件md5
 sha1sum filename		#文件SHA1
 sha256sum filename		#文件SHA256
 puttygen ./id_rsa -o test.ppk
 ```
+
 ## yay
+
 ```bash
 pacman -S git
 git clone https://aur.archlinux.org/yay.git
 cd yay
 makepkg -si
 ```
+
 ## pacman
-[节点状态](https://www.archlinux.org/mirrors/status/) 
+
+[节点状态](https://www.archlinux.org/mirrors/status/)
+
 ```bash
 nano /etc/pacman.d/mirrorlist
 Server = https://mirrors.ustc.edu.cn/archlinux/$repo/os/$arch
 Server = http://mirrors.163.com/archlinux/$repo/os/$arch
 ```
+
 ```bash
 #同步与更新
 pacman -Sy                  #同步源
@@ -281,19 +318,24 @@ pacman -Qo /etc/passwd      #查找某个文件属于哪个包
 
 pacman -Ss plasma           #搜索plasma相关的包
 ```
+
 ## journalctl
+
 ```bash
 sudo journalctl --vacuum-time=1s
 sudo journalctl
 sudo journalctl -p err
 sudo rm -rf /var/log/journal
 ```
+
 ## Single User
+
 ```bash
 # grub 启动菜单 按 e 编辑 kernel参数加上 s 然后 ctrl + x 运行
 ```
 
 ## systemctl
+
 ```bash
 # 列出正在运行的 Unit
 systemctl list-units
@@ -334,15 +376,21 @@ sudo systemctl daemon-reload
 # 显示某个 Unit 的所有底层参数
 sudo systemctl show httpd.service
 ```
+
 ## 输入设备
+
 ```bash
 pacman -S xf86-input-libinput
 ```
+
 ## 触摸板驱动
+
 ```bash
 pacman -S xf86-input-synaptics
 ```
+
 ## 声音软件包
+
 ```bash
 pacman -S alsa-utils pulseaudio pulseaudio-alsa kmix
 alsamixer
@@ -359,7 +407,9 @@ ctl.!default {
 }
 defaults.pcm.rate_converter "samplerate_best"      #  高质量采样 先安装 alsa-plugins,libsamplerate。
 ```
+
 ## 切换默认声音输出
+
 ```bash
 aplay -l     #查看列表
 sudo nano /etc/asound.conf 
@@ -367,13 +417,16 @@ defaults.pcm.card 0
 defaults.pcm.device 3
 defaults.ctl.card 0
 ```
+
 ## 双屏位置切换
+
 ```bash
 sudo pacman -S xorg-xrandr
 xrandr
 xrandr --output HDMI-2 --left-of eDP-1
 ```
-```
+
+```bash
 sudo nano /etc/X11/xorg.conf.d/10-monitor.conf
 
 Section "Monitor"
@@ -386,7 +439,9 @@ Section "Monitor"
     Option      "LeftOf" "HDMI-1"
 EndSection
 ```
+
 ## 蓝牙
+
 ```bash
 pacman -S bluez bluez-utils bluedevil
 systemctl enable bluetooth
@@ -401,12 +456,16 @@ load-module module-bluetooth-policy
 load-module module-bluetooth-discover
 #...
 ```
+
 ## lenovo throttling fix
+
 ```bash
 yay -S lenovo-throttling-fix-git
 sudo systemctl enable --now lenovo_fix.service
 ```
+
 ## 电池电源
+
 ```bash
 sudo pacman -S acpi acpid tlp powertop tp_smapi acpi_call
 sudo systemctl enable tlp
@@ -425,7 +484,9 @@ WantedBy=multi-user.target
 
 sudo systemctl enable powertop
 ```
+
 ## PPTP Client
+
 ```bash
 #https://wiki.archlinux.org/index.php/PPTP_Client 
 sudo pacman -S pptpclient
@@ -460,11 +521,13 @@ sudo ip route add 192.168.10.0/24 dev ppp0
 ```
 
 ## l2tp
+
 ```bash
 yay -S networkmanager-l2tp
 ```
 
 ## zip
+
 ```bash
 sudo pacman -S zip
 zip -re dest.zip src        #回车，输入2次密码
@@ -475,6 +538,7 @@ unzip -P PASS src.zip
 ```
 
 ## 7Z
+
 ```bash
 sudo pacman -S p7zip
 
@@ -496,12 +560,14 @@ e 是忽略目录结构，都解压到跟目录
 ```
 
 ## openssl
+
 ```bash
 openssl enc -e -aes256 -out test.tar.gz
 openssl enc -d -aes256 -in test.tar.gz
 ```
 
 ## 不识别U盘
+
 ```bash
 #查看是否加载usb-storage
 lsmod | grep usb
@@ -509,8 +575,10 @@ sudo modprobe usb-storage
 ```
 
 ## 文件系统
-[官方说明](https://wiki.archlinux.org/index.php/File_systems) 
-```
+
+[官方说明](https://wiki.archlinux.org/index.php/File_systems)
+
+```bash
 #exFAT
 sudo pacman -S exfat-utils
 
@@ -521,6 +589,7 @@ mount -rw 10.8.8.1:/disk/opt/share /r/share
 ```
 
 ## Mysql
+
 ```bash
 sudo pacman -S mariadb mariadb-libs
 sudo mysql_install_db --user=mysql --basedir=/usr --datadir=/optd/db/data/mysql/
@@ -544,6 +613,7 @@ sudo systemctl start mysqld
 ```
 
 ## 安装deb包
+
 ```bash
 yay -S debtap
 sudo debtap -u
@@ -555,12 +625,14 @@ sudo pacman -U <package-name>
 ```
 
 ## 梯子
+
 ```bash
 sudo pacman -S v2ray
 yay -S v2raya
 ```
 
 ## 图片全成pdf
+
 ```bash
 sudo pacman -S imagemagick
 
@@ -569,11 +641,13 @@ convert {1..100}.jpg file1.pdf
 ```
 
 ## 安卓手机
+
 ```bash
 sudo pacman -S android-tools
 ```
 
 ## webdav
+
 ```bash
 sudo pacman -S davfs2
 sudo mount -t davfs https://a.com/path /r/webdav

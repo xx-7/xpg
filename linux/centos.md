@@ -23,6 +23,7 @@ chmod +x /etc/rc.d/rc.local
 ```
 
 ## 更新内核
+
 ```bash
 uname -sr
 rpm --import https://www.elrepo.org/RPM-GPG-KEY-elrepo.org
@@ -38,7 +39,9 @@ cat /boot/grub2/grub.cfg |grep menuentry    #查看系统可用内核
 rpm -qa |grep kernel                        #查看系统安装内核
 yum remove kernel-3.10.0-862.14.4.el7       #删除内核
 ```
+
 ## 时区
+
 ```bash
 yum install ntp
 ntpdate us.pool.ntp.org
@@ -52,6 +55,7 @@ hwclock -w
 ```
 
 ## OpenJDK
+
 ```bash
 rpm -qa | grep java
 
@@ -68,6 +72,7 @@ EOF
 ```
 
 ## Mysql5
+
 ```bash
 wget http://repo.mysql.com/mysql-community-release-el7-5.noarch.rpm
 
@@ -122,6 +127,7 @@ systemctl restart mysqld
 ```
 
 ## letsencrypt
+
 ```bash
 yum -y install git-core python
 git clone https://github.com/letsencrypt/letsencrypt
@@ -129,6 +135,7 @@ cd letsencrypt
 ./letsencrypt-auto certonly --standalone --email email@gmail.com -d domian.com
 ./letsencrypt-auto certonly --renew-by-default --email email@gmail.com  -d domian.com
 ```
+
 ```bash
 cd /home
 wget https://github.com/certbot/certbot/archive/v0.27.1.tar.gz
@@ -138,6 +145,7 @@ cd certbot-0.27.1
 ```
 
 ## 防水墙
+
 ```bash
 firewall-cmd --get-active-zones
 firewall-cmd --zone=public --add-port=443/tcp --permanent
@@ -149,6 +157,7 @@ systemctl restart firewalld
 ```
 
 ## Redis
+
 ```bash
 #old redis server redis-cli
 bgsave
@@ -173,6 +182,7 @@ $CLIEXEC -a "$PWD" -p $REDISPORT shutdown
 ```
 
 ## OpenSSL
+
 ```bash
 wget https://www.openssl.org/source/openssl-1.1.1j.tar.gz
 tar -zxvf openssl-1.1.1j.tar.gz
@@ -187,6 +197,7 @@ openssl version -a
 ```
 
 ## GLIBC 编译
+
 ```bash
 strings /lib64/libc.so.6 |grep GLIBC_
 wget http://mirrors.ustc.edu.cn/gnu/glibc/glibc-2.32.tar.gz
@@ -200,6 +211,7 @@ make install
 ```
 
 ## Make 编译
+
 ```bash 
 wget http://mirrors.ustc.edu.cn/gnu/make/make-4.3.tar.gz
 tar xf make-4.3.tar.gz
@@ -214,6 +226,7 @@ ln -sv /usr/local/bin/make /usr/bin/make
 ```
 
 ## GCC 编译
+
 ```bash
 yum -y install gcc+ gcc-c++
 wget http://mirrors.ustc.edu.cn/gnu/gcc/gcc-8.4.0/gcc-8.4.0.tar.gz
@@ -228,15 +241,19 @@ make install
 ```
 
 ## 证书
+
 ```bash
 wget http://curl.haxx.se/ca/cacert.pem -O /etc/pki/tls/certs/cacert.pem
 ```
 
 ## zfs
+
 ### 安装使用
+
 [官方wiki](https://github.com/zfsonlinux/zfs/wiki/RHEL-and-CentOS)  
 [zfs命令](https://docs.oracle.com/cd/E26926_01/html/E29115/zfs-1m.html)  
-[zpool命令](https://docs.oracle.com/cd/E26926_01/html/E29115/zpool-1m.html)  
+[zpool命令](https://docs.oracle.com/cd/E26926_01/html/E29115/zpool-1m.html)
+
 ```bash
 yum install epel-release -y
 yum install http://download.zfsonlinux.org/epel/zfs-release.el7_6.noarch.rpm -y
@@ -261,6 +278,7 @@ zpool upgrade -a                    #更新全部池
 ```
 
 ### 无法加载zfs内核
+
 ```bash
 rm -rf /lib/modules/4.18.9-1.el7.elrepo.x86_64/extra
 dkms remove -m zfs -v 0.7.12 --all
@@ -272,6 +290,7 @@ dkms install -m zfs -v 0.7.12
 ```
 
 ## kvm
+
 ### 安装
 
 ```bash
@@ -288,6 +307,7 @@ yum install virtio-win -y   #安装win io增强
 ```
 
 ### 虚拟机管理
+
 ```bash
 virsh list                  # 查看在运行的虚拟机
 virsh dumpxml vm-name       # 查看kvm虚拟机配置文件
@@ -372,6 +392,7 @@ virt-install --name centos7 --ram 4096 --vcpus 2 \
 ```
 
 ### USB
+
 ```bash
 lsusb
 # Bus 003 Device 003: ID 0781:558b SanDisk Corp. 
@@ -390,6 +411,7 @@ virsh detach-device NAME usb.xml
 ```
 
 ## IpSec Vpn
+
 ```bash
 wget https://git.io/vpnsetup-centos -O vpnsetup.sh
 chmod 777 vpnsetup.sh
