@@ -2,6 +2,19 @@
 
 # 安装
 
+## ntpdate
+
+```bash
+
+sudo apt install ntpdate
+
+sudo ntpdate cn.pool.ntp.org
+sudo hwclock -w
+
+sudo ntpdate time.windows.com && sudo hwclock -w
+
+```
+
 ## kde
 
 ```bash
