@@ -23,8 +23,6 @@ apt install kde-plasma-desktop
 # 全局主题: Arc Dark, Orchis
 # 图标: Papirus, Tela
 
-# 把fex加到ssdm组才可以设置 ssdm登录界面
-usermod -a -G ssdm fex
 
 ```
 
