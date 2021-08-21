@@ -171,6 +171,8 @@ sudo apt remove
 sudo apt autoremove
 sudo apt clean all
 sudo apt list
+
+sudo dpkg -i xx_amd64.deb 
 ```
 
 ## sudo
