@@ -20,9 +20,8 @@ sudo ntpdate time.windows.com && sudo hwclock -w
 ```bash
 apt install kde-plasma-desktop
 
-# 全局主题: Arc Dark, Orchis
-# 图标: Papirus, Tela
-
+# 全局主题: Orchis Dark
+# 图标: Tela circle dark
 
 ```
 
