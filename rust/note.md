@@ -1,3 +1,6 @@
+# 编译流程
+    - text code  ->  tokens  ->  ast  ->  hir  -> mir  ->  llvm ir  ->  llvm  ->  二进制
+
 # Copy Clone
     * Copy 栈上按位复制
     * Copy 隐式编译器自动行为, Clone 显示手动行为
@@ -10,7 +13,7 @@
 
 # Move
     * Box 实现DerefMove, Arc/Rc 其它大部分未实现
-    * Move 后不是马上Drop 只是重新初始化
+    * Move 后不是马上Drop 只是重置最初始化状态
 
 # Drop
     * 方法 创建顺序 后 -> 先
@@ -18,3 +21,15 @@
     * Strcut 先自己 再成员创建顺序 先 -> 后
     * 闭包 捕获顺序 先 -> 后
     * panic! 创建顺序 后 -> 先
+
+# Lifetime
+    * late bound <'a> 
+    * early bound <'longest: 'short>
+
+# Trait
+
+## 作用
+    * 接口
+    * 类型标记
+    * 泛型限定
+    * 抽象类型
