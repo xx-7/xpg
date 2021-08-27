@@ -1,9 +1,20 @@
 # 插件开发
+
 [官方例子](https://code.visualstudio.com/docs/extensions/yocode)  
+
 # 常用插件
+
   * ES7 React/Redux/GraphQL/React-Native snippets
   * Rust
+  * Rust-analyzer
+  * Rust syntax
+  * Crates
+  * Better toml
+  * Rust test lens
+  * Tabnine
+
 # 设置
+
 ```
 {
     "workbench.activityBar.visible": false,
