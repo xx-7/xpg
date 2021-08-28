@@ -39,7 +39,9 @@
     "editor.fontSize": 16,
 }
 ```
+
 # 文件监视
+
 ```bash
  "files.watcherExclude": {
       "**/.git/objects/**": true,
