@@ -25,10 +25,10 @@ apt install kde-plasma-desktop
 
 ```
 
-### Open With
+### 打开方式
 
 ```bash
-rm ~/.config/kiorc # delete file open with
+rm ~/.config/kiorc # 删除已选择打开方式
 ```
 
 ## 显卡
