@@ -178,8 +178,12 @@ sudo apt remove
 sudo apt autoremove
 sudo apt clean all
 sudo apt list
+sudo apt list --installed
 
 sudo dpkg -i xx_amd64.deb 
+
+sudo dpkg -l  # installed
+
 ```
 
 ## sudo
@@ -254,7 +258,7 @@ systemctl restart sshd
 sudo nano /etc/profile
 # User
 nano ~/.profile
-export  JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64
+export  JAVA_HOME=/optd/opt/jdk1.8.0_301/
 export  CLASSPATH=$CLASSPATH:$JAVA_HOME/lib:$JAVA_HOME/jre/lib
 
 PATH=$PATH:$JAVA_HOME/bin:$JAVA_HOME/jre/bin
@@ -263,6 +267,9 @@ export PATH=$PATH:/optd/opt/gradle-5.5/bin
 alias python='/usr/bin/python3'
 
 source ~/.profile
+
+# debian get jdk8  gz  https://www.oracle.com/java/technologies/javase/javase-jdk8-downloads.html
+
 ```
 
 ## 蓝牙音响

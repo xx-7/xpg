@@ -59,7 +59,7 @@ sudo systemctl disable mariadb
 sudo systemctl restart mariadb
 
 # 建库
-create DATABASE xxxxx CHARACTER SET utf8 COLLATE utf8_general_ci;
+
 # 导入
 mysqldump -u用户名 -p密码 -h主机 数据库 < 路径 #导入
 # 导出
