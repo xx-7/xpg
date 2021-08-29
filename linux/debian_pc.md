@@ -13,6 +13,8 @@ sudo hwclock -w
 
 sudo ntpdate time.windows.com && sudo hwclock -w
 
+sudo cp -f /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
+
 ```
 
 ## kde
