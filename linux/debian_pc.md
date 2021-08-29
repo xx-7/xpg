@@ -25,6 +25,12 @@ apt install kde-plasma-desktop
 
 ```
 
+### Open With
+
+```bash
+rm ~/.config/kiorc # delete file open with
+```
+
 ## 显卡
 
 ### AMD
