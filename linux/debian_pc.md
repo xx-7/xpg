@@ -290,7 +290,7 @@ sudo apt install curl unar
 sudo apt install ttf-wqy-microhei fcitx-table-wbpy
 sudo apt install nfs-common mpv remmina fontforge
 sudo apt install sqlitebrowser shotcut gimp
-sudo apt install okteta flameshot gwenview
+sudo apt install okteta flameshot gwenview keepassxc
 sudo apt install nodejs npm
 sudo apt install fonts-firacode
 sudo apt install qbittorrent
