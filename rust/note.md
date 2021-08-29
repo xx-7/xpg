@@ -79,28 +79,29 @@
 
 
 ## 常见操作
-    * load(order) -> val
-        > 读取值 返回
-        > order 可选 SeqCst,Acquire,Relaxed
-    * store(val, order) 保存值为val 参数
-        > 保存值 val
-        > order 可选 SeqCst,Release,Relaxed
-    * swap(val, order) -> pval
-        > 交换值 返回pval交换前的值
-        > val 交换后的值
-    * compare_exchange(current,new,success,failure) -> Result<val, val>
-        > 如果原子值与current相同，则将值new存储到原子中
-        > 成功返Ok(current), 失败返回Err(原子值)
-        > success 描述了如果与 current 的比较成功则发生的 read-modify-write 操作所需的顺序
-        > failure 描述了在比较失败时发生的加载操作所需的排序
-        > 失败排序只能是 SeqCst,Acquire,Relaxed
 
-     * compare_exchange_weak(current,new,success,failure) -> Result<val, val>
-        > 如果原子值与current相同，则将值new存储到原子中.
-        > 与compare_exchange 不同 即使比较成功也可以可能返回失败, 返回是是否写入成功.
-        > 成功返Ok(current)，失败返回Err(原子值)
-        > success 描述了如果与 current 的比较成功则发生的 read-modify-write 操作所需的顺序
-        > failure 描述了在比较失败时发生的加载操作所需的排序
-        > 失败排序只能是 SeqCst,Acquire,Relaxed
+* load(order) -> val
+    > 读取值 返回
+    > order 可选 SeqCst,Acquire,Relaxed
+* store(val, order) 保存值为val 参数
+    > 保存值 val
+    > order 可选 SeqCst,Release,Relaxed
+* swap(val, order) -> pval
+    > 交换值 返回pval交换前的值
+    > val 交换后的值
+* compare_exchange(current,new,success,failure) -> Result<val, val>
+    > 如果原子值与current相同，则将值new存储到原子中
+    > 成功返Ok(current), 失败返回Err(原子值)
+    > success 描述了如果与 current 的比较成功则发生的 read-modify-write 操作所需的顺序
+    > failure 描述了在比较失败时发生的加载操作所需的排序
+    > 失败排序只能是 SeqCst,Acquire,Relaxed
+
+    * compare_exchange_weak(current,new,success,failure) -> Result<val, val>
+    > 如果原子值与current相同，则将值new存储到原子中.
+    > 与compare_exchange 不同 即使比较成功也可以可能返回失败, 返回是是否写入成功.
+    > 成功返Ok(current)，失败返回Err(原子值)
+    > success 描述了如果与 current 的比较成功则发生的 read-modify-write 操作所需的顺序
+    > failure 描述了在比较失败时发生的加载操作所需的排序
+    > 失败排序只能是 SeqCst,Acquire,Relaxed
 
     
