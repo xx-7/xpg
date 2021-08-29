@@ -106,7 +106,7 @@
     > failure 描述了在比较失败时发生的加载操作所需的排序
     > 失败排序只能是 SeqCst,Acquire,Relaxed
 
-    * compare_exchange_weak(current,new,success,failure) -> Result<val, val>
+* compare_exchange_weak(current,new,success,failure) -> Result<val, val>
     > 如果原子值与current相同，则将值new存储到原子中.
     > 与compare_exchange 不同 即使比较成功也可以可能返回失败, 返回是是否写入成功.
     > 成功返Ok(current)，失败返回Err(原子值)
