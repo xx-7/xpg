@@ -1,7 +1,9 @@
 # 编译流程
+
     - text code  ->  tokens  ->  ast  ->  hir  -> mir  ->  llvm ir  ->  llvm  ->  二进制
 
 # Copy Clone
+
     * Copy 栈上按位复制
     * Copy 隐式编译器自动行为, Clone 显示手动行为
     * 实现Copy 必须实现 Clone,  pub trait Copy: Clone {}
@@ -12,10 +14,12 @@
     * 按位复制内存相同, 逐成员复制受对齐影响内存不一定相同
 
 # Move
+
     * Box 实现DerefMove, Arc/Rc 其它大部分未实现
     * Move 后不是马上Drop 只是重置最初始化状态
 
 # Drop
+
     * 方法 创建顺序 后 -> 先
     * Tuple 左 -> 右
     * Strcut 先自己 再成员创建顺序 先 -> 后
@@ -23,12 +27,14 @@
     * panic! 创建顺序 后 -> 先
 
 # Lifetime
+
     * late bound <'a> 
     * early bound <'longest: 'short>
 
 # Trait
 
 ## 常用内置Trait
+
     * Copy      隐式编译器复制
     * Clone     显示手动复制
     * Debug     格式化时 {:?} 输出
@@ -37,6 +43,7 @@
     * Sync      线程间传递不可变借用
 
 ## 作用
+
     * 接口
     * 类型标记
     * 泛型限定
@@ -48,6 +55,7 @@
     * proc-macro2
 
 # Unsafe
+
     * 解引用裸指针
     * 调用unsafe的函数或方法
     * 访问或修改可变静态变量
@@ -57,6 +65,7 @@
 # 原子操作
 
 ## Struct
+
     * AtomicBool
     * AtomicI8	
     * AtomicI16	
@@ -71,11 +80,12 @@
     * AtomicUsize
 
 ## Ordering
-    * Relaxed 保存原子操作, 不同步, 不重排
-    * Release 写操作, 所有读写操作无法排到Release之后, 对所有Acquire线程可见
-    * Acquire 读操作, 保证在所有Release写操作之前
-    * AcqRel 同时具有 Acquire 和 Release 的效果, 只能用在load store
-    * SeqCst 同步所有线程, 所有线程看到是一样的顺序, 就像单线程
+
+* Relaxed 保存原子操作, 不同步, 不重排
+* Release 写操作, 所有读写操作无法排到Release之后, 对所有Acquire线程可见
+* Acquire 读操作, 保证在所有Release写操作之前
+* AcqRel 同时具有 Acquire 和 Release 的效果, 只能用在load store
+* SeqCst 同步所有线程, 所有线程看到是一样的顺序, 就像单线程
 
 
 ## 常见操作
