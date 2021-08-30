@@ -63,11 +63,6 @@ sudo apt-get install firmware-iwlwifi
 
 ## 源
 
-有些软件只有 sid 源里面才有比如 firefox, openjdk-8-jdk.
-先添加 sid 再 update 一下，然后 install 这时候千万不要 upgrade.
-安装完了,再删除 sid,再 update.
-这种做法可能会把依赖更新成 sid.
-
 ### 备份
 
 ```bash
