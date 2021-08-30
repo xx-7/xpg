@@ -89,3 +89,7 @@ fn main() {
     println!("Display: {}", b);
 }
 ```
+
+# Send Sync
+
+> 线程间传递：Sync -> T , Send -> &T
