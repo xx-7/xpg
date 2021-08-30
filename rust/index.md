@@ -39,6 +39,9 @@ registry = "git://mirrors.ustc.edu.cn/crates.io-index"
 [source.tuna]
 registry = "https://mirrors.tuna.tsinghua.edu.cn/git/crates.io-index.git"
 
+[net]
+git-fetch-with-cli = true
+
 
 ext install matklad.rust-analyzer
 
