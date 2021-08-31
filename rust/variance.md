@@ -19,8 +19,8 @@
  | *    | UnsafeCell<T> |           | invariant     |           |
  |      | Cell<T>       |           | invariant     |           |
  | *    | fn(T) -> U    |           | contravariant | covariant |
- | *    | const T       |           | covariant     |           |
- | *    | mut T         |           | invariant     |           |
+ |      | *const T      |           | covariant     |           |
+ |      | *mut T        |           | invariant     |           |
 
 # PhantomData
 
