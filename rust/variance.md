@@ -1,3 +1,14 @@
+# 型变Variance
+
+- 不变 Invariance
+    > 不能将一个类型替换为另一个类型
+- 逆变 contravariant
+    > 可以由其基类替换
+- 协变 covariance
+    > 可以由其派生类型替换。
+
+
+# PhantomData
 
 | Phantom type              | 'a   | T                       |
 | :------------------------ | :--- | :---------------------- |
@@ -11,9 +22,9 @@
 | PhantomData<fn(T) -> T>   | -    | 不变                    |
 | PhantomData<Cell<&'a ()>> | 不变 | -                       |
 
-# 例子
+## 例子
 
-## 未使用生命周期
+### 未使用生命周期
 
 ```rust
 
@@ -32,7 +43,7 @@ struct Slice<'a, T: 'a> {
 
 ```
 
-## 未使用类型
+### 未使用类型
 ```rust
 use std::marker::PhantomData;
 use std::mem;
@@ -58,7 +69,7 @@ impl<R: ResType> ExternalResource<R> {
 }
 ```
 
-## 标记关系 with drop check
+### 标记关系 with drop check
 
 ```rust
 
