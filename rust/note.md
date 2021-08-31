@@ -104,5 +104,3 @@
     > success 描述了如果与 current 的比较成功则发生的 read-modify-write 操作所需的顺序
     > failure 描述了在比较失败时发生的加载操作所需的排序
     > 失败排序只能是 SeqCst,Acquire,Relaxed
-
-    
