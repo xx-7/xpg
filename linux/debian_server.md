@@ -16,6 +16,21 @@ apt remove linux-image-4.19.0-16-cloud-amd64
 
 ```
 
+## 多IP
+
+```bash
+nano /etc/network/interfaces
+
+auto eno1:0
+iface eno1:0 inet static
+address 10.8.8.225
+netmask 255.255.255.240
+gateway 10.8.8.1
+
+ifup eno1:0
+
+```
+
 ## ssh
 
 ```bash
