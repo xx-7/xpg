@@ -362,3 +362,11 @@ sudo echo "deb http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/s
 sudo apt update
 sudo apt install google-chrome-stable
 ```
+
+## WebDav
+
+```bash
+sudo apt install davfs2 -y
+sudo mount -t davfs https://10.9.9.1:9090/ /r/webdav
+
+```
