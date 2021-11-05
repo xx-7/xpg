@@ -370,3 +370,20 @@ sudo apt install davfs2 -y
 sudo mount -t davfs https://10.9.9.1:9090/ /r/webdav
 
 ```
+
+## zip
+
+```bash
+sudo apt install zip
+zip -re dest.zip src        #回车，输入2次密码
+zip -rP PASS dest.zip src
+
+unzip src.zip                #按提示输入密码
+unzip -P PASS src.zip
+```
+
+## mtp
+
+```bash
+sudo apt install mtp-tools kio-extras
+```
