@@ -75,3 +75,59 @@ http {
     }
 }
 ```
+
+
+```bash
+worker_processes  2;
+user www-data;
+error_log  /home/nginx/error.log;
+pid        /run/nginx.pid;
+
+events {
+    use epoll;
+    worker_connections  1024;
+}
+
+http {
+    include       mime.types;
+    default_type  application/octet-stream;
+    log_format  main  '$remote_addr - $remote_user [$time_local] "$request" '
+                      '$status $body_bytes_sent "$http_referer" '
+                      '"$http_user_agent" "$http_x_forwarded_for"';
+    access_log  /home/nginx/access.log  main;
+
+    sendfile        on;
+    tcp_nopush     on;
+    keepalive_timeout  65;
+   
+    gzip  on;
+    gzip_min_length 1k;
+    gzip_comp_level 5;
+    gzip_types text/plain application/javascript application/x-javascript text/css application/xml text/javascript application/x-httpd-php image/jpeg image/gif image/png;
+    gzip_vary on;  
+
+    server {
+        listen       443; 
+        server_name  a.domain.com;
+
+        charset utf-8;
+        access_log  /home/nginx/ssl-access.log  main;
+
+        location / {
+            root /home/www;
+            index index.html index.htm;
+        }
+
+        location /ws1 {
+            proxy_pass        http://127.0.0.1:9002;
+            proxy_http_version 1.1;
+            proxy_set_header Upgrade $http_upgrade;
+            proxy_set_header Connection "upgrade";
+        }     
+
+        ssl on; 
+        ssl_certificate /etc/letsencrypt/live/a.domain.com/fullchain.pem;    
+        ssl_certificate_key /etc/letsencrypt/live/a.domain.com/privkey.pem;  
+    }
+}
+```
