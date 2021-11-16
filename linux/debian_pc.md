@@ -288,7 +288,7 @@ sudo apt install sqlitebrowser shotcut gimp
 sudo apt install okteta flameshot gwenview keepassxc
 sudo apt install nodejs npm
 sudo apt install fonts-firacode
-sudo apt install qbittorrent
+sudo apt install qbittorrent libreoffice
 ```
 
 ## yarn 
