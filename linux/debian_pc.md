@@ -391,11 +391,14 @@ sudo apt install mtp-tools kio-extras
 ## VMware
 
 ```bash
-# https://customerconnect.vmware.com/en/downloads/info/slug/desktop_end_user_computing/vmware_workstation_player/16_0
+# https://www.vmware.com/products/workstation-pro/workstation-pro-evaluation.html
 
-chmod +x VMware-Player-Full-16.2.1-18811642.x86_64.bundle
+chmod +x VMware-Workstation-Full-16.2.1-18811642.x86_64.bundle
 
-sudo ./VMware-Player-Full-16.2.1-18811642.x86_64.bundle
+sudo ./VMware-Workstation-Full-16.2.1-18811642.x86_64.bundle
+
+# uninstall
+sudo vmware-installer -u vmware-workstation
 
 sudo apt install build-essential linux-headers-$(uname -r)
 
