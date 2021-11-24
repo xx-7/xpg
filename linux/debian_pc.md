@@ -387,3 +387,17 @@ unzip -P PASS src.zip
 ```bash
 sudo apt install mtp-tools kio-extras
 ```
+
+## VMware
+
+```bash
+# https://customerconnect.vmware.com/en/downloads/info/slug/desktop_end_user_computing/vmware_workstation_player/16_0
+
+chmod +x VMware-Player-Full-16.2.1-18811642.x86_64.bundle
+
+sudo ./VMware-Player-Full-16.2.1-18811642.x86_64.bundle
+
+sudo apt install build-essential linux-headers-$(uname -r)
+
+
+```
