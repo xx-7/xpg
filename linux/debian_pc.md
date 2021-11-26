@@ -156,6 +156,9 @@ ls -l /dev/disk/by-uuid/
 # 查看目录占用大小
 du -h  ./
 
+# 查看目录占用大小设置遍历深度
+du -h --max-depth=1 ./
+
 # 给硬盘分区 进入m打印帮助 dos 分区表格式 ext4用主分区 w 保存退出
 sudo fdisk /dev/sdb
 # 格式化
