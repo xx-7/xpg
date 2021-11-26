@@ -156,6 +156,9 @@ ls -l /dev/disk/by-uuid/
 # 查看目录占用大小
 du -h  ./
 
+# 查看目录占用大小设置遍历深度
+du -h --max-depth=1 ./
+
 # 自动挂盘
 sudo nano /etc/fstab
 UUID=b141d23c-0f49-48a0-aaaa-80f25b30bd8f /optd ext4 defaults 0 2
