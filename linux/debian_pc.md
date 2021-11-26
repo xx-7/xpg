@@ -156,6 +156,13 @@ ls -l /dev/disk/by-uuid/
 # 查看目录占用大小
 du -h  ./
 
+# 给硬盘分区 进入m打印帮助 dos 分区表格式 ext4用主分区 w 保存退出
+sudo fdisk /dev/sdb
+# 格式化
+sudo mkfs -t ext4 /dev/sdb1
+# 临时挂载
+sudo mount /dev/sdb1 /optd
+
 # 自动挂盘
 sudo nano /etc/fstab
 UUID=b141d23c-0f49-48a0-aaaa-80f25b30bd8f /optd ext4 defaults 0 2
