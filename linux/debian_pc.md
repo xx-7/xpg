@@ -414,3 +414,34 @@ sudo apt install build-essential linux-headers-$(uname -r)
 
 
 ```
+
+## fio
+
+```
+
+# 测试硬盘读写
+
+# https://manpages.debian.org/buster/fio/fio.1.en.html
+
+sudo apt install fio
+
+
+# 顺序读写
+sudo fio -filename=/dev/sdb1 -direct=1 -iodepth 1 -thread -rw=readwrite -ioengine=psync -bs=4k -size=100G -numjobs=8 -runtime=180 -group_reporting -name=s100rw_4k
+
+# 顺序读
+sudo fio -filename=/dev/sdb1 -direct=1 -iodepth 1 -thread -rw=read -ioengine=psync -bs=4k -size=100G -numjobs=8 -runtime=180 -group_reporting -name=s100r_4k
+
+# 顺序写
+sudo fio -filename=/dev/sdb1 -direct=1 -iodepth 1 -thread -rw=write -ioengine=psync -bs=4k -size=100G -numjobs=8 -runtime=180 -group_reporting -name=s100w_4k
+
+# 随机读
+sudo fio -filename=/dev/sdb1 -direct=1 -iodepth 1 -thread -rw=randread -ioengine=psync -bs=4k -size=100G -numjobs=8 -runtime=180 -group_reporting -name=r100r_4k
+
+# 随机写
+sudo fio -filename=/dev/sdb1 -direct=1 -iodepth 1 -thread -rw=randwrite -ioengine=psync -bs=4k -size=100G -numjobs=8 -runtime=180 -group_reporting -name=r100w_4k
+
+# 随机，70%读，30%写 4K
+sudo fio -filename=/dev/sdb1 -direct=1 -iodepth 1 -thread -rw=randrw -rwmixread=70 -ioengine=psync -bs=4k -size=100G -numjobs=8 -runtime=180 -group_reporting -name=r_70rw_4k 
+
+```
