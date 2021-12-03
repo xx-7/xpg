@@ -315,6 +315,21 @@ yarn create vite front --template react-ts
 
 ```
 
+## gcc
+
+```bash
+sudo apt install gcc g++
+wget http://mirrors.ustc.edu.cn/gnu/gcc/gcc-11.2.0/gcc-11.2.0.tar.gz
+tar -zxvf gcc-11.2.0.tar.gz
+cd gcc-11.2.0
+./contrib/download_prerequisites
+mkdir build
+cd build
+ ../configure --enable-checking=release --enable-languages=c,c++ --disable-multilib
+make
+sudo make install
+```
+
 ## smartmontools
 
 ```bash
@@ -443,5 +458,22 @@ sudo fio -filename=/dev/sdb1 -direct=1 -iodepth 1 -thread -rw=randwrite -ioengin
 
 # 随机，70%读，30%写 4K
 sudo fio -filename=/dev/sdb1 -direct=1 -iodepth 1 -thread -rw=randrw -rwmixread=70 -ioengine=psync -bs=4k -size=100G -numjobs=8 -runtime=180 -group_reporting -name=r_70rw_4k 
+
+```
+
+## scrpcy
+
+```bash
+
+sudo apt install scrcpy
+
+# 要安装adb 是通过adb 调试模式连接
+
+# 投屏并录屏
+scrcpy -r file.mp4
+
+# 不投屏只录屏
+scrcpy -Nr file.mp4
+
 
 ```
