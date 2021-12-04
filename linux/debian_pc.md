@@ -477,3 +477,8 @@ scrcpy -Nr file.mp4
 
 
 ```
+
+## 010Editor
+```bash
+# https://www.sweetscape.com/download/010editor/
+```
