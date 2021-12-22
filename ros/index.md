@@ -31,3 +31,10 @@ add list=VPN address=66.102.0.0/20
 # 浏览目录，选择包进行安装
 
 ```
+
+```bash
+
+# GS3105 超级口令  CMCCAdmin  GPONSN3-5位 + 8m% + GPONSN最后3位
+
+
+```
