@@ -70,22 +70,7 @@ abstract become box do final macro override priv typeof
 unsized virtual yield try
 ```
 
-## fustfmt.toml
+## rustfmt.toml
 ```toml
-verbose=false
-max_width=180
-comment_width=180
-tab_spaces=4
-fn_call_width=180
-struct_lit_width=32
-fn_call_style="Visual"
-single_line_if_else_max_width=180
-trailing_comma="Vertical"
-chain_indent="Visual"
-chain_one_line_max=180
-reorder_imports=true
-format_strings=false
-hard_tabs=true
-wrap_match_arms=false
-error_on_line_overflow=false
+max_width = 180
 ```
