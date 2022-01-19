@@ -482,3 +482,16 @@ scrcpy -Nr file.mp4
 ```bash
 # https://www.sweetscape.com/download/010editor/
 ```
+
+## trojan
+```bash
+wget https://github.com/trojan-gfw/trojan/releases/download/v1.16.0/trojan-1.16.0-linux-amd64.tar.xz
+
+tar -zxvf trojan-1.16.0-linux-amd64.tar.xz
+
+cd ./trojan
+
+cp ./examples/client.json-example config.json
+
+./trojan -l error
+```
