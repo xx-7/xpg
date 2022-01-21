@@ -280,6 +280,9 @@ source ~/.profile
 ## 蓝牙音响
 
 ```bash
+
+sudo apt install pulseaudio pulseaudio-module-bluetooth pavucontrol bluez-firmware
+
 # https://wiki.debian.org/BluetoothUser#Can_connect.2C_but_not_to_audio
 sudo apt install pulseaudio-module-bluetooth
 pactl load-module module-bluetooth-discover
