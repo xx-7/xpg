@@ -498,3 +498,16 @@ cp ./examples/client.json-example config.json
 
 ./trojan -l error
 ```
+
+## GnuCash
+```bash
+# https://wiki.debian.org/GnuCash
+# https://wiki.gnucash.org/wiki/Locale_Settings
+sudo apt install flatpak
+flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
+
+
+flatpak install flathub org.gnucash.GnuCash
+flatpak run org.gnucash.GnuCash
+
+```
