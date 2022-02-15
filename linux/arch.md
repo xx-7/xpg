@@ -53,7 +53,7 @@ nano /etc/pacman.d/mirrorlist
 
 ```bash
 # 安装基本系统
-pacstrap /mnt base base-devel linux linux-firmwrae
+pacstrap /mnt base base-devel linux linux-firmware
 
 # Fstab
 genfstab -U /mnt >> /mnt/etc/fstab
