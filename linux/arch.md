@@ -75,6 +75,9 @@ zh_HK.UTF-8 UTF-8
 # 生成
 locale-gen
 # 设置默认
+
+locale -a
+
 nano /etc/locale.conf
 LANG=en_US.UTF-8
 
@@ -104,6 +107,18 @@ reboot
 ```
 
 # 配置
+
+## ntp
+
+```bash
+sudo pacman -S ntp
+
+sudo ntpdate time.windows.com && sudo hwclock -w
+
+sudo ntpdate us.pool.ntp.org && sudo hwclock -w
+
+sudo ntpdate cn.pool.ntp.org && sudo hwclock -w
+```
 
 ## 用户
 
@@ -228,7 +243,7 @@ pacman -S ttf-{dejavu,liberation} wqy-microhei
 ## 输入法
 
 ```bash
-pacman -S fcitx5 fcitx5-rime fcitx5-im fcitx5-configtool
+pacman -S fcitx5 fcitx5-rime fcitx5-im fcitx5-configtool fcitx5-chinese-addons
 
 sudo nano /etc/environment
 GTK_IM_MODULE=fcitx
@@ -239,15 +254,21 @@ XMODIFIERS=@im=fcitx
 ## profile
 
 ```bash
+# https://wiki.archlinux.org/title/Bash#Configuration_files
 # System
 sudo nano /etc/profile
 # User
-nano ~/.profile
+nano ~/.bash_profile
 export  JAVA_HOME=/usr/lib/jvm/java-8-openjdk
 export  CLASSPATH=$CLASSPATH:$JAVA_HOME/lib:$JAVA_HOME/jre/lib 
 
 PATH=$PATH:$JAVA_HOME/bin:$JAVA_HOME/jre/bin
 export PATH=$PATH:/optd/opt/gradle-5.5/bin
+
+export LANG=zh_CN.utf8
+export LANGUAGE=zh_CN.utf8
+export LC_ALL=zh_CN.utf8
+
 
 source ~/.profile
 ```
@@ -258,6 +279,11 @@ source ~/.profile
 sudo pacman -S dolphin konsole nfs-utils
 sudo pacman -S nano nodejs mpv simplescreenrecorder unarchiver ttf-fira-code  sqlitebrowser gimp gwenview evince flameshot remmina freerdp keepassxc
 paru -S firefox google-chrome visual-studio-code-bin jdk8-openjdk jdk11-openjdk baidunetdisk-bin
+
+paru -S edrawmax-cn
+
+# ./MindMaster --no-sandbox
+paru -S mindmaster_cn
 ```
 
 ## 常用命令
