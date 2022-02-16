@@ -7,6 +7,9 @@
 ## 分区
 
 ```bash
+
+sudo dd bs=4M if=./archlinux-2022.02.01-x86_64.iso  of=/dev/sdX conv=fsync oflag=direct status=progress
+
 # https://wiki.archlinux.org/index.php/GRUB
 # 注意，GPT分区表，预留一个 BIOS 启动分区
 # 可以在 fdisk 或 gdisk 中创建一个从 34 扇区开始，一直到 2047
@@ -84,12 +87,12 @@ systemctl start dhcpcd@$INTERFACE
 # 修改ROOT密码 后期如果忘记密码也可以通过安装盘启动arch-chroot进来直接修改密码
 passwd
 
-# UEFI 方式引导启动
+# UEFI with GPT 方式引导启动
 pacman -S dosfstools grub efibootmgr
 grub-install --target=x86_64-efi --efi-directory=/boot/EFI --bootloader=Arch --removable
 grub-mkconfig -o /boot/grub/grub.cfg
 
-# BIOS 方式引导启动 
+# BIOS with MBR 方式引导启动 
 pacman -S grub os-prober
 grub-install --target=i386-pc /dev/sdX
 grub-mkconfig -o /boot/grub/grub.cfg
