@@ -252,46 +252,6 @@ export PATH=$PATH:/optd/opt/gradle-5.5/bin
 source ~/.profile
 ```
 
-## 磁盘
-
-```bash
-# 查看分区
-sudo fdisk -l
-
-# 查看使用情况
-df -h
-
-# 查看盘UUID
-blkid
-
-# 查看目录占用大小
-du -h  ./
-
-# 查看目录占用大小设置遍历深度
-du -h --max-depth=1 ./
-
-# 给硬盘分区 进入m打印帮助 dos 分区表格式 ext4用主分区 w 保存退出
-sudo fdisk /dev/sdb
-# 格式化
-sudo mkfs -t ext4 /dev/sdb1
-# 临时挂载
-sudo mount /dev/sdb1 /optd
-
-# 自动挂盘
-sudo nano /etc/fstab
-UUID=b141d23c-0f49-48a0-aaaa-80f25b30bd8f /optd ext4 defaults 0 2
-```
-
-## ssh
-
-```bash
-nano ~/.ssh/config
-Host www.domain.com
-port 77
-PreferredAuthentications publickey
-IdentityFile ~/.ssh/id_rsa_local
-```
-
 ## 常用软件
 
 ```bash
@@ -365,64 +325,6 @@ pacman -Ql plasma           #列出已安装包plasma的所有文件
 pacman -Qo /etc/passwd      #查找某个文件属于哪个包
 
 pacman -Ss plasma           #搜索plasma相关的包
-```
-
-## journalctl
-
-```bash
-sudo journalctl --vacuum-time=1s
-sudo journalctl
-sudo journalctl -p err
-sudo rm -rf /var/log/journal
-```
-
-## Single User
-
-```bash
-# grub 启动菜单 按 e 编辑 kernel参数加上 s 然后 ctrl + x 运行
-```
-
-## systemctl
-
-```bash
-# 列出正在运行的 Unit
-systemctl list-units
-
-# 列出所有Unit，包括没有找到配置文件的或者启动失败的
-systemctl list-units --all
-
-# 列出所有没有运行的 Unit
-systemctl list-units --all --state=inactive
-
-# 列出所有加载失败的 Unit
-systemctl list-units --failed
-
-# 列出所有正在运行的、类型为 service 的 Unit
-systemctl list-units --type=service
-
-# 显示系统状态
-systemctl status
-
-# 立即启动一个服务
-sudo systemctl start apache.service
-
-# 立即停止一个服务
-sudo systemctl stop apache.service
-
-# 重启一个服务
-sudo systemctl restart apache.service
-
-# 杀死一个服务的所有子进程
-sudo systemctl kill apache.service
-
-# 重新加载一个服务的配置文件
-sudo systemctl reload apache.service
-
-# 重载所有修改过的配置文件
-sudo systemctl daemon-reload
-
-# 显示某个 Unit 的所有底层参数
-sudo systemctl show httpd.service
 ```
 
 ## 输入设备
