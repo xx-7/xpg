@@ -169,6 +169,9 @@ nameserver 10.8.8.1
 ```bash
 pacman -S bumblebee mesa xf86-video-intel nvidia
 pacman -S xorg-server
+
+# 4k 
+# System Settings -> Appearance -> Fonts  check Force font DPI   default 96    150% 144  175%  168
 ```
 
 ## kde
@@ -225,11 +228,12 @@ pacman -S ttf-{dejavu,liberation} wqy-microhei
 ## 输入法
 
 ```bash
-pacman -S fcitx fcitx-rime fcitx-im kcm-fcitx
-nano ~/.xprofile
-export GTK_IM_MODULE=fcitx
-export QT_IM_MODULE=fcitx
-export XMODIFIERS="@im=fcitx"
+pacman -S fcitx5 fcitx5-rime fcitx5-im fcitx5-configtool
+
+sudo nano /etc/environment
+GTK_IM_MODULE=fcitx
+QT_IM_MODULE=fcitx
+XMODIFIERS=@im=fcitx
 ```
 
 ## profile
@@ -248,6 +252,36 @@ export PATH=$PATH:/optd/opt/gradle-5.5/bin
 source ~/.profile
 ```
 
+## 磁盘
+
+```bash
+# 查看分区
+sudo fdisk -l
+
+# 查看使用情况
+df -h
+
+# 查看盘UUID
+blkid
+
+# 查看目录占用大小
+du -h  ./
+
+# 查看目录占用大小设置遍历深度
+du -h --max-depth=1 ./
+
+# 给硬盘分区 进入m打印帮助 dos 分区表格式 ext4用主分区 w 保存退出
+sudo fdisk /dev/sdb
+# 格式化
+sudo mkfs -t ext4 /dev/sdb1
+# 临时挂载
+sudo mount /dev/sdb1 /optd
+
+# 自动挂盘
+sudo nano /etc/fstab
+UUID=b141d23c-0f49-48a0-aaaa-80f25b30bd8f /optd ext4 defaults 0 2
+```
+
 ## ssh
 
 ```bash
@@ -261,9 +295,9 @@ IdentityFile ~/.ssh/id_rsa_local
 ## 常用软件
 
 ```bash
-sudo pacman -S dolphin konsole
-sudo pacman -S  nano nodejs mpv simplescreenrecorder unarchiver ttf-fira-code  sqlitebrowser gimp gwenview okular flameshot remmina freerdp
-yay -S firefox google-chrome visual-studio-code-bin jdk8-openjdk jdk11-openjdk typora
+sudo pacman -S dolphin konsole nfs-utils
+sudo pacman -S nano nodejs mpv simplescreenrecorder unarchiver ttf-fira-code  sqlitebrowser gimp gwenview evince flameshot remmina freerdp keepassxc
+paru -S firefox google-chrome visual-studio-code-bin jdk8-openjdk jdk11-openjdk baidunetdisk-bin
 ```
 
 ## 常用命令
@@ -273,6 +307,15 @@ md5sum filename			#文件md5
 sha1sum filename		#文件SHA1
 sha256sum filename		#文件SHA256
 puttygen ./id_rsa -o test.ppk
+```
+
+## paru
+
+```bash
+pacman -S git rust base-devel
+git clone https://aur.archlinux.org/paru.git
+cd paru
+makepkg -si
 ```
 
 ## yay
@@ -620,7 +663,7 @@ sudo systemctl start mysqld
 ## 安装deb包
 
 ```bash
-yay -S debtap
+paru -S debtap
 sudo debtap -u
 
 # 使用 -q 略过除了编辑元数据之外的所有问题, -Q 略过所有的问题
@@ -656,4 +699,11 @@ sudo pacman -S android-tools
 ```bash
 sudo pacman -S davfs2
 sudo mount -t davfs https://a.com/path /r/webdav
+```
+
+## gnucash
+```
+sudo pacman -S gnucash sqlite libdbi libdbi-drivers
+locale -a
+LANGUAGE=zh_CN.utf8 LANG=zh_CN.utf8 LC_ALL=zh_CN.utf8 gnucash
 ```
