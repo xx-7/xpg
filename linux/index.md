@@ -77,3 +77,24 @@ PS1='\033[01;33m\]\u@\h \033[01;34m\]\w\033[01;36m\]\$\033[01;00m\] '
 • 紫色 0;35
 • 蓝绿色 0;36
 • 白色 0;37
+
+## trojan
+
+```bash
+wget https://github.com/trojan-gfw/trojan/releases/download/v1.16.0/trojan-1.16.0-linux-amd64.tar.xz
+
+tar -zxvf trojan-1.16.0-linux-amd64.tar.xz
+
+cd ./trojan
+
+cp ./examples/client.json-example config.json
+
+./trojan -l error
+```
+
+
+## 010Editor
+
+```bash
+# https://www.sweetscape.com/download/010editor/
+```
