@@ -270,7 +270,20 @@ export LANGUAGE=zh_CN.utf8
 export LC_ALL=zh_CN.utf8
 
 
-source ~/.profile
+source ~/.bash_profile
+```
+
+## Disable KWallet
+
+```bash
+sudo pacman -Rdd kwallet
+
+# or
+~/.config/kwalletrc
+
+[Wallet]
+Enabled=false
+
 ```
 
 ## 常用软件
