@@ -276,9 +276,6 @@ source ~/.bash_profile
 ## Disable KWallet
 
 ```bash
-sudo pacman -Rdd kwallet
-
-# or
 ~/.config/kwalletrc
 
 [Wallet]
