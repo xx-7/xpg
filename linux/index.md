@@ -129,7 +129,10 @@ cd ./trojan
 
 cp ./examples/client.json-example config.json
 
-./trojan -l error
+# log_level 0: ALL; 1: INFO; 2: WARN; 3: ERROR; 4: FATAL; 5: OFF
+
+./trojan
+
 ```
 
 
