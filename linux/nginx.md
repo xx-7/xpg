@@ -12,7 +12,7 @@ chown nginx:nginx /home/nginx
 ```
 
 # 认证证书设置
-```
+```bash
 vi /etc/nginx/nginx.conf
 
 worker_processes  2;
