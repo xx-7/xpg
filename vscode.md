@@ -37,6 +37,9 @@
     "editor.fontFamily": "'Fira Code Retina', 'monospace', monospace, 'Droid Sans Fallback'",
     "editor.fontLigatures": true,
     "editor.fontSize": 16,
+    "C_Cpp.clang_format_fallbackStyle": "{ BasedOnStyle: llvm, IndentWidth: 4, ColumnLimit: 150, AllowShortBlocksOnASingleLine: Always, AllowShortIfStatementsOnASingleLine: OnlyFirstIf}",
+    "C_Cpp.clang_format_path": "/usr/bin/clang-format",
+    "C_Cpp.intelliSenseEngine": "Tag Parser"
 }
 ```
 
