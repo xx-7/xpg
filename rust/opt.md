@@ -22,3 +22,9 @@ codegen-units = 1
 panic = 'abort'
 lto = true
 ```
+
+```bash
+# 分析依赖
+cargo install cargo-bloat
+cargo bloat --release --crates
+```
