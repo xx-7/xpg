@@ -1,7 +1,29 @@
  
 # SLint
 
-## .slint
+## 渲染
+
+```bash
+# gl 渲染过程
+# backend::glWindow -> show()
+#   mut renderer = glrenderer::GLItemRenderer::new() //renderer 实现 core::item_rendering::ItemRenderer
+#   for (component, origin) in components {
+#           core::item_rendering::render_component_items(component, &mut renderer, *origin); // origin::Point
+#   }
+#       render_item_children(renderer, component, -1)
+#       递归 实现了Item trait  Item 用宏vtable 生成
+
+```
+
+## .slint文件
+
+```bash
+# 解析.slint时会根据文件生成一个MainWindow(名字在slint定义),这个类会实现trait internal::core::api::ComponentHandle
+# MainWindow 内部是个helper_crates::vtable::VRc<ComponentVTable, InnerMainWindow>
+# InnerMainWindow创建时会调用 slint::create_window -> i_slint_backend_selector::backend().create_window 创建window 然后调用slint::re_exports::init_component_items 初始化组件
+# 自动生成的组件主要实现：slint::re_exports::PinnedDrop,WindowHandleAccess,Component,RepeatedComponent
+
+```
 
 ### 方式1
 
@@ -31,3 +53,4 @@
 
 
 ```
+
