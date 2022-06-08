@@ -57,7 +57,7 @@ PermitRootLogin yes
 
 RSAAuthentication yes
 PubkeyAuthentication yes
-AuthorizedKeysFile      .ssh/rsa_pub #rsa_pub pub key file
+AuthorizedKeysFile      .ssh/rsa_wx.pub #rsa_pub pub key file
 
 PasswordAuthentication no
 
@@ -195,13 +195,13 @@ net.ipv4.tcp_max_syn_backlog = 262144
 net.ipv4.tcp_timestamps = 0
 net.ipv4.tcp_synack_retries = 1
 net.ipv4.tcp_syn_retries = 1
-net.ipv4.tcp_tw_recycle = 1
 net.ipv4.tcp_tw_reuse = 1
 net.ipv4.tcp_mem = 94500000 915000000 927000000
 net.ipv4.tcp_fin_timeout = 15
 net.ipv4.tcp_keepalive_time = 30
 net.ipv4.ip_local_port_range = 2048 65000
-fs.file-max = 102400
+fs.file-max = 524288
+fs.inotify.max_user_watches=524288
 net.ipv6.conf.all.disable_ipv6=1
 
 
@@ -266,5 +266,21 @@ echo fs.inotify.max_user_watches=524288 | sudo tee -a /etc/sysctl.conf && sudo s
 
 # check that the new value was applied
 cat /proc/sys/fs/inotify/max_user_watches
+
+```
+
+### cron
+
+```bash
+
+apt install cron
+
+# 编辑crontab服务文件
+crontab  -e
+
+systemctl stop cron
+systemctl restart cron
+
+systemctl enable cron
 
 ```

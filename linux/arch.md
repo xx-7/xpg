@@ -126,6 +126,8 @@ sudo ntpdate cn.pool.ntp.org && sudo hwclock -w
 useradd -m -g users -G wheel,lp,network,power -s /bin/bash fex
 passwd fex
 
+deluser --remove-home username
+
 # fex添加到ssdm组
 usermod -a -G sddm fex
 nano /etc/group
