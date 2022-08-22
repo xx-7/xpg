@@ -79,3 +79,14 @@ fullscreen=yes
 | ESC    | 退出全屏      |
 
 # [官方文档](https://mpv.io/manual/stable/)
+
+
+# 摄像头 
+
+```bash
+
+# https://github.com/mpv-player/mpv/wiki/Video4Linux2-Input
+
+mpv --demuxer-lavf-o=video_size=4656x3496,input_format=mjpeg av://v4l2:/dev/video0 --profile=low-latency
+
+```
