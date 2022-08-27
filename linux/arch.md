@@ -642,8 +642,21 @@ sudo mount -t davfs https://a.com/path /r/webdav
 ```
 
 ## gnucash
-```
+
+```bash
 sudo pacman -S gnucash sqlite libdbi libdbi-drivers
 locale -a
 LANGUAGE=zh_CN.utf8 LANG=zh_CN.utf8 LC_ALL=zh_CN.utf8 gnucash
+```
+
+## kicad
+
+```bash
+# 安装
+paru -S kicad kicad-library kicad-library-3d
+
+# 删除设置缓存
+rm -rf ~/.cache/kicad
+rm -rf ~/.config/kicad
+
 ```
