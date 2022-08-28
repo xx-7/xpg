@@ -30,6 +30,6 @@
 
 ![](/assets/mos_logic/cmos_xor.png)
 
-# 周或门
+# 同或门
 
 ![](/assets/mos_logic/cmos_xnor.png)
