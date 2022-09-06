@@ -1,0 +1,121 @@
+# HelloWord-Keyboard
+
+- MCU: STM32F103CBT6, STM32F405RGT6
+- Mos: EMB12P03V,
+- Ldo: XC6210B332MR, SPX3819M5
+- DcDc: XL6019E1, ME3116AM6G
+- 触摸: XW06A
+- USB连接器: 918-418K2023S40001
+- USB HUB: HS8836A
+- 锂电充电管理芯: TP4056
+- 磁性编码: AS5047P
+- 其它: 74HC165D, WAFER-MX1.25-2PWB, FD6288Q, ws2812b-6028
+
+# Dummy-Robot
+
+- MCU: STM32F103CBT6, ESP32_SIP, STM32F405RGT6
+- Mos: AO3415A, AO3400A, AO3401A
+- Ldo: LP2992, TPS61040DBV
+- Usb: type-c 24Pin
+- Dcdc: ME3116, SY8303
+- CAN收发: SN65HVD232D
+- USB转串口: cp2102
+- 显示屏: OLED-12880
+- 磁性编码: MT6816
+- 电机驱动: TB67H450FNG
+- 电池管理: MCP73831T
+- LED: LED_5050_WS2812B
+- 通信: NRF24L01
+- 蓝牙: HC-06
+- 9轴传感器: MPU9250 MPU6050
+- 其它: DRV8833PW, BC847BVC-7
+
+# Project-Quantum
+
+- MCU: 全志H3/H5
+- Mos: AO3415A
+- Ldo: LP2992, RT9011-PGPJ6
+- DDR3: K4B4G1646D-BCK0
+- Usb: type-c 24Pin
+- USB转串口: cp2102
+- 显示屏: LCD-240x135, OLED-6432
+- Wifi: RTL8723BU
+- DcDc: RT8059
+- 稳压: MP2143DJ
+- 同步降压调节: SY8089A
+- 开关稳定: TPS61090
+- 电池充电管理: MCP73833T-AMI/MF
+- 音频: LM4871
+- 其它: BCM856BS, ATmega328P, NL27WZU04DF
+
+# Peak
+
+- MCU: ESP32-PICO-D4
+- Mos: AO3400A\AO3401A
+- Ldo: LP2992
+- Usb: type-c 24Pin
+- Lcd: st7789v驱动1.54寸液晶屏
+- 电池: 68030
+- 电池管理: MCP73831T
+- 6轴传感器: MPU6050
+- USB转串口: cp2102
+- 旋转式开关: SIQ-02FVS3
+
+# ElectronBot
+
+- MCU: STM32F405RGT6,STM32F030F6/STM32F042F6
+- Ldo: LP2992
+- 电机: FM116B
+- Usb: type-c 12Pin
+- USB Hub: SL2.1A.PDF
+- USB2.0 Hub: HS8836A
+- USB转串口: cp2102
+- USB PHY: USB3300-EZK-TR
+- 6轴传感器: MPU6050
+- 手势识别传感器: PAJ7620U2
+
+# ESP32-PicoD4
+
+- MCU: ESP32_SIP
+- Ldo: LP2992
+- Usb: type-c 24Pin
+- 显示屏: OLED-12880
+- 6轴传感器: MPU6050
+- USB转串口: cp2102
+- CAN收发器: SN65HVD232D
+
+# ST-Link-Nano
+
+- MCU: STM32F103CBT6
+- Ldo: LP2992
+- Usb: type -c 24Pin
+
+# L-ink_Card
+
+- MCU: STM32L051K8
+- RFID: ST25DV16K-JFR6D3
+- DCDC: TPS61221DCKT
+
+# HDMI-PI
+
+## TC358870XBG
+
+- MCU: STM32F103CBT6
+- DCDC: EA3036
+- Usb: type -c 24Pin
+- Led升压: RT9293
+
+## LT6911
+
+- DCDC: EA3036
+- Usb: type -c 24Pin
+- Led升压: RT9293
+- Usb转串口: CH341T
+- 线性音频放大: MAX98357AETE+T
+
+# PocketLcd
+
+- Usb: type -c 24Pin
+- 电源: SW6106
+- 锂电池保护: XB8886A
+- 屏幕显示: HDMI-PI 
