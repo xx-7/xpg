@@ -660,3 +660,31 @@ rm -rf ~/.cache/kicad
 rm -rf ~/.config/kicad
 
 ```
+
+## tftp
+
+```bash
+
+sudo pacman -S tftp-hpa
+
+sudo systemctl disable tftpd
+
+sudo useradd tftp
+
+sudo mkdir /r/tftp -p
+sudo chown tftp:tftp /r/tftp
+sudo chmod 777 /r/tftp
+
+#  https://man.archlinux.org/man/in.tftpd.8#FILENAME_REMAPPING
+
+sudo nano /etc/conf.d/tftpd
+TFTPD_ARGS="--create --secure /r/tftp --user tftp --address :69"
+
+sudo systemctl start tftpd
+
+# https://man.archlinux.org/man/tftp.1.en
+tftp 127.0.0.1
+put local.txt remote.txt
+get remote.txt
+quit
+```
