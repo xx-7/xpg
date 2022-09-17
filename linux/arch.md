@@ -688,3 +688,16 @@ put local.txt remote.txt
 get remote.txt
 quit
 ```
+
+## ftp telnet rsh
+
+```bash
+
+sudo pacman -S inetutils
+
+sudo systemctl disable ftpd
+sudo systemctl disable rlogin@
+sudo systemctl disable rsh@
+sudo systemctl disable talk
+sudo systemctl disable telnet@
+```
