@@ -10,8 +10,10 @@
 # 新建vlan CMCC本地是2001上网, 可以设置iptv这些
 # 把PPPoe 拔号的接口改成vlan
 
-# 设置速率
-interface ethernet set sfp-sfpplus1 auto-negotiation=yes advertise=2500M-full 
+# ros7 才能设置2.5G
+# 设置自动2.5G
+interface ethernet set sfp-sfpplus1 auto-negotiation=yes advertise=2500M-full
+# 设置手动2.5G
 interface ethernet set sfp-sfpplus1 auto-negotiation=no speed=2.5Gbps full-duplex=yes
 
 ```
