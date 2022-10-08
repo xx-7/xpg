@@ -364,6 +364,34 @@ pacman -Qo /etc/passwd      #查找某个文件属于哪个包
 
 pacman -Ss plasma           #搜索plasma相关的包
 ```
+## 驱动
+
+```bash
+
+# https://wiki.archlinux.org/title/Kernel_module
+# loaded list
+lsmod
+
+# info
+modinfo module_name
+
+# load
+modprobe module_name
+
+# load file
+insmod filename [args]
+
+# unload
+modprobe -r module_name
+rmmod module_name
+
+# auto load for boot
+nano /etc/modules-load.d/program.conf
+# memo
+program_name
+
+```
+
 
 ## 输入设备
 
@@ -700,4 +728,40 @@ sudo systemctl disable rlogin@
 sudo systemctl disable rsh@
 sudo systemctl disable talk
 sudo systemctl disable telnet@
+```
+
+
+## cdc-acm
+
+```bash
+
+# 加载模块
+modprobe cdc_acm
+
+# 查看usb连接
+lsusb
+
+# 查看加载模块内有没有cdc_acm
+lsmod | grep cdc_acm
+
+# 查看连接日志
+sudo dmesg | grep usb
+
+```
+
+## minicom
+
+```bash
+
+sudo pacman -S minicom
+
+sudo minicom -D /dev/ttyACM0 -b 115200
+
+# Ctrl + a 进入命令模式
+# z 打开命令菜单
+# q \ x 退出
+# c 清除显示内容
+# o 打开配置项
+# L 记录通信过程
+
 ```

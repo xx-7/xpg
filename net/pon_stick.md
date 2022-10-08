@@ -29,7 +29,7 @@ interface ethernet set sfp-sfpplus1 auto-negotiation=no speed=2.5Gbps full-duple
 
 # TTL
 # MA5671A SFP座子的2(TX)、7(RX)、10(GND)和15、16(VCC)
-# G-010-S-A SFP座子的3(TX)、6(RX)、10(GND)和15、16(VCC)
+# G-010-S-A SFP座子的3(RX)、6(TX)、10(GND)和15、16(VCC)
 # 串口速率 115200
 
 
@@ -52,7 +52,7 @@ saveenv
 setenv ipaddr 192.168.1.10
 setenv serverip 192.168.1.111
 setenv image_name IMAGE_NAME
-save
+saveenv
 
 run update_openwrt
 
