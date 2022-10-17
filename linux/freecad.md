@@ -3,6 +3,13 @@
 - 紧固件工作台 [Fasteners](https://wiki.freecadweb.org/Fasteners_Workbench)
 - 装配工作台 [A2Plus](https://github.com/kbwbe/A2plus)
 
+```bash
+# 数据目录
+# ~/.local/share/FreeCAD/
+# 配置目录
+# ~/.config/FreeCAD/
+```
+
 # 设置
 
 ## 快捷键
@@ -23,9 +30,53 @@
 
 # 注意FreeCAD无法设置Shift + 的键, 比如一按 shift + ` 就会变成 Shift + ~ 而实际这个键无法被唤起
 # 按下 Shift + ` 会查找 shift + ` 或 ~ 的绑定无法找到 Shift + ~
-# 关闭 freecad 编辑 ~/.config/FreeCAD/user.conf
+# 关闭 freecad 编辑 ~/.config/FreeCAD/user.cfg
 # 找到 FCParamGroup 名字是 Shortcut
 # 把其中的 Shift + ~ 改成 ~
+
+# 添加快捷键 ! 绘制样式在 线框与带边着色间切换
+# 先添加个Command 我这就添加到 part design 工作台中
+
+
+# nano /usr/lib/freecad/Mod/PartDesign/ToggleDisplayMode.py
+
+# -*- coding: utf-8 -*-
+
+import FreeCAD
+import FreeCADGui as Gui
+
+class ToggleDisplayMode:
+    """Explanation of the command."""
+
+    def GetResources(self):
+        return {'Pixmap': 'DrawStyleFlatLines','Accel': "!", 'MenuText': 'Toggle DisplayMode', 'ToolTip': 'Toggle DisplayMode'}
+
+    def Activated(self):
+        state = Gui.ActiveDocument.ActiveObject
+        if state.DisplayMode == "Flat Lines":
+            state.DisplayMode= "Wireframe"
+            Gui.runCommand('Std_DrawStyle',6)
+        else:
+            state.DisplayMode = "Flat Lines"
+            Gui.runCommand('Std_DrawStyle',2)
+
+    def IsActive(self):
+        if Gui.ActiveDocument:
+            return True
+        else:
+            return False
+
+if FreeCAD.GuiUp:
+    Gui.addCommand('ToggleDisplayMode', ToggleDisplayMode())
+
+# nano /usr/lib/freecad/Mod/PartDesign/InitGui.py
+
+        import ToggleDisplayMode
+            self.appendToolbar("Test Command", ["ToggleDisplayMode"])
+
+
+# 手动运行
+Gui.runCommand('ToggleDisplayMode')
 
 
 ```
