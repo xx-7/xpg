@@ -1,3 +1,16 @@
+# 常用软件
+
+- 010editor         二进制编辑,可识别文件类型
+- flameshot         屏幕截图
+- freecad           模型制作
+- gnucash           复式记账
+- keepassxc         密码记录
+- keymon            显示键盘按键
+- kicad             电路设计
+- mpv               播放器
+- remmina           远程桌面连接
+
+
 # bash
 ```bash
 # 批量改变权限
