@@ -38,18 +38,22 @@
 # 先添加个Command 我这就添加到 part design 工作台中
 
 
-# nano /usr/lib/freecad/Mod/PartDesign/ToggleDisplayMode.py
+# nano /usr/lib/freecad/Mod/AddonManager/ToggleDisplayMode.py
 
 # -*- coding: utf-8 -*-
 
 import FreeCAD
 import FreeCADGui as Gui
+from PySide.QtCore import QT_TRANSLATE_NOOP
 
-class ToggleDisplayMode:
+class _ToggleDisplayMode:
     """Explanation of the command."""
 
     def GetResources(self):
-        return {'Pixmap': 'DrawStyleFlatLines','Accel': "!", 'MenuText': 'Toggle DisplayMode', 'ToolTip': 'Toggle DisplayMode'}
+        return {'Pixmap': 'Arch_Subcomponent',
+                'Accel': "!",
+                'MenuText': 'Toggle DisplayMode', 
+                'ToolTip': 'Toggle DisplayMode'}
 
     def Activated(self):
         state = Gui.ActiveDocument.ActiveObject
@@ -67,13 +71,14 @@ class ToggleDisplayMode:
             return False
 
 if FreeCAD.GuiUp:
-    Gui.addCommand('ToggleDisplayMode', ToggleDisplayMode())
+    Gui.addCommand('ToggleDisplayMode', _ToggleDisplayMode())
 
-# nano /usr/lib/freecad/Mod/PartDesign/InitGui.py
+# nano /usr/lib/freecad/Mod/AddonManager/InitGui.py
 
-        import ToggleDisplayMode
-            self.appendToolbar("Test Command", ["ToggleDisplayMode"])
+# 添加
+import ToggleDisplayMode
 
+# ***注意*** 必需在: Tools -> Customize -> ToolBars 里面添加命令到工具栏，才可以用快捷键执行, 宏命令也是如此
 
 # 手动运行
 Gui.runCommand('ToggleDisplayMode')
