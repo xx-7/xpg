@@ -126,11 +126,15 @@ sudo ntpdate cn.pool.ntp.org && sudo hwclock -w
 useradd -m -g users -G wheel,lp,network,power -s /bin/bash fex
 passwd fex
 
-deluser --remove-home username
+userdel --remove username
 
 # fex添加到ssdm组
 usermod -a -G sddm fex
 nano /etc/group
+
+# 创建系统用户不允许登录 id大于1000的用户sddm会显示
+sudo useradd -r -s /usr/bin/nologin tftp
+
 
 # 查用户组
 groups user
