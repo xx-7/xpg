@@ -151,6 +151,8 @@ chmod +x /etc/rc.local
 
 systemctl enable rc.local
 
+# startup
+cd /home/$PATH && nohup ./$BIN > nohup.log 2>&1 &
 
 ```
 
