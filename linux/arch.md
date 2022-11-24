@@ -298,7 +298,7 @@ sudo pacman -S dolphin konsole nfs-utils
 sudo pacman -S nano nodejs mpv simplescreenrecorder unarchiver ttf-fira-code kate sqlitebrowser gimp gwenview evince flameshot remmina freerdp keepassxc
 paru -S firefox google-chrome visual-studio-code-bin jdk8-openjdk jdk11-openjdk baidunetdisk-bin
 
-paru -S edrawmax-cn
+paru -S edrawmax-cn  mindmaster_cn
 
 # ./MindMaster --no-sandbox
 paru -S mindmaster_cn
