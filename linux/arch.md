@@ -183,6 +183,10 @@ ip link set $INTERFACE up|down
 sudo nano /etc/resolv.conf
 nameserver 10.8.8.1
 
+
+sudo systemd-resolve --flush-caches
+sudo resolvectl flush-caches
+
 ```
 
 ## 显示
