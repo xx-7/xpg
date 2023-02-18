@@ -777,3 +777,63 @@ sudo minicom -D /dev/ttyACM0 -b 115200
 # L 记录通信过程
 
 ```
+
+## VirtualBox
+
+```bash
+sudo pacman -S virtualbox
+
+# 安装完后到 https://www.virtualbox.org/wiki/Downloads
+# 下载 Extension Pack 在管理工具中安装
+
+# 增强功能下载地址
+# http://download.virtualbox.org/virtualbox/7.0.6/VBoxGuestAdditions_7.0.6.iso
+
+# 出现 Press ESC in 1 seconds to skip startup .nsh or any other key to continue
+# 先看 CDROM 在哪个 FS 类似 PciRoot(0x0)/Pci(0x1F,0x2)/Sata(0x1,0xFFFF,0x0)/CDROM(0x0)
+fs0:
+
+# 直接运行efi文件 可用 CD LS命令
+# Mac
+System\Library\CoreServices\boot.efi
+
+# Linux
+EFI\ubuntu\grubx64.efi
+EFI\Debian\grubx64.efi
+
+# Windows
+EFI\boot\bootx64.efi
+EFI\boot\bootia32.efi
+
+```
+
+### OSX
+
+```bash
+# macOS_Big_Sur_11 下载地址
+# https://sysin.org/blog/macOS-Big-Sur/
+
+# 新建虚拟机 -> 类型 Mac OS X -> 版本 Mac OS X(64-bit)
+# 修改设置 -> 显示 128MB开3D加速
+#        -> 不选软盘
+#        -> USB控制器 USB3.0
+#        -> 网络桥接
+
+# 注册虚拟机
+VBoxManage modifyvm "VM Name" --cpuidset 00000001 000106e5 00100800 0098e3fd bfebfbff
+VBoxManage setextradata "VM Name" "VBoxInternal/Devices/efi/0/Config/DmiSystemProduct" "iMac19,1"
+VBoxManage setextradata "VM Name" "VBoxInternal/Devices/efi/0/Config/DmiSystemVersion" "1.0"
+VBoxManage setextradata "VM Name" "VBoxInternal/Devices/efi/0/Config/DmiBoardProduct" "Mac-AA95B1DDAB278B95"
+VBoxManage setextradata "VM Name" "VBoxInternal/Devices/smc/0/Config/DeviceKey" "ourhardworkbythesewordsguardedpleasedontsteal(c)AppleComputerInc"
+VBoxManage setextradata "VM Name" "VBoxInternal/Devices/smc/0/Config/GetKeyFromRealSMC" 1
+VBoxManage setextradata "VM Name" VBoxInternal2/EfiGraphicsResolution 1920x1200
+
+# Warning vboxdrv kernel module is not loaded 
+# 安装后要重启
+sudo pacman -S virtualbox-host-modules-arch
+
+# Failed to enumerate host USB devices.
+# 添加到用户组
+sudo usermod -aG vboxusers USERNAME
+
+```
