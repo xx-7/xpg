@@ -4,6 +4,7 @@
 
 System Preferences -> Security & Privacy -> Privacy -> Full Disk Access
 Click the lock to make changes -> add Terminal.app
+默认Terminal没有Documents权限
 
 ### MonkeyDev ld: file not found: /usr/lib/libstdc++.dylib
 

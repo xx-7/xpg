@@ -19,6 +19,7 @@
 
 ```bash
 # https://github.com/AloneMonkey/MonkeyDev
+# 有时会出问题，清除编译目录试试
 
 ```
 
