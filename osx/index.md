@@ -55,6 +55,11 @@ csrutil disable
 
 System Preferences -> Security & Privacy -> General -> Details 勾选 Oracle America,Inc
 
+## 文件格式
+
+- ipa:实际就是zip的压缩包
+- NAME.app:应用目录,下面有个(osx在Contents目录)Info.plist包含应用的信息，入口文件等等
+
 ## 常用软件
 
 * The Unarchiver

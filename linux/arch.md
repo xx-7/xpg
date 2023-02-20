@@ -827,6 +827,7 @@ VBoxManage setextradata "VM Name" "VBoxInternal/Devices/efi/0/Config/DmiBoardPro
 VBoxManage setextradata "VM Name" "VBoxInternal/Devices/smc/0/Config/DeviceKey" "ourhardworkbythesewordsguardedpleasedontsteal(c)AppleComputerInc"
 VBoxManage setextradata "VM Name" "VBoxInternal/Devices/smc/0/Config/GetKeyFromRealSMC" 1
 VBoxManage setextradata "VM Name" VBoxInternal2/EfiGraphicsResolution 1920x1200
+VBoxManage setextradata "VM Name" VBoxInternal2/EfiGopMode 4
 
 # Warning vboxdrv kernel module is not loaded 
 # 安装后要重启
