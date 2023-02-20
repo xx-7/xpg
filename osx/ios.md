@@ -84,6 +84,20 @@ iproxy 2222 22
 
 
 ```
+# class-dump
+
+```bash
+
+
+
+# 支持（ObjC+）swift混淆的class-dump
+# https://github.com/AloneMonkey/MonkeyDev/blob/master/bin/class-dump
+
+# Down: https://raw.githubusercontent.com/AloneMonkey/MonkeyDev/master/bin/class-dump
+
+
+```
+
 
 # 常见问题解决
 

@@ -10,6 +10,50 @@ Click the lock to make changes -> add Terminal.app
 
 https://github.com/devdawei/libstdc-
 
+### 无法进入Recovery模式
+
+```bash
+# 尝试快捷键
+# Command + R
+# Option + Command + R
+# Shift + Option + Command + R
+# Option + Command + R + P
+
+# 如无法进入, 要用启动盘启动
+# virtualbox 挂载安装iso, 按F2、Del 选择 Boot Manger 进入EFI Internal Shell操作
+
+```
+
+### EFI Internal Shell
+
+引导启动出现 Press ESC in 1 seconds to skip startup .nsh or any other key to continue
+说明进入了EFI Internal Shell
+
+```bash
+
+# 先看 CDROM 在哪个 FS 类似 PciRoot(0x0)/Pci(0x1F,0x2)/Sata(0x1,0xFFFF,0x0)/CDROM(0x0)
+fs0:
+
+# 直接运行efi文件 可用 CD LS命令
+System\Library\CoreServices\boot.efi
+
+```
+
+### 关闭rootless/System Integrity Protection
+
+```bash
+# 设置状态要Recovery模式才能进行 Utilities -> Terminal
+# 查看状态
+csrutil status
+# 开启
+csrutil enable
+# 关闭
+csrutil disable
+```
+
+### virtualbox guest additions不起作用
+
+System Preferences -> Security & Privacy -> General -> Details 勾选 Oracle America,Inc
 
 ## 常用软件
 
