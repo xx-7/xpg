@@ -50,6 +50,18 @@
 # 1.先root
 # 2.Cydia 添加源 https://build.frida.re
 #       搜索 Frida 并安装
+# 改配置, 默认只监听本地localhost
+# 配置文件:  /Library/LaunchDaemons/re.frida.server.plist
+# 在 re.frida.server.plist ProgramArguments 下面的array中加入
+#           <string>-l</string>
+#           <string>0.0.0.0</string>
+
+scp root@HOST:/Library/LaunchDaemons/re.frida.server.plist ./
+scp re.frida.server.plist root@HOST:/Library/LaunchDaemons/
+
+# 配置生效
+launchctl unload -w /Library/LaunchDaemons/re.frida.server.plist 
+launchctl load -w /Library/LaunchDaemons/re.frida.server.plist 
 
 # 电脑端
 # -----------------

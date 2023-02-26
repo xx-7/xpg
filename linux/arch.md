@@ -838,3 +838,52 @@ sudo pacman -S virtualbox-host-modules-arch
 sudo usermod -aG vboxusers USERNAME
 
 ```
+
+### ios install ipa
+
+```bash
+
+# https://github.com/libimobiledevice/libimobiledevice
+sudo pacman -S libimobiledevice 
+paru -S ideviceinstaller 
+
+#List attached devices or print device name of given device
+idevice_id
+#Create or restore backup for devices (legacy)	
+idevicebackup
+# Create or restore backups for devices running iOS 4 or later	
+idevicebackup2
+# Capture Bluetooth HCI traffic from a device (requires log profile)	
+idevicebtlogger
+# Retrieve crash reports from a device
+idevicecrashreport
+# Display the current date or set it on a device
+idevicedate
+# Interact with the debugserver service of a device	
+idevicedebug
+# Proxy a debugserver connection from a device for remote debugging
+idevicedebugserverproxy
+# Interact with the diagnostics interface of a device
+idevicediagnostics
+# Make a device enter recovery mode
+ideviceenterrecovery
+# Mount disk images on the device	
+ideviceimagemounter
+# Show information about a connected device	
+ideviceinfo
+# Display or set the device name	
+idevicename
+# Post or observe notifications on a device
+idevicenotificationproxy
+# Manage host pairings with devices and usbmuxd
+idevicepair
+# Manage provisioning profiles on a device
+ideviceprovision
+# Gets a screenshot from the connected device 	
+idevicescreenshot
+# Simulate location on device	
+idevicesetlocation
+# Relay syslog of a connected device
+idevicesyslog 	
+
+```
