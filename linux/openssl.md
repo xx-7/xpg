@@ -1,10 +1,10 @@
 
 ```bash
 # Base64 转码
-openssl base64 -in in.bin -out out.txt
+openssl base64 -e -in in.bin -out out.txt
 
 # Base64 解码
-openssl base64 -in in.txt -out out.bin
+openssl base64 -d -in in.txt -out out.bin
 
 openssl dgst -md5 FILE 
 
