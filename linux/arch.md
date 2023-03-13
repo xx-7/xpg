@@ -217,6 +217,19 @@ systemctl enable sddm
 nano /etc/sddm.conf
 [Theme]
 Current=breeze
+
+# login time format 
+# https://forum.kde.org/viewtopic.php?t=130484
+# nano /usr/share/sddm/themes/breeze/components/Clock.qml
+# change: 
+
+# text: Qt.formatTime(timeSource.data["Local"]["DateTime"])
+# to:
+# text: Qt.formatTime(timeSource.data["Local"]["DateTime"],"hh:mm:ss")
+
+# text: Qt.formatDate(timeSource.data["Local"]["DateTime"], Qt.DefaultLocaleLongDate) 
+# to:
+# text: Qt.formatDate(timeSource.data["Local"]["DateTime"], "yyyy/MM/dd")
 ```
 
 ## 主题
