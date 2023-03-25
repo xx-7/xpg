@@ -860,6 +860,9 @@ sudo usermod -aG vboxusers USERNAME
 sudo pacman -S libimobiledevice 
 paru -S ideviceinstaller 
 
+
+ideviceinstaller -i "XXX.ipa"
+
 #List attached devices or print device name of given device
 idevice_id
 #Create or restore backup for devices (legacy)	

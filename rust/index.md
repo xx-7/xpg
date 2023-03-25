@@ -24,8 +24,25 @@ cargo run
 cargo run --example demo1
 cargo build --release
 
+
+rustup self uninstall
+rustup default stable-gnu
+rustup default stable-x86_64-pc-windows-gnu
+rustup toolchain list
+rustup toolchain install stable-x86_64-pc-windows-gnu
+rustup toolchain uninstall stable-x86_64-pc-windows-gnu
+
 rustup target list
+rustup target add x86_64-unknown-linux-gnu
 rustup target add x86_64-pc-windows-gnu
+rustup target add i686-pc-windows-gnu
+
+cargo build --target=x86_64-pc-windows-gnu
+
+cargo build --target=i686-pc-windows-gnu
+
+cargo build --target=x86_64-unknown-linux-gnu
+
 ```
 
 ```
@@ -37,6 +54,20 @@ cargo test -- --nocapture
 ## Cargo Config
 ```bash
 nano ~/.cargo/config
+
+[build]
+target = "x86_64-unknown-linux-gnu"
+
+[target.x86_64-pc-windows-gnu]
+linker = "x86_64-w64-mingw32-gcc"
+
+[target.i686-pc-windows-gnu]
+linker = "i686-w64-mingw32-gcc"
+rustflags = "-C panic=abort"
+
+[target.x86_64-unknown-linux-musl]
+linker = "x86_64-linux-musl-gcc" 
+
 [source.crates-io]
 registry = "https://github.com/rust-lang/crates.io-index"
 replace-with = 'ustc'

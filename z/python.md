@@ -1,3 +1,16 @@
+# 安装
+
+```bash
+
+# https://www.python.org/downloads/windows/
+# 对win7的支持只到 python3.8
+
+# install pip
+# down https://bootstrap.pypa.io/get-pip.py
+# python get-pip.py
+
+```
+
 # 常用
 
 ```py
