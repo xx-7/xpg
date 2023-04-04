@@ -28,7 +28,7 @@ cd wxWidgets/msw
 
 # --disable-debug release
 # --disable-shared 静态版本 --enable-shared 动态链接版本
-# ../configure --help 但看编译选项
+# ../configure --help 查看编译选项
 ./configure prefix=/usr/i686-w64-mingw32 --host=i686-w64-mingw32 --build=x86_64-pc-linux-gnu --enable-unicode --with-msw --disable-debug --enable-shared --disable-dependency-tracking
 make
 make install
