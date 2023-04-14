@@ -1,8 +1,7 @@
 # install
 
 ```bash
-
-
+pip3 install meson ninja
 ```
 
 # format
