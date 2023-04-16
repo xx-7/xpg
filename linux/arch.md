@@ -2,6 +2,16 @@
 
 # 经常有更新包
 
+# 清除缓存
+
+```bash
+
+sudo rm -rf /var/cache/pacman/
+rm -rf ~/.cache/paru/
+
+
+```
+
 # 安装
 
 ## 分区

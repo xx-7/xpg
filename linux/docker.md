@@ -18,7 +18,8 @@ docker run hello-world
 sudo mkdir /etc/docker
 sudo nano /etc/docker/daemon.json
 
-
+# https://cr.console.aliyun.com 
+# http://hub-mirror.c.163.com
 {
 	"registry-mirrors": ["http://hub-mirror.c.163.com"],
     "storage-driver": "overlay2"
