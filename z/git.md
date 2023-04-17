@@ -5,6 +5,12 @@
 git config --global user.name "zz"
 git config --global user.email zz@zz.com
 
+git config --global http.proxy 'socks5://127.0.0.1:1028'
+git config --global https.proxy 'socks5://127.0.0.1:1028'
+
+git config --global --unset http.proxy
+git config --global --unset https.proxy
+
 git add -A
 git commit -m "test"
 
