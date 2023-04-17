@@ -17,7 +17,11 @@ set -g @plugin 'tmux-plugins/tpm'
 set -g @plugin 'tmux-plugins/tmux-sensible'
 set -g @plugin 'tmux-plugins/tmux-resurrect'
 
-tmux source ~/.tmux.conf
+run-shell ~/.tmux/plugins/tmux-sensible/sensible.tmux
+run-shell ~/.tmux/plugins/tmux-resurrect/resurrect.tmux
+
+
+tmux source-file ~/.tmux.conf
 
 ```
 
