@@ -30,3 +30,4 @@ precmd () { echo -en "\033]0; `basename $PWD` \007"}
 
 source ~/.config/zsh/env.zsh
 source ~/.config/zsh/aliases.zsh
+source ~/.config/zsh/git.zsh

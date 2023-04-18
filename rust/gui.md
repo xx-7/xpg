@@ -7,3 +7,10 @@
     * gtk-rs  gtk库的绑定
     * conrod 作者不再开发新功能,只维护. 推荐egui.(作者在开发nannou)
     * bevy 游戏引擎开发中，随便一个界面编译后30MB
+    * sciter web渲染,性能很好也很小巧, 功能不是很全, 没什么维护长期不更新
+    * tauri web渲染, 功能多, win上WebView2问题很多,性能很差
+
+```rust
+// windows 去dos框
+#![windows_subsystem = "windows"]
+```
