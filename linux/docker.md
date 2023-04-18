@@ -31,6 +31,20 @@ docker version
 sudo du -h --max-depth=1 /var/lib/docker
 # 删除镜像,容器
 rm -rf /var/lib/docker
+
+# service文件目录
+cat /usr/lib/systemd/system/docker.service
+
+
+# 有些版本dockerd 参数是/run/docker.sock, docker 默认是 /var/run/docker.sock
+# 配置docker.conf也无效, 就在 docker.service 修改或加上下面参数
+# -H unix:///var/run/docker.sock 
+sudo nano /usr/lib/systemd/system/docker.service
+
+# 修改完 service -> reload
+sudo systemctl daemon-reload
+
+
 ```
 
 # use
