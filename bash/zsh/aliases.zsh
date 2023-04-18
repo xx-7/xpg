@@ -10,9 +10,4 @@ alias rmb='rm -rf build*'
 alias rmt='rm -rf target*'
 
 
-alias gita='git add .'
-alias gitc='git commit -m'
-alias gitp='git push origin master'
-
-
 alias ta='tmux a'
