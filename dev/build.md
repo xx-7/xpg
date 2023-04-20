@@ -31,6 +31,6 @@ i686-pc-linux-gnu-pkg-config --variable pc_path pkg-config
 PKG_CONFIG_PATH = /usr/lib/pkgconfig:/usr/share/pkgconfig
 
 #  python 库urllib中urlopen 只支持http,https代理, 不支持socks meson下载依赖就是调用的urlopen
-export {http,https}_proxy=http://172.17.0.1:5556
+export {http,https}_proxy=http://172.17.0.1:11018
 
 ```

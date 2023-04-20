@@ -1,8 +1,8 @@
 # use
 
 ```bash
-export {http,https,ftp,rsync,all}_proxy=socks5://127.0.0.1:1028
-export {HTTP,HTTPS,FTP,RSYNC,ALL}_PROXY=socks5://127.0.0.1:1028
+export {http,https,ftp,rsync,all}_proxy=socks5://127.0.0.1:11028
+export {HTTP,HTTPS,FTP,RSYNC,ALL}_PROXY=socks5://127.0.0.1:11028
 
 ```
 
@@ -23,8 +23,8 @@ nano ~/.config/clash/config.yaml
 ```
 
 ```yaml 
-port: 5556
-socks-port: 5557
+port: 11018
+socks-port: 11019
 
 allow-lan: true
 mode: rule
