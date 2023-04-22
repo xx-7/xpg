@@ -8,6 +8,9 @@ git config --global user.email zz@zz.com
 git config --global http.proxy 'socks5://127.0.0.1:11028'
 git config --global https.proxy 'socks5://127.0.0.1:11028'
 
+git config --global http.proxy 'http://127.0.0.1:11018'
+git config --global https.proxy 'http://127.0.0.1:11018'
+
 git config --global http.proxy 'socks5://172.17.0.1:11028'
 git config --global https.proxy 'socks5://172.17.0.1:11028'
 

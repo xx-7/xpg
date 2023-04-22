@@ -10,8 +10,9 @@ tar xf flutter_linux_3.7.12-stable.tar.xz
 
 # env flutter
 export PATH=$PATH:/optd/opt/flutter/bin
-export FLUTTER_STORAGE_BASE_URL=https://mirror.sjtu.edu.cn/
-export PUB_HOSTED_URL=https://mirror.sjtu.edu.cn/dart-pub/
+export FLUTTER_STORAGE_BASE_URL=https://storage.flutter-io.cn/
+export PUB_HOSTED_URL=https://pub.flutter-io.cn
+export FLUTTER_GIT_URL=https://mirrors.tuna.tsinghua.edu.cn/git/flutter-sdk.git
 export CHROME_EXECUTABLE=/opt/google/chrome/chrome
 
 
@@ -31,10 +32,11 @@ export CHROME_EXECUTABLE=/opt/google/chrome/chrome
 # https://docs.flutter.dev/development/platform-integration/desktop
 
 flutter create my_app
-flutter create my_app --platforms=windows,macos,linux
+flutter create my_app --platforms=linux,windows,macos --project-name myapp
 
 # add existing
-flutter create --platforms=windows,macos,linux ./
+flutter create --platforms=linux,windows,macos ./
+flutter create --platforms=linux,windows,macos ./ --project-name myapp
 
 flutter clean
 
