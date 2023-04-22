@@ -18,14 +18,15 @@ docker run hello-world
 sudo mkdir /etc/docker
 sudo nano /etc/docker/daemon.json
 
-# https://cr.console.aliyun.com 
-# http://hub-mirror.c.163.com
 {
-	"registry-mirrors": ["http://hub-mirror.c.163.com"],
+	"registry-mirrors": ["https://mirror.baidubce.com","https://hub-mirror.c.163.com"],
     "storage-driver": "overlay2"
 }
 
 docker version
+
+# 先拉取再 docker build 会直接用
+docker pull debian
 
 
 sudo du -h --max-depth=1 /var/lib/docker

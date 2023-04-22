@@ -11,6 +11,9 @@ alias rmt='rm -rf target*'
 
 alias ta='tmux a'
 
+alias du='sudo du -h --max-depth=1'
+alias dud='sudo du -h --max-depth='
+
 
 alias dr='docker run -v $PWD/:/app --user="$(id -u)"'
 alias drt='docker run -v $PWD/:/app --user="$(id -u)" -ti'
