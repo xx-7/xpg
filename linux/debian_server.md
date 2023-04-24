@@ -287,3 +287,19 @@ systemctl restart cron
 systemctl enable cron
 
 ```
+
+### 备份删除新安装
+```bash
+
+# 安装前保存列表
+dpkg --get-selections | cut -f 1 > /tmp/packages_orig.lst
+
+# 安装后再保存列表跟前面对比删除
+dpkg --get-selections | cut -f 1 > /tmp/packages_curr.lst
+grep -Fxv -f /tmp/packages_orig.lst /tmp/packages_curr.lst | xargs sudo -E apt remove -y --purge
+
+# 清除缓存
+sudo -E apt -qq clean
+sudo -E rm -rf /var/lib/apt/lists/* /tmp/wine-*
+
+```
