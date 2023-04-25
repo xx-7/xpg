@@ -16,12 +16,12 @@ alias du='sudo du -h --max-depth=1'
 alias dud='sudo du -h --max-depth='
 
 # docker
-alias dr='docker run -v $PWD/:/app --user="$(id -u)"'
-alias drt='docker run -v $PWD/:/app --user="$(id -u)" -ti'
-alias drtp='docker run -v $PWD/:/app --user="$(id -u)" -e NPXY="socks5://172.17.0.1:11028" -ti'
-alias drr='docker run -v $PWD/:/app --user=0'
-alias drrt='docker run -v $PWD/:/app --user=0 -ti'
-alias drrtp='docker run -v $PWD/:/app --user=0 -e NPXY="socks5://172.17.0.1:11028" -ti'
+alias dr='docker run -v $PWD/:/project --user="$(id -u)"'
+alias drt='docker run -v $PWD/:/project --user="$(id -u)" -ti'
+alias drtp='docker run -v $PWD/:/project --user="$(id -u)" -e NPXY="socks5://172.17.0.1:11028" -ti'
+alias drr='docker run -v $PWD/:/project --user=0'
+alias drrt='docker run -v $PWD/:/project --user=0 -ti'
+alias drrtp='docker run -v $PWD/:/project --user=0 -e NPXY="socks5://172.17.0.1:11028" -ti'
 
 # proxy
 pi () {
@@ -52,3 +52,9 @@ alias fcl='flutter clean'
 alias fbl='flutter build linux'
 alias frl='flutter run -d linux'
 alias fpg='flutter pub get'
+
+
+# cmake
+alias cmdb='cmake -DCMAKE_BUILD_TYPE=Debug -S ./ -B ./build'
+alias cmrb='cmake -DCMAKE_BUILD_TYPE=Release -S ./ -B ./build'
+alias cmb='cmake --build ./build'
