@@ -1,7 +1,7 @@
 alias c=clear -x
 alias ls='ls -G'
 alias ll='ls -lhG --time-style=long-iso'
-alias l='ls -alhG --time-style=long-iso'
+alias l='lsd -lah --date "+%y-%m-%d %H:%M"'
 
 
 alias msb='meson setup build'
