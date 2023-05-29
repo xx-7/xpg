@@ -271,6 +271,48 @@ yay -S ocs-url
 
 ```bash
 pacman -S ttf-{dejavu,liberation} wqy-microhei
+
+
+# 字体顺序
+sudo nano /etc/fonts/local.conf
+
+<?xml version="1.0"?>
+<!DOCTYPE fontconfig SYSTEM "fonts.dtd">
+<fontconfig>
+  <alias>
+    <family>sans-serif</family>
+    <prefer>
+      <family>WenQuanYi Micro Hei</family>
+      <family>DejaVu Sans</family>
+      <family>Liberation Sans</family>
+      <family>Arial</family>
+      <family>sans-serif</family>
+    </prefer>
+  </alias>
+  <alias>
+    <family>serif</family>
+    <prefer>
+      <family>WenQuanYi Micro Hei</family>
+      <family>DejaVu Serif</family>
+      <family>Liberation Serif</family>
+      <family>Times New Roman</family>
+      <family>serif</family>
+    </prefer>
+  </alias>
+  <alias>
+    <family>monospace</family>
+    <prefer>
+      <family>WenQuanYi Micro Hei Mono</family>
+      <family>DejaVu Sans Mono</family>
+      <family>Liberation Mono</family>
+      <family>Courier New</family>
+      <family>monospace</family>
+    </prefer>
+  </alias>
+</fontconfig>
+
+sudo fc-cache -fv
+
 ```
 
 ## 输入法
