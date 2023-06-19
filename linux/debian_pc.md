@@ -4,21 +4,6 @@
 
 # 安装
 
-## ntpdate
-
-```bash
-
-sudo apt install ntpdate
-
-sudo ntpdate cn.pool.ntp.org
-sudo hwclock -w
-
-sudo ntpdate time.windows.com && sudo hwclock -w
-
-sudo cp -f /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
-
-```
-
 ## kde
 
 ```bash

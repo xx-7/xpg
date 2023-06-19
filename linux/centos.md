@@ -40,20 +40,6 @@ rpm -qa |grep kernel                        #查看系统安装内核
 yum remove kernel-3.10.0-862.14.4.el7       #删除内核
 ```
 
-## 时区
-
-```bash
-yum install ntp
-ntpdate us.pool.ntp.org
-cp -f /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
-
-ntpdate cn.pool.ntp.org
-hwclock -w
-
-ntpdate time.windows.com && hwclock -w
-hwclock -w
-```
-
 ## OpenJDK
 
 ```bash

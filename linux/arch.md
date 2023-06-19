@@ -5,10 +5,8 @@
 # 清除缓存
 
 ```bash
-
 sudo rm -rf /var/cache/pacman/
 rm -rf ~/.cache/paru/
-
 
 ```
 
@@ -117,18 +115,6 @@ reboot
 ```
 
 # 配置
-
-## ntp
-
-```bash
-sudo pacman -S ntp
-
-sudo ntpdate time.windows.com && sudo hwclock -w
-
-sudo ntpdate us.pool.ntp.org && sudo hwclock -w
-
-sudo ntpdate cn.pool.ntp.org && sudo hwclock -w
-```
 
 ## 用户
 
