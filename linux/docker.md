@@ -12,6 +12,8 @@ sudo systemctl restart docker
 # debug 启动
 sudo dockerd --debug
 
+# 更新完内核要重启才能加载overlay驱动
+
 # 测试容器
 docker run hello-world
 
@@ -59,6 +61,11 @@ sudo systemctl daemon-reload
 # Dir Dockerfile所在目录
 docker build  -t ImageName:TagName dir
 
+# 镜像列表
+docker images
+
+# 运行列表
+docker ps
 
 # run
 docker run [OPTIONS] IMAGE [COMMAND] [ARG...]
