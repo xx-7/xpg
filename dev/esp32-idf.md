@@ -32,6 +32,7 @@ export IDF_GITHUB_ASSETS="dl.espressif.com/github_assets"
 ```bash
 
 # https://docs.espressif.com/projects/esp-idf/zh_CN/v5.1/esp32/get-started/linux-macos-setup.html
+# https://docs.espressif.com/projects/esp-idf/zh_CN/release-v5.1/esp32/api-guides/tools/idf-py.html
 
 # 编译
 idf.py build
@@ -75,8 +76,8 @@ EOF
 
 
 cat > ./src/main.c << EOF
-idf_component_register(SRCS "main.c"
-                    INCLUDE_DIRS "" REQUIRES spi_flash)
+void app_main(void) {
+}
 EOF
 
 
