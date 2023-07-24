@@ -8,8 +8,6 @@ export LC_ALL=en_US.utf8
 # rust
 [[ -f ~/.cargo/env ]] && . ~/.cargo/env
 
-# esp-idf
-[[ -f /optd/opt/esp/esp-idf/export.sh ]] && . /optd/opt/esp/esp-idf/export.sh
 
 # flutter
 export PATH=$PATH:/optd/opt/flutter/bin

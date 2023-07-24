@@ -58,3 +58,6 @@ alias fpg='flutter pub get'
 alias cmdb='cmake -DCMAKE_BUILD_TYPE=Debug -S ./ -B ./build'
 alias cmrb='cmake -DCMAKE_BUILD_TYPE=Release -S ./ -B ./build'
 alias cmb='cmake --build ./build'
+
+# esp32-idf
+alias get_idf='. /optd/opt/esp/esp-idf/export.sh'
