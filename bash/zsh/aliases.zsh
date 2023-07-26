@@ -61,3 +61,4 @@ alias cmb='cmake --build ./build'
 
 # esp32-idf
 alias get_idf='. /optd/opt/esp/esp-idf/export.sh'
+alias idf='idf.py'

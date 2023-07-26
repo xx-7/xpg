@@ -31,6 +31,7 @@ interface ethernet set sfp-sfpplus1 auto-negotiation=no speed=2.5Gbps full-duple
 # MA5671A SFP座子的2(TX)、7(RX)、10(GND)和15、16(VCC)
 # G-010-S-A SFP座子的3(RX)、6(TX)、10(GND)和15、16(VCC)
 # 串口速率 115200
+# 启动时按ctrl-c到命令模式
 
 
 loadb 0x80800000

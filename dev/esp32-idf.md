@@ -20,9 +20,15 @@ export IDF_GITHUB_ASSETS="dl.espressif.com/github_assets"
 # 安装所有芯片支持
 ./install.sh all
 
-# 添加到 ~/.config/zsh/env.zsh
-
+# 添加到 
 # esp-idf
+cat >> ~/.config/zsh/env.zsh << EOF
+# esp32-idf
+alias get_idf='. /optd/opt/esp/esp-idf/export.sh'
+alias idf='idf.py'
+EOF
+
+
 [[ -f /optd/opt/esp/esp-idf/export.sh ]] && . /optd/opt/esp/esp-idf/export.sh
 
 ```
@@ -35,19 +41,19 @@ export IDF_GITHUB_ASSETS="dl.espressif.com/github_assets"
 # https://docs.espressif.com/projects/esp-idf/zh_CN/release-v5.1/esp32/api-guides/tools/idf-py.html
 
 # 编译
-idf.py build
+idf build
 
 # 烧录
-idf.py -p PORT flash
+idf -p PORT flash
 
 # 监视输出
-idf.py -p PORT monitor
+idf -p PORT monitor
 
 # 目标芯片
-idf.py set-target esp32
+idf set-target esp32
 
 # 配置
-idf.py menuconfig
+idf menuconfig
 
 ```
 
