@@ -10,6 +10,22 @@ rm -rf ~/.cache/paru/
 
 ```
 
+# 更新证书报错
+```bash
+
+# 两种处理方式可以试
+# 1. 刷新证书
+sudo pacman -S archlinux-keyring
+sudo pacman-key --refresh-keys
+sudo pacman-key --init
+sudo pacman-key --populate
+
+# 2. 忽略报错软件
+pacman -Syu --ignore package1,package2
+
+
+```
+
 # 安装
 
 ## 分区
