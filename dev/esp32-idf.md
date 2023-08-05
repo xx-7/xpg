@@ -22,14 +22,11 @@ export IDF_GITHUB_ASSETS="dl.espressif.com/github_assets"
 
 # 添加到 
 # esp-idf
-cat >> ~/.config/zsh/env.zsh << EOF
+cat >> ~/.config/zsh/aliases.zsh << EOF
 # esp32-idf
 alias get_idf='. /optd/opt/esp/esp-idf/export.sh'
 alias idf='idf.py'
 EOF
-
-
-[[ -f /optd/opt/esp/esp-idf/export.sh ]] && . /optd/opt/esp/esp-idf/export.sh
 
 ```
 
