@@ -26,6 +26,7 @@
 | 23/06/15      | [218.00](https://item.jd.com/10069995621414.html)       |
 | 23/06/15      | [268.00](https://shop16730150.m.youzan.com/wscgoods/detail/360ckpi7kw332n0)       |
 | 23/06/18      | [208.00](https://item.jd.com/10069995621414.html)       |
+| 23/09/05      | [188.00](https://item.jd.com/10069995621414.html)       |
 
 ## 目立康(Menicon)硬性透气接触镜用多功能护理液
 
