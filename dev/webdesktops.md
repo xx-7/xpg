@@ -46,6 +46,23 @@ Dart/Flutter实现.
 
 vue2/js 实现.
 
+# Web simulation of UbuntuOS
+
+[源码](https://github.com/vivek9patel/vivek9patel.github.io) / [演示](https://vivek9patel.github.io/) / 1k
+
+NEXT.js 实现, Ubuntu 20.04 Gnome风格.
+
+# OS.js
+
+[源码](https://github.com/os-js/OS.js) / [演示](https://demo.os-js.org/) / 6.6k
+
+纯 js 实现, 界面中规中矩.
+
+# AaronOS
+
+[源码](https://github.com/MineAndCraft12/AaronOS) / [演示](https://aaronos.dev/AaronOS/aosBeta.php) / 0.05k
+
+php实现？ 没细看界面比较个性化.
 
 # CloudDesk
 
