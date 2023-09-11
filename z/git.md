@@ -24,7 +24,8 @@ git commit -m "test"
 
 git commit -a -m 'test'
 
-git push -u origin master
+# 更新引用
+git push -u origin main
 
 #查看状态
 git status
