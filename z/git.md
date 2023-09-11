@@ -80,7 +80,7 @@ git remote add origin git@github.com:USER/PROJECT.git
 git branch              # 查看分支
 git branch -r           # 查看远程分支
 git branch dev          # 创建dev分支
-git branch -m new old   # 改分支名
+git branch -m old new  # 改分支名
 git branch -d dev       # 删除dev分支
 git checkout dev        # 切换到dev分支
 git checkout -b dev     # 创建并切换分支
