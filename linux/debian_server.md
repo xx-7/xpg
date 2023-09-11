@@ -1,5 +1,24 @@
 [TOC]
 
+# 版本号
+
+[Releases](https://www.debian.org/releases/index.zh-cn.html)
+
+- Debian 12 "bookworm"
+- Debian 11 "bullseye"
+- Debian 10 "buster"
+- Debian 9 "stretch"
+- Debian 8 "jessie"
+- Debian 7 "wheezy" 
+- Debian 6.0 "squeeze"
+- Debian GNU/Linux 5.0 "lenny"
+- Debian GNU/Linux 4.0 "etch"
+- Debian GNU/Linux 3.1 "sarge"
+- Debian GNU/Linux 3.0 "woody"
+- Debian GNU/Linux 2.2 "potato"
+- Debian GNU/Linux 2.1 "slink"
+- Debian GNU/Linux 2.0 "hamm"
+
 # 配置
 
 ## 内核

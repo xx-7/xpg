@@ -77,12 +77,13 @@ git remote add origin git@github.com:USER/PROJECT.git
 ```
 
 ```bash
-git branch          #查看分支
-git branch -r       #查看远程分支
-git branch dev      #创建dev分支
-git branch -d dev   #删除dev分支
-git checkout dev    #切换到dev分支
-git checkout -b dev #创建并切换分支
+git branch              # 查看分支
+git branch -r           # 查看远程分支
+git branch dev          # 创建dev分支
+git branch -m new old   # 改分支名
+git branch -d dev       # 删除dev分支
+git checkout dev        # 切换到dev分支
+git checkout -b dev     # 创建并切换分支
 ```
 
 # dev 分支上线,合并到 master 分支
