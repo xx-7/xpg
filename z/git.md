@@ -17,6 +17,8 @@ git config --global https.proxy 'socks5://172.17.0.1:11028'
 git config --global --unset http.proxy
 git config --global --unset https.proxy
 
+git config --global init.defaultBranch main
+
 git add -A
 git commit -m "test"
 
