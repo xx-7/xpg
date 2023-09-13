@@ -8,7 +8,7 @@
 ```bash
 
 # Win自带Hash
-certutil -hashfile  <文件名>  <hash类型 SHA1/MD5>
+certutil -hashfile  <文件名>  <hash类型 SHA1/MD5/SHA256>
 
 # Wx撤回多开
 # 附加 Wx -> 符号 -> WeChatWin.dll -> 搜索 -> 当前区域 -> 字符串 revokemsg -> 汇编jmp -> 字符串 WeChat_App_Instance_Identity_Mutex_Name -> 汇编ret -> 生成补丁
@@ -19,20 +19,20 @@ certutil -hashfile  <文件名>  <hash类型 SHA1/MD5>
 
 ```
 
-# Win10 激活
+# Win10 2021 LTSC
 
 ```bash
 
-# https://www.microsoft.com/zh-cn/software-download/windows10ISO/
+# SHA256
+# C117C5DDBC51F315C739F9321D4907FA50090BA7B48E7E9A2D173D49EF2F73A3
 
-# run cmd with administrator privileges
+# KFN9B-WX6JF-FKB44-DJ93G-VCHW2
 
-slmgr /unp
-slmgr /ipk NPPR9-FWDCX-D2C8J-H872K-2YT43
-slmgr /skms kms.digiboy.ir
-slmgr /ato
+# NPPR9-FWDCX-D2C8J-H872K-2YT43
 
 ```
+
+# ShrewVPN
 
 * 下载并安装免费的 [Shrew Soft VPN 客户端](https://www.shrew.net/download/vpn)。在安装时请选择 Standard Edition。
     - 注： 该 VPN 客户端 不支持 Windows 10/11。
@@ -49,3 +49,5 @@ slmgr /ato
 * 在 Username 字段中输入你的 VPN 用户名。
 * 在 Password 字段中输入你的 VPN 密码。
 * 单击 Connect。
+
+- 不用"老毛桃"装了会加一堆软件, 用UltraISO或dd.
