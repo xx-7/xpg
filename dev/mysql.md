@@ -1,13 +1,42 @@
 
 # Installation
 
+# debian
+
 ```bash
 sudo apt install mariadb-server
 sudo mysql_secure_installation
+sudo mariadb-secure-installation
 sudo systemctl disable mariadb
 sudo systemctl restart mariadb
 
 ```
+
+# Arch
+
+```bash
+sudo pacman -S mariadb
+sudo mariadb-install-db --user=mysql --basedir=/usr --datadir=/optd/opt/mysql
+
+sudo nano /etc/my.cnf.d/server.cnf
+
+[mysqld]
+datadir=/optd/opt/mysql
+
+sudo mariadbd-safe --datadir=/optd/opt/mysql
+
+
+# 改root密码
+sudo mariadbd-safe --skip-grant-tables --skip-networking --datadir=/optd/opt/mysql
+
+mariadb -u root
+MariaDB [mysql]> FLUSH PRIVILEGES;
+MariaDB [mysql]> ALTER USER 'root'@'localhost' IDENTIFIED BY 'new_password';
+MariaDB [mysql]> exit
+
+
+```
+
 # client
 
 ```bash
@@ -54,6 +83,8 @@ FLUSH PRIVILEGES;
 ALTER USER $USER IDENTIFIED BY '$PASS';
 
 ALTER USER top IDENTIFIED BY '111111';
+
+ALTER USER 'root'@'localhost' IDENTIFIED BY 'new_password';
 
 # 删除用户
 DROP USER '$USER'@'$HOST';
