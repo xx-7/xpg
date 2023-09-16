@@ -41,13 +41,26 @@ proxies:
     port: 443
     password: "TEXDSDFEWS"
 
+  # trojan
+  - name: "w0"
+    type: trojan
+    server: "s.google.com"
+    port: 443
+    password: "TEXDSDFEWS"
+
 proxy-groups:
   - name: S2
     type: select
     proxies:
       - "s2"
 
+  - name: W0
+    type: select
+    proxies:
+      - "w0"
+
 rules:
+  - IP-CIDR,127.0.0.0/8,W0
   - MATCH,S2
 
 ```
