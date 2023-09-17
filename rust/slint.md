@@ -11,7 +11,7 @@
 #           core::item_rendering::render_component_items(component, &mut renderer, *origin); // origin::Point
 #   }
 #       render_item_children(renderer, component, -1)
-#       递归 实现了Item trait  Item 用宏vtable 生成
+#       递归 实现了Item trait  Item 用宏vtable 生成.
 
 ```
 
