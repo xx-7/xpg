@@ -27,7 +27,7 @@ MigLayout(String layoutConstraints, String colConstraints, String rowConstraints
 #           详解: 关闭边界填充?
 #       fill or fillx or filly
 #           示例: "fill" or "fillx" or "filly"
-#           详解: 用于列或行所有可用空间扩充
+#           详解: 用于列或行所有可用空间扩充, 要设置了grow才有用
 #       ins/insets ["dialog"] or ["panel"] or [top/all [left [bottom [right]]]]
 #           示例: "insets dialog" or "ins 0" or "insets 10 n n n" or "insets 10 20 30 40"
 #           详解: 指定内容空出间距
@@ -64,7 +64,7 @@ MigLayout(String layoutConstraints, String colConstraints, String rowConstraints
 #           详解: size组名称
 #       fill
 #           示例: "fill"
-#           详解: 设置组件默认 "grow" 方式, 默认设置的是growx
+#           详解: 设置组件增长默认 "grow" 方式, 默认设置的是growx, 要设置了grow才有用
 #       nogrid
 #           示例: "nogrid"
 #           详解: 设置为流模式, 不会与其它行列中的组件对齐, "flowx" / 水平流用于行, "flowy" / 垂直流用于列
@@ -114,46 +114,46 @@ Control.setLayoutData(...)
 #       split [count]
 #           示例: "split" or "split 4"
 #           详解: 拆分单元格, count默认无限大
-#      cell col row [span x [span y]]
+#       cell col row [span x [span y]]
 #           示例: "cell 2 2" or "cell 0 1 2 " or "cell 1 1 3 3"
 #           详解: 设置组件网格位置, 如果该风格已经存在组件则与其共享单元格
-#      flowx or flowy
+#       flowx or flowy
 #           示例: "flowy" or "flowx"
 #           详解: 设置单元格流动方向
-#      w/width size or h/height size
+#       w/width size or h/height size
 #           示例: "width 10!" or "width 10" or "h 10:20" or "height pref!" or "w min:100:pref" or "w 100!,h 100!" or "width visual.x2-pref"
 #           详解: 设置组件显示默认大小, 大小被指定为BoundSize
-#      wmin/wmax x-size or hmin/hmax y-siz
+#       wmin/wmax x-size or hmin/hmax y-siz
 #           示例: "wmin 10" or "hmax pref+100"
 #           详解: 设置组件最小/最大, 大小被指定为BoundSize
-#      grow [weightx [weighty]] or growx [weightx] or growy [weighty]
+#       grow [weightx [weighty]] or growx [weightx] or growy [weighty]
 #           示例: "grow 50 20" or "growx 50" or "grow" or "growx" or "growy 0"
 #           详解: 设置同组中自动增长权重, 默认为0不增长, 也可以使用"grow 0"显示设置为增长
-#      growprio/gp prio or growpriox/gpx priox or growprioy/gpy prioy
+#       growprio/gp prio or growpriox/gpx priox or growprioy/gpy prioy
 #           示例: "growprio 50 50" or "gp 110 90" or "gpx 200" or "growprioy 200"
 #           详解: 设置增长优先级, 优先级高的先增长到其最大尺寸
-#      shrink [weightx [weighty]] or shrinkx [weightx] or shrinky [weighty]
+#       shrink [weightx [weighty]] or shrinkx [weightx] or shrinky [weighty]
 #           示例: "shrink 50" or "shrink 50 40"
 #           详解: 设置同组中自动收缩权重, 默认为100不增长, 默认情况下所有组件都能收缩到最小尺寸, 但不能小于
-#      shrinkprio/shp priox [prioy] or shrinkpriox/shpx priox or shrinkprioy/shpy prioy
+#       shrinkprio/shp priox [prioy] or shrinkpriox/shpx priox or shrinkprioy/shpy prioy
 #           示例: "shrinkpriority 50 50 " or "shp 200 200 " or "shpx 110"
 #           详解: 设置收缩优先级, 优先级高的先收缩到其最小尺寸
-#      sizegroup/sg [name] or sizegroupx/sgx [name] or sizegroupy/sgy [name]
+#       sizegroup/sg [name] or sizegroupx/sgx [name] or sizegroupy/sgy [name]
 #           示例: "sg" or "sg group1" or "sizegroup props" or "sgx" or "sizegroupy grp1"
 #           详解: 提供尺寸组名称?
-#      egx/endgroupx [name] or egy/endgroupy [name]
+#       egx/endgroupx [name] or egy/endgroupy [name]
 #           示例: "eg" or "eg group1" or "endgroup props" or "egx" or "endgroupy grp1"
 #           详解: 结束尺寸组共享?
-#      gap left [right [top [bottom]]] or gaptop gap or gapleft gap or gapbottom gap or gapright gap or gapbefore gap or gapafter gap
+#       gap left [right [top [bottom]]] or gaptop gap or gapleft gap or gapbottom gap or gapright gap or gapbefore gap or gapafter gap
 #           示例: "gap 5px 10px 5px 7px" or "gap unrel rel" or "gapx 5dlu" or "gapx 10:20:50:push" or "gapy 0:rel:null" or "gap 10! 10!" or "gapafter push"
 #           详解: 设置周围间隙
-#      gapx left [right] or gapy top [bottom]
+#       gapx left [right] or gapy top [bottom]
 #           示例: "gapx 5px 10px" or "gapy unrel rel"
 #           详解: 设置水平/垂直间隙
-#      id [groupid.]
+#       id [groupid.]
 #           示例: "id button1" or "id grp1.b1"
 #           详解: 设置组件id
-#      pos x y [x2 [y2]]
+#       pos x y [x2 [y2]]
 #           示例: "pos 50% 50% n n" or "pos 0.5al 0.5al" or "pos 100px 200px" or "pos n n 200 200"
 #           示例: "pos (b1.x+b1.w/2) (b1.y2+rel)" or "pos (visual.x2 - pref) 200" or "pos n b1.y b1.x-rel b1.y2" or "pos 100 100 200 200"
 #           详解: 相对容器的绝对坐标, 不会放入到网格单元中
@@ -161,16 +161,16 @@ Control.setLayoutData(...)
 #               - .x2 or .y2    下/右
 #               - .w or .h      宽/高
 #               - xpos or .ypos 相对于屏幕的绝对坐标
-#      x x or x2 x2 or y y or y2 y2
+#       x x or x2 x2 or y y or y2 y2
 #           示例: "x button1.x" or "x2 (visual.x2-50)" or "x 100, y 300"
 #           详解: 单独设置绝对坐标
-#      dock ("north" or "west" or "south" or "east" or "center") or north/west/south/east
+#       dock ("north" or "west" or "south" or "east" or "center") or north/west/south/east
 #           示例: "dock north" or "north" or "west, gap 5"
 #           详解: 悬浮停靠位置
-#      pad top/all [left [bottom [right]]]
+#       pad top/all [left [bottom [right]]]
 #           示例: "pad 10 10" or "pad 5 5 -5 -5" or "pad 0 0 1 1"
 #           详解: 设置组件填充, "pad -5 -5 5 5"会将组件在所有方向上放大 5 个像素
-#      al/align alignx [aligny] or aligny/ay aligny or alignx/ax alignx
+#       al/align alignx [aligny] or aligny/ay aligny or alignx/ax alignx
 #           示例: "align 50% 50%" or "aligny top" or "alignx leading" or "align 100px" or "top, left" or "aligny baseline"
 #           详解: 如果单元格大于组件加上空隙, 对齐方式
 #       external
