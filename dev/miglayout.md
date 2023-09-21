@@ -1,6 +1,6 @@
 # MigLayout
 
-[dc1](https://www.formdev.com/jformdesigner/doc/layouts/miglayout/)
+[doc](https://www.formdev.com/jformdesigner/doc/layouts/miglayout/)
 
 ## Layout Constraints
 
