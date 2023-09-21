@@ -17,6 +17,6 @@ export FLUTTER_GIT_URL=https://mirrors.tuna.tsinghua.edu.cn/git/flutter-sdk.git
 export CHROME_EXECUTABLE=/opt/google/chrome/chrome
 
 # java
-export JAVA_HOME="/usr/lib/jvm/java-17-openjdk/"
+export JAVA_HOME=/usr/lib/jvm/java-17-openjdk/
 export PATH=$PATH:/usr/lib/jvm/java-17-openjdk/bin/
 export PATH=$PATH:/optd/opt/gradle-8.3/bin/
