@@ -140,7 +140,7 @@ Control.setLayoutData(...)
 #           详解: 设置收缩优先级, 优先级高的先收缩到其最小尺寸
 #       sizegroup/sg [name] or sizegroupx/sgx [name] or sizegroupy/sgy [name]
 #           示例: "sg" or "sg group1" or "sizegroup props" or "sgx" or "sizegroupy grp1"
-#           详解: 提供尺寸组名称?
+#           详解: 设置尺寸组名称, 同组会应用相同大小?
 #       egx/endgroupx [name] or egy/endgroupy [name]
 #           示例: "eg" or "eg group1" or "endgroup props" or "egx" or "endgroupy grp1"
 #           详解: 结束尺寸组共享?
