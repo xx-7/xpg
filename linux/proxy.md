@@ -11,7 +11,6 @@ export {http,https,ftp,rsync,all}_proxy=http://127.0.0.1:11018
 
 # clash
 
-
 ```bash
 
 # https://github.com/Dreamacro/clash/releases
@@ -25,7 +24,7 @@ nano ~/.config/clash/config.yaml
 
 ```
 
-```yaml 
+```yaml
 port: 11018
 socks-port: 11019
 
@@ -62,5 +61,9 @@ proxy-groups:
 rules:
   - IP-CIDR,127.0.0.0/8,W0
   - MATCH,S2
+```
+
+```bash
+ssh -f -N -D 0.0.0.0:8080 root@HOST
 
 ```
