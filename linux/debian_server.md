@@ -9,7 +9,7 @@
 - Debian 10 "buster"
 - Debian 9 "stretch"
 - Debian 8 "jessie"
-- Debian 7 "wheezy" 
+- Debian 7 "wheezy"
 - Debian 6.0 "squeeze"
 - Debian GNU/Linux 5.0 "lenny"
 - Debian GNU/Linux 4.0 "etch"
@@ -35,7 +35,7 @@ apt remove linux-image-5.10.0-17-cloud-amd64
 
 ```
 
-## 多IP
+## 多 IP
 
 ```bash
 nano /etc/network/interfaces
@@ -81,6 +81,8 @@ AuthorizedKeysFile      .ssh/rsa_wx.pub #rsa_pub pub key file
 PasswordAuthentication no
 
 systemctl restart sshd
+
+nano .ssh/authorized_keys
 
 ```
 
@@ -145,7 +147,7 @@ iptables -X
 
 # 保存
 iptables-save > /etc/iptables.up.rules
-# 恢复 
+# 恢复
 iptables-restore < /etc/iptables.up.rules
 
 # 开机自动加载
@@ -251,7 +253,7 @@ chmod 777 /home/downloads
 nano /etc/nginx/conf.d/webdev.conf
 
 server {
-    listen       88; 
+    listen       88;
     server_name  s.domain.com;
     error_log /var/log/nginx/webdav.error.log error;
     access_log  /var/log/nginx/webdav.access.log combined;
@@ -266,9 +268,9 @@ server {
         auth_basic "Authorized Users Only";
         auth_basic_user_file /etc/nginx/.htpasswd;
     }
-    ssl on; 
-    ssl_certificate /etc/letsencrypt/live/s.domain.com/fullchain.pem;    
-    ssl_certificate_key /etc/letsencrypt/live/s.domain.com/privkey.pem; 
+    ssl on;
+    ssl_certificate /etc/letsencrypt/live/s.domain.com/fullchain.pem;
+    ssl_certificate_key /etc/letsencrypt/live/s.domain.com/privkey.pem;
 }
 
 # 设置密码
@@ -308,6 +310,7 @@ systemctl enable cron
 ```
 
 ### 备份删除新安装
+
 ```bash
 
 # 安装前保存列表
