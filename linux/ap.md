@@ -57,6 +57,7 @@ net.ipv4.ip_forward = 1
 sudo systemctl restart networking
 
 # wifi 已经可以连上 需要设置nat才能上网
+# 也可以跟本地网卡桥接, dnsmasq也可以不装
 
 # 禁用 NetworkManager 管理接口
 
