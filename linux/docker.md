@@ -21,9 +21,12 @@ sudo mkdir /etc/docker
 sudo nano /etc/docker/daemon.json
 
 {
-	"registry-mirrors": ["https://mirror.baidubce.com","https://hub-mirror.c.163.com"],
+	"registry-mirrors": ["https://mirror.baidubce.com"],
     "storage-driver": "overlay2"
 }
+
+# 会显示mirrors信息
+docker info
 
 docker version
 
@@ -41,7 +44,7 @@ cat /usr/lib/systemd/system/docker.service
 
 # 有些版本dockerd 参数是/run/docker.sock, docker 默认是 /var/run/docker.sock
 # 配置docker.conf也无效, 就在 docker.service 修改或加上下面参数
-# -H unix:///var/run/docker.sock 
+# -H unix:///var/run/docker.sock
 sudo nano /usr/lib/systemd/system/docker.service
 
 # 修改完 service -> reload
