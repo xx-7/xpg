@@ -37,7 +37,7 @@ sudo firewall-cmd --add-masquerade --permanent
 # 检查是否允许 NAT 转发
 sudo firewall-cmd --query-masquerade
 # 禁用转发
-sudo firewall-cmd --remove-masquerade
+sudo firewall-cmd --remove-masquerade --permanent
 
 # 配置端口转发规则
 # firewall-cmd --permanent --zone=<区域> --add-forward-port=port=<源端口号>:proto=<协议>:toport=<目标端口号>:toaddr=<目标IP地址>
@@ -57,6 +57,9 @@ firewall-cmd --zone=public --list-rich-rules
 firewall-cmd --permanent --add-rich-rule="rule family="ipv4" source address="192.168.1.0/24" port protocol="tcp" port="80" accept"
 # 限制 192.168.1.0/24 访问 80
 firewall-cmd --permanent --add-rich-rule="rule family="ipv4" source address="192.168.1.0/24" port protocol="tcp" port="80" reject"
+
+
+firewall-cmd --permanent --add-rich-rule="rule family="ipv4" source address="192.168.1.0/24" port protocol="tcp" port= mask set="3""
 
 
 

@@ -36,6 +36,12 @@ proxies:
     port: 443
     password: "TEXDSDFEWS"
 
+  # socks5
+  - name: "w1"
+    type: socks5
+    server: "10.8.8.28"
+    port: 58089
+
 proxy-groups:
   - name: S2
     type: select
@@ -63,21 +69,42 @@ rules:
 # 提前创建好nic  再指定好用户 分配路由 不用root也可以运行
 
 
-sudo ip tuntap add mode tun user pi name ttun
-sudo ifconfig ttun up
+# 程序管理网络权限
+sudo apt install libcap2-bin
+sudo setcap cap_net_admin+ep /opt/clash
+sudo getcap /opt/clash
 
-sudo ip route add 198.168.1.1/24 dev ttun
+sudo ip tuntap add mode tun user pi name utun
+sudo ifconfig utun up
+
+# 删除虚拟网卡
+sudo ip link delete utun
+
+# 将某个ip段的请求路由utun
+sudo ip rule add from 192.168.1.0/24 table 202
+sudo ip route add default dev utun table 202
 
 nano ~/.config/clash/config.yaml
 
 tun:
-    enable: true
-    device-url: dev://ttun
-    dns-listen: 0.0.0.0:53
-    auto-route: false
-    auto-redir: false
-    auto-detect-interface: false
+  enable: true
+  dns-listen: 0.0.0.0:53
+  auto-route: false
+  auto-redir: false
+  auto-detect-interface: false
 
 
+cat > /opt/clash/route.sh << EOF
+#!/bin/bash
+
+ip rule del from 192.168.1.0/24 table 202
+ip rule add from 192.168.1.0/24 table 202
+ip route del default table 202
+ip route add default dev utun table 202
+EOF
+
+chmod +x /opt/clash/route.sh
+
+sudo /opt/clash/route.sh
 
 ```
