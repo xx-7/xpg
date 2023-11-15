@@ -38,7 +38,33 @@ http {
     sendfile        on;
     tcp_nopush     on;
     keepalive_timeout  65;
-    gzip  on;
+
+    gzip on;
+    gzip_comp_level 6;
+    gzip_min_length 1k;
+    gzip_buffers 4 16k;
+    gzip_proxied any;
+    gzip_vary on;
+    gzip_types
+        application/javascript
+        application/x-javascript
+        text/javascript
+        text/css
+        text/xml
+        application/xhtml+xml
+        application/xml
+        application/atom+xml
+        application/rdf+xml
+        application/rss+xml
+        application/geo+json
+        application/json
+        application/ld+json
+        application/manifest+json
+        application/x-web-app-manifest+json
+        image/svg+xml
+        text/x-cross-domain-policy;
+    gzip_static on;  
+    gzip_disable "MSIE [1-6]\.";
 
     include /etc/nginx/conf.d/*.conf;
 }
@@ -51,7 +77,7 @@ http {
 # nano /etc/nginx/conf.d/test.conf
 
 server {
-    listen       443;
+    listen       443 ssl;
     server_name  domain.com;
 
     charset utf-8;
@@ -136,5 +162,16 @@ nano /etc/nginx/nginx.conf
     log_format  main  '$remote_addr - $remote_user [$time_local] "$request" '
                    '$status $body_bytes_sent "$http_referer" '
                      '"$http_user_agent" "$http_x_forwarded_for"';
+
+```
+
+# 访问日志全是16进制乱码
+
+```bash
+# 这是ssl配置出错
+
+# ssl
+listen       443 ssl
+
 
 ```

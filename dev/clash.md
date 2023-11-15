@@ -55,6 +55,7 @@ proxy-groups:
 
 rules:
   - IP-CIDR,127.0.0.0/8,W0
+  - SRC-IP-CIDR,192.168.1.1/32,S2
   - MATCH,S2
 ```
 
