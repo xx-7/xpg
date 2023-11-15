@@ -4,6 +4,7 @@
 
 [Releases](https://www.debian.org/releases/index.zh-cn.html)
 
+- Debian 13 "trixie"
 - Debian 12 "bookworm"
 - Debian 11 "bullseye"
 - Debian 10 "buster"

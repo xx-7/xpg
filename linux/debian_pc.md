@@ -60,15 +60,15 @@ cp /etc/apt/sources.list /etc/apt/sources.listbak
 ### 测试源
 
 ```bash
-deb http://ftp.cn.debian.org/debian bullseye main contrib non-free
-deb http://ftp.cn.debian.org/debian bullseye-updates main contrib non-free
+deb http://ftp.cn.debian.org/debian trixie main contrib non-free
+deb http://ftp.cn.debian.org/debian trixie-updates main contrib non-free
 ```
 
 ### 稳定源
 
 ```bash
-deb http://ftp.cn.debian.org/debian buster main contrib non-free
-deb http://ftp.cn.debian.org/debian/debian-security buster-updates main contrib non-free
+deb http://ftp.cn.debian.org/debian bookworm main contrib non-free
+deb http://ftp.cn.debian.org/debian/debian-security bookworm-updates main contrib non-free
 ```
 
 ```bash
