@@ -1,5 +1,6 @@
 ```bash
 
+# 转发直接装iptables 不要装firewalld, 不要装firewalld nat and filter也是用的iptables
 # 查到是否有ap功能
 sudo iw list | grep "Supported interface modes" -A 8
 # 查看已连接用户

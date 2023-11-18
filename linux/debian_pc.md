@@ -14,6 +14,77 @@ apt install kde-plasma-desktop
 
 ```
 
+## xfce
+
+```bash
+sudo apt install xfce4
+
+# 主题复制到 ~/.themes 目录下
+
+# https://github.com/Fausto-Korpsvart/Tokyo-Night-GTK-Theme
+
+# https://github.com/habibimedwassim/Flat-Remix-GTK-Darkish
+
+# 任务bar 改到下面
+# Settings Editor -> xfce4 pannel -> position -> p=10
+
+# 4k 2倍 放大 只能改整数倍 
+# Settings Editor -> xsettings -> Gdk -> WindowScalingFactor -> 2
+
+# 图标
+# https://github.com/vinceliuice/Tela-icon-theme
+
+# 目录
+# 默认theme 
+# 用户 ~/.themes  系统 /usr/share/themes
+# 默认icons
+# 用户 ~/.icons  系统 /usr/share/icons
+
+# 自动锁屏
+sudo apt install xscreensaver
+
+# dpms查询
+xset q
+# 关闭 dpms
+xset s off -dpms
+xset s off
+
+sudo nano /etc/X11/xorg.conf.d/10-monitor.conf
+
+Section "ServerFlags"
+    Option "StandbyTime" "0"
+    Option "SuspendTime" "0"
+    Option "OffTime" "0"
+    Option "BlankTime" "0"
+EndSection
+
+
+#  配置语言包
+sudo apt install locales
+sudo nano /etc/locale.gen
+en_US.UTF-8 UTF-8
+zh_CN.UTF-8 UTF-8
+zh_HK.UTF-8 UTF-8
+# 生成
+sudo locale-gen
+
+sudo apt install fonts-powerline
+# 设置默认
+export LANG=en_US.UTF-8
+export LC_ALL=en_US.UTF-8
+
+
+# qt 程序 缩放
+nano ~/.xsessionrc
+export QT_AUTO_SCREEN_SCALE_FACTOR=0  
+export QT_SCALE_FACTOR=1.75
+
+
+# xfce4-terminal 字体列表默认只显示系统中mono字体 注意设置编码
+fc-list :mono
+
+```
+
 ### 打开方式
 
 ```bash
@@ -273,6 +344,9 @@ sudo apt install pulseaudio pulseaudio-module-bluetooth pavucontrol bluez-firmwa
 # https://wiki.debian.org/BluetoothUser#Can_connect.2C_but_not_to_audio
 sudo apt install pulseaudio-module-bluetooth
 pactl load-module module-bluetooth-discover
+
+# xfce4 蓝牙管理
+sudo apt install blueman
 ```
 
 # 软件
@@ -407,6 +481,7 @@ sudo apt install mtp-tools kio-extras
 
 ```bash
 # https://www.vmware.com/products/workstation-pro/workstation-pro-evaluation.html
+# https://softwareupdate.vmware.com/cds/vmw-desktop/ws/17.0.0/20800274/linux/core/
 
 chmod +x VMware-Workstation-Full-16.2.1-18811642.x86_64.bundle
 

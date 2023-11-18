@@ -11,6 +11,9 @@ chmod +x /optd/opt/clash/clash-linux-amd64-v1.15.1
 
 nano ~/.config/clash/config.yaml
 
+# dns本地请求
+- DST-PORT,53,DIRECT
+
 ```
 
 ```yaml
@@ -69,6 +72,7 @@ rules:
 # 虚拟网卡
 # 提前创建好nic  再指定好用户 分配路由 不用root也可以运行
 
+# 旁路由 流量走utun 直接设置如果不要nat nat完要么游戏直接走了，要么显示源ip是utun ip
 
 # 程序管理网络权限
 sudo apt install libcap2-bin
@@ -83,9 +87,17 @@ sudo ip link delete utun
 
 # 将某个ip段的请求路由utun
 sudo ip rule add from 192.168.1.0/24 table 202
+
+# rule添加了就有效 default route每次clash重启要设置一次
 sudo ip route add default dev utun table 202
 
+sudo ip rule show
+
+sudo ip route show
+
 nano ~/.config/clash/config.yaml
+
+cd /opt/clash && nohup ./clash > nohup.log 2>&1 &
 
 tun:
   enable: true
