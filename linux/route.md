@@ -34,6 +34,9 @@ sudo ip rule del to 192.168.1.0/24
 sudo ip rule del from 192.168.1.0/24
 sudo ip rule del from 192.168.1.0/24 table 200 prio 10
 
+# 根据iptables标记设置表
+sudo ip rule add fwmark 3 table 3 
+
 # 路由
 # 查询
 sudo ip route show

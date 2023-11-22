@@ -91,6 +91,11 @@ sudo ip rule add from 192.168.1.0/24 table 202
 # rule添加了就有效 default route每次clash重启要设置一次
 sudo ip route add default dev utun table 202
 
+# 本地网络走内网不经过utun
+sudo ip route add 10.8.8.0/24 dev eth1 table 202
+# nat 访问上级内网 上级内网要访问 192.168.1.0 要做转发
+sudo iptables -t nat -A POSTROUTING -s 192.168.1.0/24 -d 10.8.8.0/24 -j MASQUERADE
+
 sudo ip rule show
 
 sudo ip route show
