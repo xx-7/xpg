@@ -28,7 +28,7 @@ sudo iptables -t nat -A POSTROUTING -s 192.168.1.0/24 -d 10.8.8.0/24 -j MASQUERA
 # 端口转发
 sudo iptables -t nat -A PREROUTING -p tcp --dport 53 -j DNAT --to-destination 192.168.1.2:53
 
-sudo iptables -t nat -A PREROUTING -p tcp --dport 9966 -j DNAT --to-destination 192.168.1.2:22
+sudo iptables -t nat -A PREROUTING -p tcp --dport 22 -j DNAT --to-destination 192.168.1.2:22
 # 回路 nat
 sudo iptables -t nat -A POSTROUTING -d 192.168.1.2 -p tcp --dport 22 -j SNAT --to 10.8.8.9
 
