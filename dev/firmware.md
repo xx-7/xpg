@@ -17,3 +17,13 @@ unsquashfs
 
 
 ```
+
+# busybox 
+
+```bash
+# chroot busybox 更改密码后 记得vi /etc/shadow 把密码过期改了，在密码后面一个: 跟下面用户一样改成10933
+
+busybox od -t x -Ax -N 16   file
+
+
+```

@@ -1,5 +1,7 @@
 # install
 
+## Arch
+
 ```bash
 
 sudo pacman -Syu docker
@@ -50,6 +52,26 @@ sudo nano /usr/lib/systemd/system/docker.service
 # 修改完 service -> reload
 sudo systemctl daemon-reload
 
+
+```
+
+## debian 
+
+```bash
+sudo apt install apt-transport-https ca-certificates curl gnupg2 software-properties-common
+
+# 添加证书
+curl -fsSL https://download.docker.com/linux/debian/gpg | sudo gpg --dearmor -o /usr/share/keyrings/docker-archive-keyring.gpg
+
+# 添加源
+echo "deb [arch=amd64 signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://download.docker.com/linux/debian $(lsb_release -cs)  stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
+
+sudo apt update
+
+sudo apt install docker-ce docker-ce-cli containerd.io
+
+# 添加docker组 重新登录才生效
+sudo usermod -aG docker $USER
 
 ```
 
@@ -183,6 +205,49 @@ docker run -tid -p 3308:3306 -v $LOCAL:$HOST /PROGAME
 --volumes-from		Mount volumes from the specified container(s)
 --workdir , -w		Working directory inside the container
 
+
+
+```
+
+# Proxy
+
+```bash
+# Docker 代理分三种
+
+# 1.dockerd 代理, 当pull这些用的就是dockerd代理
+
+# dockerd 代理 配置完重启才生效
+sudo systemctl daemon-reload
+sudo systemctl restart docker
+
+sudo mkdir -p /etc/systemd/system/docker.service.d
+sudo nano /etc/systemd/system/docker.service.d/proxy.conf
+[Service]
+Environment="HTTP_PROXY=http://proxy.example.com:8080/"
+Environment="HTTPS_PROXY=http://proxy.example.com:8080/"
+Environment="NO_PROXY=localhost,127.0.0.1"
+
+# 2. 容器代理, 容器运行期间使用
+nano ~/.docker/config.json
+
+{
+ "proxies":
+ {
+   "default":
+   {
+     "httpProxy": "http://proxy.example.com:8080",
+     "httpsProxy": "http://proxy.example.com:8080",
+     "noProxy": "localhost,127.0.0.1,.example.com"
+   }
+ }
+}
+
+# 3. build 命令行代理 build时候用
+
+docker build . \
+    --build-arg "HTTP_PROXY=http://proxy.example.com:8080/" \
+    --build-arg "HTTPS_PROXY=http://proxy.example.com:8080/" \
+    --build-arg "NO_PROXY=localhost,127.0.0.1,.example.com" \
 
 
 ```

@@ -777,6 +777,9 @@ sudo minicom -D /dev/ttyACM0 -b 115200
 # 用户添加串口权限
 sudo usermod -a -G uucp $user
 
+# debian 串口权限
+sudo gpasswd -a $user dialout
+
 # 最好用4pin usb2.0 或者9pin usb3.0线, 一些手机充电线有可能用不了
 
 # Ctrl + a 进入命令模式
