@@ -16,6 +16,12 @@ mount -o loop /path/to/data /mnt
 unsquashfs
 
 
+# linux 固件4大件
+# 1. bootloader -> uboot
+# 2. dtb 文件
+# 3. linux 内核
+# 4. rootfs 根文件系统
+
 ```
 
 # busybox 
@@ -24,6 +30,9 @@ unsquashfs
 # chroot busybox 更改密码后 记得vi /etc/shadow 把密码过期改了，在密码后面一个: 跟下面用户一样改成10933
 
 busybox od -t x -Ax -N 16   file
+
+# 查看支持libc版本
+busybox strings /lib/libm.so.6 | grep GLIBC_
 
 
 ```
