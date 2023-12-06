@@ -24,6 +24,17 @@ unsquashfs
 
 ```
 
+# usb接线
+
+```bash
+4 -  黑
+3 d+ 绿
+2 d- 白
+1 +  红
+
+
+```
+
 # busybox 
 
 ```bash
