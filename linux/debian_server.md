@@ -230,9 +230,6 @@ fs.inotify.max_user_watches=524288
 net.ipv6.conf.all.disable_ipv6=1
 
 
-/sbin/sysctl -p
-
-
 # disable_ipv6 有时候系统只开ipv6自动启动，disable网卡不会随系统启动
 ```
 

@@ -15,6 +15,9 @@ mount -o loop /path/to/data /mnt
 # squashfs 文件系统解包
 unsquashfs
 
+# https://man7.org/linux/man-pages/man1/dmesg.1.html
+# 内核日志
+dmesg
 
 # linux 固件4大件
 # 1. bootloader -> uboot
