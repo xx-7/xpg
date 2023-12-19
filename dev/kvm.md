@@ -1,3 +1,4 @@
+# 安装设置
 
 ```bash
 
@@ -31,5 +32,43 @@ iface br0 inet static
    bridge_ports eth0
    bridge_stp off
    bridge_fd 0
+
+
+# https://www.spice-space.org/download/windows/spice-guest-tools/spice-guest-tools-latest.exe
+# https://wiki.debian.org/BridgeNetworkConnections#Manual_bridge_setup
+# windows 客户端装 spice-guest-tools 同步复制粘贴
+```
+# 虚拟机管理
+
+```bash
+virsh list                  # 查看在运行的虚拟机
+virsh dumpxml vm-name       # 查看kvm虚拟机配置文件
+virsh start vm-name         # 启动kvm虚拟机
+virsh shutdown vm-name      # 正常关机
+
+virsh destroy vm-name       # 非正常关机，强制关闭虚拟机（相当于物理机直接拔掉电源）
+virsh undefine vm-name      # 删除vm的配置文件
+
+ls  /etc/libvirt/qemu       # 默认虚拟机配置文件目录
+
+virsh define file-name.xml  # 根据配置文件定义虚拟机
+virsh suspend vm-name       # 挂起，终止
+virsh resume vm-name       # 恢复被挂起的虚拟机
+virsh autostart vm-name     # 开机自启动vm
+virsh console vm-name       # 连接虚拟机
+```
+
+# 磁盘管理
+
+```bash
+
+qemu-img create -f qcow2 test.img 100G                          #创建虚拟盘
+qemu-img info test.img                                          #查看虚拟盘信息
+qemu-img resize test.img +100G                                  #调整虚拟盘大小
+qemu-img convert -f vmdk -O qcow2 test.vmdk test.img            #格式转换 vmdk -> qcow2
+
+
+sdelete -z C:                                                   #先碎片整理以c盘再sdel清零
+qemu-img convert -O qcow2 old.img new.img                       #转换调整大小
 
 ```
