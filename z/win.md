@@ -17,6 +17,9 @@ certutil -hashfile  <文件名>  <hash类型 SHA1/MD5/SHA256>
 # win7 https 访问出问题安装下面页面的 Easy fix
 # https://support.microsoft.com/en-us/topic/update-to-enable-tls-1-1-and-tls-1-2-as-default-secure-protocols-in-winhttp-in-windows-c4bd73d2-31d7-761e-0178-11268bb10392
 
+# editplus 5
+# vip 8JEQG-M5A9B-HCK8W-AJ81Y-YK00L
+
 ```
 
 # Win10 2021 LTSC
