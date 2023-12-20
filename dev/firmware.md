@@ -19,6 +19,9 @@ file $FILENAME
 # 内核日志
 dmesg
 
+
+ sudo apt install binutils-arm-linux-gnueabi
+
 # linux 固件4大件
 # 1. bootloader -> uboot
 # 2. dtb 文件
@@ -74,6 +77,28 @@ sudo apt u-boot-tools
 
 # 跳过64字节 导出 kernel.uImage
 dd if=p.uImage of=kernel.uImage bs=1 skip=64
+
+```
+
+# image
+
+```bash
+
+# uImage 是 uboot 打包格式 单个跟过64字节就是zImage 多个64字节后面跟一个数组4位为0的数组 每4位代表一个 image大小
+mkimage -l ./kernal.uimg
+
+file ./kernal.uimg
+
+# zImage 压缩算法有很多, 只能根据特征扫描查找
+# binwalk 中有常用算法特征 
+# https://github.com/ReFirmLabs/binwalk/blob/master/src/binwalk/magic/compressed
+
+# 7zXz   xz算法 0xfd377a585a00  只能用binwalk用程序解 系统xz解出错？
+# http://tukaani.org/xz/xz-file-format.txt
+arm-linux-gnueabi-objdump -EL -b binary -D -m armv5t ./kernal.zimg | grep 587a37fd
+
+# gzip 0x1f8b08
+arm-linux-gnueabi-objdump -EL -b binary -D -m armv5t ./kernal.zimg | grep 088b1f
 
 ```
 
