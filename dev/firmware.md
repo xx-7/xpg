@@ -25,6 +25,23 @@ dmesg
 
 ```
 
+# elf
+
+```bash
+# 读elf版本
+readelf -A FILE
+
+# 动态依赖
+readelf -d FILE
+
+# 导出表
+readelf --dyn-syms FILE
+
+# 导入表
+objdump -T FILE
+
+```
+
 # u-boot
 
 ```bash

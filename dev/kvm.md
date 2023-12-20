@@ -53,7 +53,7 @@ ls  /etc/libvirt/qemu       # 默认虚拟机配置文件目录
 
 virsh define file-name.xml  # 根据配置文件定义虚拟机
 virsh suspend vm-name       # 挂起，终止
-virsh resume vm-name       # 恢复被挂起的虚拟机
+virsh resume vm-name        # 恢复被挂起的虚拟机
 virsh autostart vm-name     # 开机自启动vm
 virsh console vm-name       # 连接虚拟机
 ```
