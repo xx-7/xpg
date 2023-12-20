@@ -12,6 +12,8 @@ mount /dev/loop0 /mnt
 # 直接加载并mount
 mount -o loop /path/to/data /mnt
 
+# 识别文件类型
+file $FILENAME
 
 # https://man7.org/linux/man-pages/man1/dmesg.1.html
 # 内核日志

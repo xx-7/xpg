@@ -361,7 +361,7 @@ sudo apt install nfs-common mpv remmina fontforge
 sudo apt install sqlitebrowser shotcut gimp
 sudo apt install flameshot gwenview keepassxc
 sudo apt install nodejs npm
-sudo apt install fonts-firacode
+sudo apt install fonts-firacode p7zip-full
 sudo apt install qbittorrent libreoffice
 ```
 
