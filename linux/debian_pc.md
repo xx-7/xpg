@@ -81,7 +81,7 @@ export QT_SCALE_FACTOR=1.75
 
 
 # xfce4-terminal 字体列表默认只显示系统中mono字体 注意设置编码
-fc-list :mono
+
 
 ```
 

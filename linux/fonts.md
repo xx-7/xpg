@@ -17,6 +17,12 @@ sudo pacman -S adobe-source-code-pro-fonts
 
 sudo fc-cache -fv
 
+# 查询系统中字体
+fc-list | grep 'WenQuan'
+
+# 查询系统mono字体
+fc-list :mono | grep 'WenQuan'
+
 # 默认字体目录
 /usr/share/fonts/
 ~/.local/share/fonts

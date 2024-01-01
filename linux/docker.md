@@ -92,6 +92,22 @@ docker images
 # 运行列表
 docker ps
 
+# 显示所有容器
+docker ps --all
+
+# 删除容器
+docker rm ContainerId
+
+# 删除镜像 删镜像前, 关联的容器要全删除
+docker rmi ImageName
+
+# 查看网络设置
+docker network inspect br0
+
+# 重新配置网络
+docker network prune
+docker network create --subnet=192.168.8.1/24 --gateway=192.168.8.1 br0
+
 # run
 docker run [OPTIONS] IMAGE [COMMAND] [ARG...]
 

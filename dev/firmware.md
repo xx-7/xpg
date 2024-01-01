@@ -20,7 +20,7 @@ file $FILENAME
 dmesg
 
 
- sudo apt install binutils-arm-linux-gnueabi
+sudo apt install binutils-arm-linux-gnueabi
 
 # linux 固件4大件
 # 1. bootloader -> uboot
