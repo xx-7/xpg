@@ -28,6 +28,9 @@ export ANDROID_SDK_ROOT=/optd/sdk
 
 flutter config --android-studio-dir=/optd/opt/android-studio/
 
+# 检测环境
+flutter doctor
+
 
 ```
 
