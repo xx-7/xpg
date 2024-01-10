@@ -30,9 +30,9 @@ uname -a
 # 查看源中内核
 apt-cache search linux-image
 # 安装内核
-apt install linux-image-5.10.0-25-amd64
+apt install linux-image-6.1.0-17-amd64
 # 删除旧内核，如果是运行中内核会弹出窗口选No
-apt remove linux-image-5.10.0-17-cloud-amd64
+apt remove linux-image-6.1.0-15-cloud-amd64
 
 ```
 
