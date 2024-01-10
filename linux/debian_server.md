@@ -174,6 +174,18 @@ chmod +x /etc/rc.local
 
 systemctl enable rc.local
 
+systemctl enable rc-local
+
+systemctl start rc-local
+
+cat /lib/systemd/system/rc-local.service
+
+# 报错 The unit files have no installation config (WantedBy=, RequiredBy=, Also=, Alias= settings in the [Install] section
+# nano /lib/systemd/system/rc-local.service
+[Install]
+WantedBy=multi-user.target
+
+
 # startup
 cd /home/$PATH && nohup ./$BIN > nohup.log 2>&1 &
 
