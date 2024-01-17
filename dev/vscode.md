@@ -10,7 +10,7 @@
   * Rust syntax
   * Crates
   * Better toml
-  * Rust test lens
+  * Tokyo Night /  Tokyo Night Storm
   * Tabnine
 
 # 设置
