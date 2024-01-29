@@ -69,6 +69,9 @@ git clone https://github.com/AloneMonkey/frida-ios-dump.git
 cd frida-ios-dump
 sudo pip3 install -r requirements.txt --upgrade
 
+# Ida7 插件
+# https://github.com/ChiChou/IDA-ObjCExplorer
+
 # 可以在dump.py中直接改 User/Password/Host/Port
 # 也可以 -H HOST -p PORT -u USER -P PASS
 

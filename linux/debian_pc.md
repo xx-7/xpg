@@ -363,6 +363,15 @@ sudo apt install flameshot gwenview keepassxc
 sudo apt install nodejs npm
 sudo apt install fonts-firacode p7zip-full
 sudo apt install qbittorrent libreoffice
+
+
+# 安装sid的包
+sudo nano  /etc/apt/sources.list
+deb http://deb.debian.org/debian bookworm-backports main
+
+sudo apt update
+
+apt install -t bookworm-backports kicad
 ```
 
 ## yarn 
