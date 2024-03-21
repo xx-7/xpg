@@ -32,3 +32,12 @@
 # GPT-SoVITS
 
 ```
+
+# 其它
+
+```bash
+
+# 换脸对口型
+# facefusion
+
+```
