@@ -1,7 +1,7 @@
 # List
 
 - [Sarasa Gothic](https://github.com/be5invis/Sarasa-Gothic)
-- [Sarasa Gothic](https://github.com/be5invis/Sarasa-Gothic)
+- [霞鹜文楷](https://github.com/lxgw/LxgwWenKai)
 - [Fira Code](https://github.com/tonsky/FiraCode)
 
 # Install
@@ -63,4 +63,22 @@ fc-list :mono | grep 'WenQuan'
     </prefer>
   </alias>
 </fontconfig>
+```
+
+# Debian
+
+```bash
+
+# 复制字体到目录
+sudo cp ./LXGWWenKaiMono-Regular.ttf /usr/share/fonts/opentype/diy/
+
+# 重新缓存
+sudo fc-cache -fv
+
+# 查询系统中字体
+fc-list | grep 'diy'
+
+# 查询系统mono字体
+fc-list :mono | grep 'diy'
+
 ```

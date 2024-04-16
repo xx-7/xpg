@@ -30,7 +30,6 @@ cmake --build ./ --target install --config Release -j6
 mkdir /OrcaSlicer/dist
 
 cp -r /optd/opt/OrcaSlicer /OrcaSlicer/dist/OrcaSlicer
-cp -r /optd/opt/OrcaSlicer_deps /OrcaSlicer/dist/OrcaSlicer_deps
 
 ```
 
