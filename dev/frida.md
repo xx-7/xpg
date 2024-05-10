@@ -11,6 +11,8 @@
 # python 
 sudo pip3 install frida-tools
 
+# debian
+sudo apt install frida -y
 
 # ios frida server
 # Cydia 添加源 https://build.frida.re 搜索 Frida 并安装

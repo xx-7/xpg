@@ -19,6 +19,9 @@ sudo chown -R git:git /disk/gogs
 
 gogs/
 
+# 数据库里重置用户密码为123456
+update user set passwd='b4af39cca17a2231fead3c06908d352fd367c123fceb7256caeedf032b0d87c8a00a0e86a72f1003622baccbaa6cb511ea57',rands='FPU4fPdLbK',salt='6sQ8yJ1aGz' where id==2;
+
 ```
 
 ```conf
