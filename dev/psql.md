@@ -77,6 +77,8 @@ pg_dump -U postgres -f /tmp/pg.sql -t test postgres
 psql -U postgres -f /tmp/pg.sql bk01
 pg_restore -U postgres -d bk01 /tmp/pg.tar
 
+DROP TABLE $NAME;
+
 ```
 
 # 移动库数据位置
