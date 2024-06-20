@@ -8,6 +8,10 @@
 # ~/.local/share/FreeCAD/
 # 配置目录
 # ~/.config/FreeCAD/
+
+# 去掉默认单例启动  删除 --single-instance
+sudo nano /usr/share/applications/org.freecadweb.FreeCAD.desktop
+
 ```
 
 # 设置

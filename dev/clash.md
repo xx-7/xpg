@@ -9,7 +9,11 @@ mkdir -p /optd/opt/clash/
 tar -xf clash-linux-amd64-v1.15.1.gz -C /optd/opt/clash/
 chmod +x /optd/opt/clash/clash-linux-amd64-v1.15.1
 
+wget https://gitee.com/mirrors/Pingtunnel/raw/master/GeoLite2-Country.mmdb
+
 nano ~/.config/clash/config.yaml
+
+
 
 # dns本地请求
 - DST-PORT,53,DIRECT
