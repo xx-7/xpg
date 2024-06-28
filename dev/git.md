@@ -57,6 +57,7 @@ git mergetool
 #放弃本地修改强拉远程
 git fetch origin
 git reset --hard origin/master
+git reset --hard origin/main
 
 # --soft 删除改动文件, 撤消commit 撤消add
 # --mixed 不删除改动文件, 撤消commit 撤消add
