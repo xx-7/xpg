@@ -20,6 +20,13 @@
 - Debian GNU/Linux 2.1 "slink"
 - Debian GNU/Linux 2.0 "hamm"
 
+# 服务器
+
+```bash
+# 尽量把系统装在一个盘 数量应用程序 用硬矩阵或zfs 挂到 /disk/下
+
+```
+
 # 配置
 
 ## 内核
