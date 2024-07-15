@@ -3,6 +3,7 @@
 - [Sarasa Gothic](https://github.com/be5invis/Sarasa-Gothic)
 - [霞鹜文楷](https://github.com/lxgw/LxgwWenKai)
 - [Fira Code](https://github.com/tonsky/FiraCode)
+- [有字库龙藏手写体](https://github.com/google/fonts/blob/main/ofl/longcang/LongCang-Regular.ttf)
 
 # Install
 
