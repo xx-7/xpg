@@ -15,6 +15,14 @@ yum install zfs
 modprobe zfs
 systemctl preset zfs-import-cache zfs-import-scan zfs-mount zfs-share zfs-zed zfs.target
 
+# debian
+sudo apt update
+sudo apt install linux-headers-amd64
+sudo apt install -t stable-backports zfsutils-linux
+
+# 出错 E: The value 'stable-backports' is invalid for APT::Default-Release as such a release is not available in the sources"
+codename=$(lsb_release -cs);echo "deb http://deb.debian.org/debian $codename-backports main contrib non-free"|sudo tee -a /etc/apt/sources.list && sudo apt update
+
 zfs list                            #查看zfs列表
 zfs set mountpoint=/disk/w d1t      #设置d1t挂载到/disk/w目录,可继承
 zfs create -o mountpoint=/test d2t/test

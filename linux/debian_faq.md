@@ -36,6 +36,41 @@ sudo update-grub
 # 4. sudo cp /sbin/init /mnt/sbin/
 ```
 
+## npm出现"Segmentation fault"
+
+```bash
+
+sudo apt remove nodejs
+sudo apt autoremove
+sudo apt clean
+curl -sL https://deb.nodesource.com/setup_lts.x | sudo -E bash -
+sudo apt install -y nodejs
+
+sudo npm install -g n
+
+sudo n latest
+sudo n stable
+sudo n lts
+
+n 
+
+```
+
+## yarn出现“There are no scenarios ; must have at least one"
+
+```bash
+
+sudo apt remove cmdtest
+sudo apt remove yarn
+ 
+curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add -
+echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list
+ 
+sudo apt update
+sudo apt install yarn
+
+```
+
 ## 修复坏道
 
 ```bash
