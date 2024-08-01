@@ -37,6 +37,39 @@ certutil -hashfile  <文件名>  <hash类型 SHA1/MD5/SHA256>
 
 ```
 
+# Office ltsc
+
+```bash
+
+# https://sysin.org/blog/office-2021-iso/
+# 1. 下载 "Office 部署工具" 解压得到 setup.exe 网址: https://www.microsoft.com/download/details.aspx?id=49117 
+
+# 2. 新建 ltsc.xml
+# 可以删除 ProjectPro2021Volume / VisioPro2021Volume
+<Configuration>
+  <Add OfficeClientEdition="64" Channel="PerpetualVL2021" AllowCdnFallback="true" OfficeMgmtCOM="False">
+    <Product ID="ProPlus2021Volume">
+      <Language ID="zh-cn" />
+      <ExcludeApp ID="Lync" />
+      <ExcludeApp ID="OneDrive" />
+      <ExcludeApp ID="Teams" />
+    </Product>
+    <Product ID="ProjectPro2021Volume">
+      <Language ID="zh-cn" />
+    </Product>
+    <Product ID="VisioPro2021Volume">
+      <Language ID="zh-cn" />
+      <ExcludeApp ID="OneDrive" />
+    </Product>
+  </Add>
+  <Display Level="Full" AcceptEULA="TRUE" />
+  <Updates Enabled="False" Channel="PerpetualVL2021" />
+</Configuration>
+
+# 3. setup /configure ltsc.xml
+
+```
+
 # ShrewVPN
 
 * 下载并安装免费的 [Shrew Soft VPN 客户端](https://www.shrew.net/download/vpn)。在安装时请选择 Standard Edition。
