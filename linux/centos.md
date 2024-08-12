@@ -20,6 +20,10 @@ EOF
 
 chmod +x /etc/rc.d/rc.local
 
+
+echo "export LC_ALL=en_US.UTF-8" >> /etc/profile
+source /etc/profile
+
 ```
 
 ## 更新内核
@@ -180,19 +184,96 @@ ln -sf /usr/local/openssl/bin/openssl /usr/bin/openssl
 echo "/usr/local/openssl/lib" >> /etc/ld.so.conf
 ldconfig -v
 openssl version -a
+
+
+wget https://www.openssl.org/source/openssl-3.2.2.tar.gz
+tar -zxvf openssl-3.2.2.tar.gz
+cd openssl-3.2.2
+
+./config  --prefix=/usr/local/openssl
+make -j 32
+make install
+
+ln -sf /usr/local/openssl/bin/openssl /usr/bin/openssl
+echo "/usr/local/openssl/lib64" >> /etc/ld.so.conf
+ldconfig -v
+openssl version -a
+
 ```
 
 ## GLIBC 编译
 
 ```bash
-strings /lib64/libc.so.6 |grep GLIBC_
-wget http://mirrors.ustc.edu.cn/gnu/glibc/glibc-2.32.tar.gz
-tar -zxf glibc-2.32.tar.gz 
-cd glibc-2.32/
-mkdir build
-cd build/
-../configure --prefix=/usr
-make -j2
+
+/lib64/libc.so.6
+ldd --version
+
+# 查看已安装版本
+strings /lib64/libc.so.6 | grep -E "^GLIBC" | sort -V -r | uniq
+
+wget http://mirrors.ustc.edu.cn/gnu/glibc/glibc-2.36.tar.gz
+tar -zxf glibc-2.36.tar.gz 
+cd glibc-2.36/
+mkdir build 
+cd ./build/
+../configure --prefix=/usr/local/glib2.36 --with-binutils=/usr/bin --enable-add-ons --disable-profile --disable-sanity-checks --disable-werror
+make -j8
+make install
+
+
+
+
+LD_PRELOAD=/usr/local/glib2.34/lib/ld-linux-x86-64.so.2 ./your_application
+
+cd /opt/path && nohup /usr/local/glib2.34/lib/ld-linux-x86-64.so.2 --library-path /usr/local/glib2.34/lib/:/lib64/  \
+        ./your_applicatio > nohup.log  2>&1 &
+
+
+```
+
+### 修复到 2.32
+
+```bash
+
+
+/lib64/ld-2.32.so /usr/bin/ln -snf libanl-2.32.so libanl.so.1
+/lib64/ld-2.32.so /usr/bin/ln -snf libBrokenLocale-2.32.so libBrokenLocale.so.1
+/lib64/ld-2.32.so /usr/bin/ln -snf libcidn-2.32.so libcidn.so.1
+/lib64/ld-2.32.so /usr/bin/ln -snf libcrypt-2.32.so libcrypt.so.1
+/lib64/ld-2.32.so /usr/bin/ln -snf libdl-2.32.so libdl.so.2
+/lib64/ld-2.32.so /usr/bin/ln -snf libm-2.32.so libm.so.6
+/lib64/ld-2.32.so /usr/bin/ln -snf libnsl-2.32.so libnsl.so.1
+/lib64/ld-2.32.so /usr/bin/ln -snf libnss_compat-2.32.so libnss_compat.so.2
+/lib64/ld-2.32.so /usr/bin/ln -snf libnss_db-2.32.so libnss_db.so.2
+/lib64/ld-2.32.so /usr/bin/ln -snf libnss_dns-2.32.so libnss_dns.so.2
+/lib64/ld-2.32.so /usr/bin/ln -snf libnss_files-2.32.so libnss_files.so.2
+/lib64/ld-2.32.so /usr/bin/ln -snf libnss_hesiod-2.32.so libnss_hesiod.so.2
+/lib64/ld-2.32.so /usr/bin/ln -snf libnss_nisplus-2.32.so libnss_nisplus.so.2
+/lib64/ld-2.32.so /usr/bin/ln -snf libnss_nis-2.32.so libnss_nis.so.2
+/lib64/ld-2.32.so /usr/bin/ln -snf libpthread-2.32.so libpthread.so.0
+/lib64/ld-2.32.so /usr/bin/ln -snf libresolv-2.32.so libresolv.so.2
+/lib64/ld-2.32.so /usr/bin/ln -snf librt-2.32.so librt.so.1
+/lib64/ld-2.32.so /usr/bin/ln -snf libutil-2.32.so libutil.so.1
+
+/lib64/ld-2.32.so /usr/bin/ln -sf /lib64/ld-2.32.so /lib64/ld-linux-x86-64.so.2
+LD_PRELOAD=/lib64/libc-2.32.so ln -s /lib64/libc-2.32.so /lib64/libc.so.6
+# 提示/lib64/libc.so.6 已存在
+LD_PRELOAD=/lib64/libc-2.32.so rm -rf /lib64/libc.so.6
+
+
+```
+
+## binutils 编译
+
+```bash
+
+ld -v
+wget http://ftp.gnu.org/gnu/binutils/binutils-2.43.tar.gz
+tar -zxf binutils-2.43.tar.gz
+cd binutils-2.43/
+mkdir build && cd build/
+../configure --prefix=/usr/local/binutils2.43
+make
 make install
 ```
 
@@ -406,4 +487,14 @@ EOF
  
 source /etc/environment
 localedef -v -c -i en_US -f UTF-8 en_US.UTF-8
+```
+
+
+# FAQ
+
+```bash
+
+# /bin/sh: warning: setlocale: LC_ALL: cannot change locale (en_US.utf-8)
+localedef -i en_US -f UTF-8 en_US.UTF-8
+
 ```

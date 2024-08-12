@@ -27,8 +27,7 @@ cargo build --release
 
 rustup self uninstall
 rustup default stable-gnu
-rustup default stable-x86_64-pc-windows-gnu
-rustup toolchain list
+rustup default stable-x86_64-pc-windows
 rustup toolchain install stable-x86_64-pc-windows-gnu
 rustup toolchain uninstall stable-x86_64-pc-windows-gnu
 
