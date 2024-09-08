@@ -19,8 +19,8 @@ sudo systemctl status postgresql
 
 ps -ef | grep postgresql
 
-sudo chmod 700 /optd/opt/pgsql/ 
-sudo chown postgres.postgres /optd/opt/pgsql/
+sudo chmod 700 /zfs/pgsql/ 
+sudo chown postgres:postgres /zfs/pgsql/
 
 # 初始化
 sudo -u postgres /usr/lib/postgresql/16/bin/initdb -D /optd/opt/pgsql/data --locale en_US.UTF-8 --auth md5 --pwprompt
@@ -93,13 +93,13 @@ SHOW data_directory;
 
 sudo systemctl stop postgresql
 
-sudo rsync -av /var/lib/postgresql/ /optd/opt/psql
+sudo rsync -av /var/lib/postgresql/ /zfs/pgsql
 
 sudo mv /var/lib/postgresql/16/main /var/lib/postgresql/16/main.bak
 
 sudo nano /etc/postgresql/16/main/postgresql.conf
 # 修改位置
-data_directory = '/optd/opt/psql/16/main'
+data_directory = '/zfs/pgsql/16/main'
 
 sudo rm -rf /var/lib/postgresql/16
 

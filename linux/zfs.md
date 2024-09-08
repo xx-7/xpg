@@ -36,6 +36,9 @@ zpool scrub d1t                     #检测池 d1t 是否存在问题
 zpool iostat d1t                    #查看池 d1t 的IO使用状况，可以加 -v 来详细到池所拥有的每块磁盘
 zpool upgrade d1t                   #更新d1t池
 zpool upgrade -a                    #更新全部池
+
+zpool import                        #重新安装读取硬盘中的配置信息
+zpool import NAME -f                #导入修复
 ```
 
 ### 无法加载zfs内核
