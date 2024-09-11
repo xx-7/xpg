@@ -33,7 +33,20 @@ certutil -hashfile  <文件名>  <hash类型 SHA1/MD5/SHA256>
 # FT2X8-FTNP4-FKYQ3-DPHCR-KBWYV
 # 6F99V-3NCRG-49HKH-QQDC8-MTG2P
 
+# C3NMT-6TP8F-CD7YH-JW482-9QD82
 # NPPR9-FWDCX-D2C8J-H872K-2YT43
+
+# 设置激活主机 官方通道可不设置
+slmgr /skms s1.kms.cx
+
+# 设置密钥
+slmgr /ipk C3NMT-6TP8F-CD7YH-JW482-9QB82
+
+# 开始激动
+slmgr /ato
+
+# 查看激活状态
+slmgr /xpr
 
 ```
 
@@ -67,6 +80,27 @@ certutil -hashfile  <文件名>  <hash类型 SHA1/MD5/SHA256>
 </Configuration>
 
 # 3. setup /configure ltsc.xml
+
+
+# kms指定服务器激活
+
+
+cd "C:\Program Files\Microsoft Office\Office16"
+
+# 查询状态
+cscript ospp.vbs /dstatus
+
+# 卸载key XXXXX为key后五位
+cscript ospp.vbs /unpkey:xxxxx
+
+# 设置激活码
+cscript ospp.vbs /inpkey:xxxxx-xxxxx-xxxxx-xxxxx
+
+# 设置kms服务器 https://kms.cx/
+cscript ospp.vbs /sethst:/sethst:s1.kms.cx
+
+# 开始激活
+cscript ospp.vbs /act
 
 ```
 
