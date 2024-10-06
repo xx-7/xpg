@@ -13,6 +13,8 @@ sudo apt update
 
 sudo apt -y install postgresql postgresql-client
 
+sudo apt -y install postgresql-16 postgresql-client-16
+
 sudo systemctl restart postgresql
 
 sudo systemctl status postgresql

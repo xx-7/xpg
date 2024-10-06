@@ -55,6 +55,13 @@ netmask 255.255.255.240
 gateway 10.8.8.1
 
 ifup eno1:0
+ifdown eno1:0
+
+# auto / allow-hotplug
+# auto: 开机启动
+# allow-hotplug: 网线路动态热插拔启动
+
+# 不配置gateway 就不会作为默认网关出口 多网卡设置一个就可以 
 
 ```
 

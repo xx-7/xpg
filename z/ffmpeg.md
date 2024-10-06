@@ -20,4 +20,7 @@ ffmpeg -i INPUT.mp4 -vf transpose=1 OUTPUT.mp4
 # 逆时针90度旋转
 ffmpeg -i INPUT.mp4 -vf transpose=2 OUTPUT.mp4
 
+
+ffmpeg -i "https://bb.com/a.m3u8" -bsf:a aac_adtstoasc -vcodec copy -c copy -crf 50 mp4.mp4
+
 ```
