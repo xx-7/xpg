@@ -44,7 +44,7 @@ flutter doctor
 # https://docs.flutter.dev/development/platform-integration/desktop
 
 flutter create my_app
-flutter create my_app --platforms=linux,windows,macos --project-name myapp
+flutter create my_app --platforms=linux,windows,macos,ios,android --project-name myapp
 
 # add existing
 flutter create --platforms=linux,windows,macos ./
