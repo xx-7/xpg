@@ -17,6 +17,8 @@ flutter_rust_bridge_codegen integrate
 # frb2 
 
 ```bash
+# https://trdthg.github.io/flutter_rust_bindgen_book_zh/integrate/new_crate.html
+# https://cjycode.com/flutter_rust_bridge/guides/how-to/cargo-workspaces
 
 cargo install flutter_rust_bridge_codegen
 
