@@ -72,3 +72,10 @@ flutter config --no-enable-ios
 
 
 ```
+
+
+# Document 
+
+## StatelessWidget or StatefulWidget
+ * StatelessWidget和StatefulWidget没有本质区别，他们的所有属性都是不可变的。它们都没法更新，除非用一个新的Widget去替换它们。
+ * StatefulWidget拥有一个可变的State。
