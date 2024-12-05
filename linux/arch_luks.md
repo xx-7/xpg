@@ -58,7 +58,7 @@ gdisk /dev/sda
 # 性能测试
 cryptsetup benchmark
 
-cryptsetup luksFormat /dev/sda3
+cryptsetup luksFormat -s 256 /dev/sda3
 
 # 挂载 /dev/mapper/$DM_NAME -> /dev/mapper/arch-rootfs
 cryptsetup open /dev/sda3 arch-rootfs
