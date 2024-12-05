@@ -30,7 +30,7 @@ cargo new --lib ffi-client-rs
 crate-type = ["staticlib", "cdylib"]
 
 [dependencies]
-flutter_rust_bridge = "=2.5.0"
+flutter_rust_bridge = "=2.6.0"
 
 
 flutter create flutter-ui --platforms=linux,windows,macos,ios,android --project-name ffi_client
