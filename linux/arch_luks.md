@@ -176,3 +176,53 @@ umount -R /mnt
 reboot
 
 ```
+
+# 配置安装软件 
+
+```bash
+
+# 设置用户
+
+useradd -m -g users -G wheel,lp,network,power -s /bin/bash fex
+passwd fex
+
+pacman -S sudo
+# sudo
+EDITOR=nano visudo
+Defaults:fex rootpw
+Defaults:fex timestamp_timeout=20
+fex ALL=(ALL) ALL
+
+# 安装桌面环境
+
+sudo pacman -S xorg xfce4 sddm
+sudo systemctl enable sddm
+
+sudo pacman -S firefox mpv unarchiver gimp gwenview evince flameshot remmina
+
+paru -S ttf-fira-code adobe-source-code-pro-fonts ttf-lxgw-wenkai-mono-lite
+
+paru -S google-chrome visual-studio-code-bin jdk8-openjdk jdk11-openjdk
+
+# systemd 方式设置静态IP
+sudo nano /etc/systemd/network/eth0.network
+[Match]
+Name=$INTERFACE
+
+[Network]
+Address=10.8.8.28/24
+Gateway=10.8.8.1
+DNS=10.8.8.1
+
+systemctl enable systemd-networkd
+systemctl restart systemd-networkd
+
+
+# paru
+pacman -S git rust base-devel
+git clone https://aur.archlinux.org/paru.git
+cd paru
+makepkg -si
+
+
+```

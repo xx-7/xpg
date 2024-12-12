@@ -66,3 +66,10 @@ alias phs='python -m http.server'
 # esp32-idf
 alias get_idf='. /optd/opt/esp/esp-idf/export.sh'
 alias idf='idf.py'
+
+
+alias phs='python -m http.server'
+alias qls='sudo systemctl start libvirtd && sudo systemctl start spice-vdagentd'
+
+alias qcb='cd ../ && rm -rf build'
+alias qgb='mkdir build && cd build && ./cmake ../'

@@ -2,6 +2,12 @@
 
 ```bash
 
+# arch
+# https://wiki.archlinux.org/title/QEMU#
+sudo pacman -S qemu-desktop libvirt virt-manager bridge-utils
+sudo systemctl start libvirtd
+sudo systemctl start spice-vdagentd
+
 # https://wiki.debian.org/KVM
 
 # 图形
@@ -32,6 +38,34 @@ iface br0 inet static
    bridge_ports eth0
    bridge_stp off
    bridge_fd 0
+
+# arch
+
+sudo nano /etc/systemd/network/25-br0.netdev
+
+[NetDev]
+Name=br0
+Kind=bridge
+
+sudo nano /etc/systemd/network/br0.network
+
+[Match]
+Name=br0
+
+[Network]
+Address=10.8.8.21/24
+Gateway=10.8.8.1
+DNS=10.8.8.1
+
+sudo nano /etc/systemd/network/enp89s0.network
+
+[Match]
+Name=enp89s0
+
+[Network]
+Bridge=br0
+
+sudo systemctl restart systemd-networkd
 
 
 # https://www.spice-space.org/download/windows/spice-guest-tools/spice-guest-tools-latest.exe
