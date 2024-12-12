@@ -71,5 +71,6 @@ alias idf='idf.py'
 alias phs='python -m http.server'
 alias qls='sudo systemctl start libvirtd && sudo systemctl start spice-vdagentd'
 
-alias qcb='cd ../ && rm -rf build'
-alias qgb='mkdir build && cd build && ./cmake ../'
+alias qcb='cd ../ && rm -rf build && rm -rf build.ninja'
+alias qgb='mkdir build && cd build && cmake ../'
+alias qgbn='mkdir build.ninja && cd build.ninja && cmake ../ -G Ninja'
