@@ -8,8 +8,8 @@ sudo apt install clang cmake git ninja-build pkg-config libgtk-3-dev liblzma-dev
 
 
 cd /optd/opt
-curl -OL https://storage.googleapis.com/flutter_infra_release/releases/stable/linux/flutter_linux_3.24.5-stable.tar.xz
-tar xf flutter_linux_3.24.5-stable.tar.xz
+curl -OL https://storage.googleapis.com/flutter_infra_release/releases/stable/linux/flutter_linux_3.27.1-stable.tar.xz
+tar xf flutter_linux_3.27.1-stable.tar.xz
 
 # env flutter
 export PATH=$PATH:/optd/opt/flutter/bin
