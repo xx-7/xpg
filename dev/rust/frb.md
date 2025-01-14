@@ -23,27 +23,27 @@ flutter_rust_bridge_codegen integrate
 cargo install flutter_rust_bridge_codegen
 
 
-cargo new --lib ffi-client-rs
+cargo new --lib ffi-ui-rs
 
-# >> ffi-client-rs/cargo.toml
+# >> ffi-ui-rs/cargo.toml
 [lib]
 crate-type = ["staticlib", "cdylib"]
 
 [dependencies]
-flutter_rust_bridge = "=2.6.0"
+flutter_rust_bridge = "=2.7.0"
 
 
-flutter create flutter-ui --platforms=linux,windows,macos,ios,android --project-name ffi_client
+flutter create flutter-ui --platforms=linux,windows,macos,ios,android --project-name fui
 
 
 cd flutter-ui
-flutter_rust_bridge_codegen integrate --rust-crate-dir ../ffi-client-rs
+flutter_rust_bridge_codegen integrate --rust-crate-dir ../ffi-ui-rs
 
-mv ../ffi-client-rs/src/api ../ffi-client-rs/src/ffi
+mv ../ffi-ui-rs/src/api ../ffi-ui-rs/src/ffi
 
 # >> ffi-client-rs/cargo.toml
 [package]
-name = "rust_lib_ffi_client"
+name = "rust_lib_fui"
 
 # ../ffi-client-rs/src/lib.rs
 pub mod ffi;
@@ -51,7 +51,7 @@ pub mod ffi;
 
 # flutter_rust_bridge.yaml
 rust_input: crate::ffi
-rust_root: ../ffi-client-rs/
+rust_root: ../ffi-ui-rs/
 dart_output: lib/rs
 
 mkdir ./lib/rs

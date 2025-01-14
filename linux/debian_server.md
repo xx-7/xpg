@@ -315,6 +315,12 @@ echo fs.inotify.max_user_watches=524288 | sudo tee -a /etc/sysctl.conf && sudo s
 # check that the new value was applied
 cat /proc/sys/fs/inotify/max_user_watches
 
+# 查询打开了多少个文件
+sudo lsof | wc -l
+
+sudo lsof -i tcp
+
+
 ```
 
 ### cron
