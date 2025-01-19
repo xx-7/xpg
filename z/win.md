@@ -79,7 +79,8 @@ slmgr /xpr
   <Updates Enabled="False" Channel="PerpetualVL2021" />
 </Configuration>
 
-# 3. setup /configure ltsc.xml
+# powershell管理员模式运行
+# 3. .\setup.exe /configure ltsc.xml
 
 
 # kms指定服务器激活
@@ -122,4 +123,4 @@ cscript ospp.vbs /act
 * 在 Password 字段中输入你的 VPN 密码。
 * 单击 Connect。
 
-- 不用"老毛桃"装了会加一堆软件, 用UltraISO或dd.
+- 不用"老毛桃"装了会加一堆软件, 用UltraISO.
