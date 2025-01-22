@@ -1,9 +1,15 @@
 # adb
 
 ```bash
-# download win adb
-# https://dl.google.com/android/repository/platform-tools-latest-windows.zip
+
+
+# adb 下载地址
+# https://developer.android.com/tools/releases/platform-tools?hl=zh-cn
+
 # [-s <serialNumber>]
+
+# 30版本以后先要配对才能连接
+adb pair IP:PORT CODE
 adb devices
 adb pull <local> <remote>
 adb push <remote> <local>
@@ -34,6 +40,21 @@ chmod 755 /data/local/tmp/android_server64
 adb forward tcp:23946 tcp:23946   #other window
 
 ida -> Debugger -> Remote ArmLinux/Android debbuger
+```
+
+## frida-server
+
+```bash
+# down frida-server-x.y.z-android-arm64.xz https://github.com/frida/frida/releases/
+unar frida-server-x.y.z-android-arm64.xz
+mv frida-server-x.y.z-android-arm64 frida-server
+adb push frida-server /data/local/tmp
+adb shell
+cd /data/local/tmp
+su
+chmod 777 frida-server
+./frida-server
+
 ```
 
 # tcpdump
