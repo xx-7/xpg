@@ -59,7 +59,7 @@ chmod 777 frida-server
 
 # tcpdump
 
-> [https://www.androidtcpdump.com/android-tcpdump/downloads](https://www.androidtcpdump.com/android-tcpdump/downloads)
+- [downloads](https://www.androidtcpdump.com/android-tcpdump/downloads)
 
 ```bash
 
@@ -96,7 +96,35 @@ export PATH=$PATH:/optd/opt/android-ndk-r26b/
 
 ```bash
 
-# sdk 现在要通过 Android Studio 管理
+# sdk gui 现在要通过 Android Studio 管理
 # https://developer.android.com/studio?hl=zh-cn
+
+# 命令行管理
+
+mkdir /optd/sdk
+export ANDROID_SDK_ROOT=/optd/sdk
+
+# https://developer.android.com/studio#command-line-tools-only
+wget https://dl.google.com/android/repository/commandlinetools-linux-11076708_latest.zip
+mkdir /optd/sdk/cmdline-tools/
+unar commandlinetools-linux-11076708_latest.zip -o /optd/sdk/cmdline-tools/
+
+cd /optd/sdk/cmdline-tools/ && mv cmdline-tools latest && cd -
+
+export PATH=$PATH:$ANDROID_SDK_ROOT/cmdline-tools/latest/bin
+
+
+sdkmanager --list_installed --sdk_root=/optd/sdk/
+
+sdkmanager --list_installed 
+
+# 安装下初始环境, 其它的版本,ndk这些flutter 要用到自动会装
+sdkmanager --install platform-tools
+sdkmanager --install 'platforms;android-35'
+sdkmanager --install 'build-tools;35.0.1'
+
+# 设置adb目录
+export PATH=$PATH:$ANDROID_SDK_ROOT/platform-tools/
+
 
 ```

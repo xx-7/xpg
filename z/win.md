@@ -127,3 +127,28 @@ cscript ospp.vbs /act
 * 单击 Connect。
 
 - 不用"老毛桃"装了会加一堆软件, 用UltraISO.
+
+
+# FAQ
+
+## win10关闭自动更新
+
+```bash
+
+# 1.禁用Windows Update服务
+    # services.msc -> Windows Update
+    # 启动类型 -> 禁用
+    # 恢复 -> 第一次失败 -> 无操作
+# 2.组策略关闭更新相关服务
+    # gpedit.msc -> 计算机配置 -> 管理模板 -> Windows组件 -> Windows更新
+    # 配置自动更新 -> 已禁用
+    # 删除使用所有Windows更新功能的访问权限 -> 已启用
+# 3.任务计划关闭自动更新
+    # taskschd.msc -> 任务计划程序库 -> Microsoft -> Windows -> WindowsUpdate
+    # 里面能禁用的项目全禁用
+# 4.注册表关闭自动更新
+    # regedit -> [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\UsoSvc]
+    # start -> 0x4
+    # FailureActions -> 0010\0018行 左起第5个数值 01 -> 00
+
+```

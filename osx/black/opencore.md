@@ -16,7 +16,7 @@
     # OC
         # ACPI          // SSDT编译好的文件     .aml后缀
         # Drivers       // OC驱动              .efi后缀
-        # Kexts         // kexts内核拓展        .kexts后缀
+        # Kexts         // Kexts内核拓展        .kexts后缀
         # OpenCore.efi  // OC核心文件
         # Resources     // OC样式主题
         # Tools         // OC小工具
