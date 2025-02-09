@@ -30,4 +30,7 @@ sudo ntpdate us.pool.ntp.org && sudo hwclock -w
 
 sudo ntpdate cn.pool.ntp.org && sudo hwclock -w
 
+
+sudo timedatectl set-time '2025-02-14 14:30:00'
+
 ```

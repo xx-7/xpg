@@ -70,6 +70,8 @@ flutter config --no-enable-ios
 # --no-enable-android
 # --no-enable-ios
 
+# const 提醒  analysis_options.yaml -> linter -> rules
+prefer_const_constructors: false
 
 ```
 

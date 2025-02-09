@@ -330,7 +330,7 @@ sudo lsof -i tcp
 apt install cron
 
 # 编辑crontab服务文件
-crontab  -e
+crontab -e
 
 systemctl stop cron
 systemctl restart cron
