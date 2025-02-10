@@ -12,6 +12,9 @@ script-opts='osc-title=${filename}'
 speed=1.6
 screen=1
 fullscreen=yes
+sub-auto=all
+sub-file-paths=subs
+
 
 # 旋转
 nano ~/.config/mpv/input.conf
