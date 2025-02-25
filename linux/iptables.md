@@ -38,6 +38,8 @@ sudo iptables -t nat -nL --line
 sudo iptables -t nat -D PREROUTING 1
 sudo iptables -t nat -D POSTROUTING 1
 
+sudo iptables -t nat -D POSTROUTING 5
+
 sudo iptables -t nat -F
 sudo iptables -t nat -X
 sudo iptables -t nat -L -n
