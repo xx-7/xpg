@@ -25,7 +25,7 @@ st-flash write file.bin 0x08000000
 st-flash --format ihex write file.hex
 
 # 从 FLASH 读取 0x1000 个字节
-st-flash read firmware.bin 0x08000000 0x1000
+st-flash read file.bin 0x08000000 0x1000
 
 # 擦除 FLASH
 st-flash erase

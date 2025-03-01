@@ -24,6 +24,8 @@ sudo apt install bridge-utils
 # 桥接网络设置
 # https://jamielinux.com/docs/libvirt-networking-handbook/bridged-network.html
 
+sudo usermod -aG libvirt $USER
+
 # 原网络设置为manual 也不用自动启动加入到桥中就好
 # 注意 bridge_stp bridge_fd 关闭不然时断时断的
 sudo nano /etc/network/interfaces
@@ -102,7 +104,7 @@ qemu-img resize test.img +100G                                  #调整虚拟盘
 qemu-img convert -f vmdk -O qcow2 test.vmdk test.img            #格式转换 vmdk -> qcow2
 
 
-sdelete -z C:                                                   #先碎片整理以c盘再sdel清零
+sdelete -z C:                                                   #先碎片整理以c盘再sdel清零,非系统盘不用sdel直接可转换
 qemu-img convert -O qcow2 old.img new.img                       #转换调整大小
 
 ```
