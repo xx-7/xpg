@@ -128,3 +128,19 @@ export PATH=$PATH:$ANDROID_SDK_ROOT/platform-tools/
 
 
 ```
+# 反编译
+
+```bash
+
+java -jar $ANDROID_SDK_ROOT/build-tools/26.0.2/lib/dx.jar --dex --output=test.dex 'com/test/test.class'
+
+java -jar $JAR_TOOLS_ROOT/baksmali-2.5.2.jar dis 'test.dex'
+
+
+# 生成证书
+keytool -genkey -keystore my-release-key.keystore -alias my_alias -keyalg RSA -keysize 4096 -validity 10000
+
+# 签名
+jarsigner -sigalg MD5withRSA -digestalg SHA1 -keystore my-release-key.keystore -signedjar super.mlxx.apk mlxx.apk my_alias
+
+```

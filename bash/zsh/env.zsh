@@ -31,3 +31,8 @@ export FLUTTER_GIT_URL=https://github.com/flutter/flutter.git
 export CHROME_EXECUTABLE=/opt/google/chrome/chrome
 
 export ANDROID_SDK_ROOT=/optd/sdk
+
+export JAR_TOOLS_ROOT=/optd/opt/jar
+
+# jar
+export PATH=$PATH:/optd/opt/jar
