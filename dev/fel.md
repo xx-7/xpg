@@ -33,6 +33,8 @@ sudo sunxi-fel -p spiflash-write 0x510000 jffs2.img
 # 读
 sudo sunxi-fel -p spiflash-read 0 0x510000 999.bin
 
+sudo sunxi-fel -p spiflash-read 0 0x1000000 998.bin
+
 # 生成全0文件
 dd if=/dev/zero of=all.bin bs=1M count=16
 

@@ -14,6 +14,18 @@ sudo nano /usr/share/applications/org.freecadweb.FreeCAD.desktop
 
 ```
 
+# 技巧
+
+## 修改step
+
+```bash
+
+# 1.打开step
+# 2.新建实体
+# 3.把打开的step拖入到新建的实体
+
+```
+
 # 设置
 
 ## 快捷键
