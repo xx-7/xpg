@@ -30,11 +30,12 @@ cargo new --lib ffi-ui-rs
 crate-type = ["staticlib", "cdylib"]
 
 [dependencies]
-flutter_rust_bridge = "=2.8.0"
+ = "=2.10.0"
 
 
 flutter create flutter-ui --platforms=linux,windows,macos,ios,android --project-name fui
 
+# 换平台或更新版本最好 integrate 再清空缓存 generate 再编译容易出莫名其妙错误
 
 cd flutter-ui
 flutter_rust_bridge_codegen integrate --rust-crate-dir ../ffi-ui-rs

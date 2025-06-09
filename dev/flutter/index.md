@@ -14,11 +14,23 @@ tar xf flutter_linux_3.27.2-stable.tar.xz
 # env flutter
 export PATH=$PATH:/optd/opt/flutter/bin
 export FLUTTER_STORAGE_BASE_URL=https://storage.flutter-io.cn/
-export PUB_HOSTED_URL=https://pub.flutter-io.cn
+export PUB_HOSTED_URL=https://pub-web.flutter-io.cn
 export FLUTTER_GIT_URL=https://mirrors.tuna.tsinghua.edu.cn/git/flutter-sdk.git
 export CHROME_EXECUTABLE=/opt/google/chrome/chrome
 
 export ANDROID_SDK_ROOT=/optd/sdk
+
+
+# win
+# https://docs.flutter.cn/community/china
+
+Get-ChildItem Env:
+
+$ENV:ALL_PROXY = 'socks5://127.0.0.1:1080'
+
+$env:PUB_HOSTED_URL="https://mirror.sjtu.edu.cn/dart-pub";
+$env:FLUTTER_STORAGE_BASE_URL="https://mirror.sjtu.edu.cn"
+$env:FLUTTER_GIT_URL="https://mirrors.tuna.tsinghua.edu.cn/git/flutter-sdk.git"
 
 
 # dart api

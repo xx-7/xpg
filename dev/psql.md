@@ -172,6 +172,16 @@ END;
 $$ language 'plpgsql';
 COMMIT;
 
+BEGIN;
+CREATE OR REPLACE FUNCTION update_timestamp()
+RETURNS TRIGGER AS $$
+BEGIN
+      NEW.updated_at = timezone('UTC+8', now()::timestamp); 
+      RETURN NEW;
+END;
+$$ language 'plpgsql';
+COMMIT;
+
 
 BEGIN;
 CREATE TRIGGER user_timestamp BEFORE UPDATE ON account
