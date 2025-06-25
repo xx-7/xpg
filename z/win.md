@@ -10,6 +10,9 @@
 # Win自带Hash
 certutil -hashfile  <文件名>  <hash类型 SHA1/MD5/SHA256>
 
+# 装usb驱动 https://zadig.akeo.ie/
+zadig
+
 # Wx撤回多开
 # 附加 Wx -> 符号 -> WeChatWin.dll -> 搜索 -> 当前区域 -> 字符串 revokemsg -> 汇编jmp -> 字符串 WeChat_App_Instance_Identity_Mutex_Name -> 汇编ret -> 生成补丁
 
