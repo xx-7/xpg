@@ -3,7 +3,7 @@
 ```bash
 
 # https://archlinux.org/download/#http-downloads
-sudo dd bs=4M if=./archlinux-2024.12.01-x86_64.iso of=/dev/sdX conv=fsync oflag=direct status=progress
+sudo dd bs=4M if=./archlinux-2025.07.01-x86_64.iso of=/dev/sdX conv=fsync oflag=direct status=progress
 
 lsblk
 
