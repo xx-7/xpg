@@ -196,7 +196,7 @@ fex ALL=(ALL) ALL
 
 # 安装桌面环境
 
-sudo pacman -S xorg xfce4
+sudo pacman -S xorg xfce4 xorg-server lightdm lightdm-gtk-greeter
 # 不装桌面管理器,直接 startxfce4 启动
 #sudo systemctl enable sddm
 
