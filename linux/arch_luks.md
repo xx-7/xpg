@@ -58,6 +58,7 @@ gdisk /dev/sda
 # 性能测试
 cryptsetup benchmark
 
+# yes 要输入大写
 cryptsetup luksFormat -s 256 /dev/sda3
 
 # 挂载 /dev/mapper/$DM_NAME -> /dev/mapper/arch-rootfs
@@ -195,8 +196,9 @@ fex ALL=(ALL) ALL
 
 # 安装桌面环境
 
-sudo pacman -S xorg xfce4 sddm
-sudo systemctl enable sddm
+sudo pacman -S xorg xfce4
+# 不装桌面管理器,直接 startxfce4 启动
+#sudo systemctl enable sddm
 
 sudo pacman -S firefox mpv unarchiver gimp gwenview evince flameshot remmina
 

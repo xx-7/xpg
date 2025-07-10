@@ -4,7 +4,7 @@
 
 # arch
 # https://wiki.archlinux.org/title/QEMU#
-sudo pacman -S qemu-desktop libvirt virt-manager bridge-utils
+sudo pacman -S qemu-desktop libvirt virt-manager bridge-utils spice-vdagent
 sudo systemctl start libvirtd
 sudo systemctl start spice-vdagentd
 

@@ -3,6 +3,8 @@
 # https://wiki.debian.org/BridgeNetworkConnections
 sudo apt install bridge-utils
 
+sudo pacman -S bridge-utils
+
 iface eth0 inet manual
 
 auto br0
@@ -44,5 +46,34 @@ sudo nano /etc/docker/daemon.json
 
 sudo systemctl restart docker 
 
+
+
+# arch
+
+sudo nano /etc/systemd/network/25-br0.netdev
+
+[NetDev]
+Name=br0
+Kind=bridge
+
+sudo nano /etc/systemd/network/br0.network
+
+[Match]
+Name=br0
+
+[Network]
+Address=10.8.8.21/24
+Gateway=10.8.8.1
+DNS=10.8.8.1
+
+sudo nano /etc/systemd/network/enp89s0.network
+
+[Match]
+Name=enp89s0
+
+[Network]
+Bridge=br0
+
+sudo systemctl restart systemd-networkd
 
 ```
