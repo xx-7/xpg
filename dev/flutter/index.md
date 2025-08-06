@@ -68,6 +68,8 @@ flutter pub get
 
 flutter run -d linux
 
+flutter run -d linux --release
+
 flutter build linux
 
 flutter build linux --release
@@ -93,3 +95,18 @@ prefer_const_constructors: false
 ## StatelessWidget or StatefulWidget
  * StatelessWidget和StatefulWidget没有本质区别，他们的所有属性都是不可变的。它们都没法更新，除非用一个新的Widget去替换它们。
  * StatefulWidget拥有一个可变的State。
+
+# android 改id闪退
+
+```bash
+
+flutter pub add -d change_app_package_name
+
+dart run change_app_package_name:main com.new.package.name
+
+dart run change_app_package_name:main com.new.package.name --android
+
+dart run change_app_package_name:main com.new.package.name --ios
+
+
+```
