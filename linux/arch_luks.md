@@ -198,7 +198,8 @@ fex ALL=(ALL) ALL
 
 sudo pacman -S xorg xfce4 xorg-server lightdm lightdm-gtk-greeter
 # 不装桌面管理器,直接 startxfce4 启动
-#sudo systemctl enable sddm
+
+sudo systemctl enable lightdm
 
 sudo pacman -S firefox mpv unarchiver gimp gwenview evince flameshot remmina
 

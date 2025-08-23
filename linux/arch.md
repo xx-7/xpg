@@ -437,7 +437,7 @@ pacman -S xf86-input-synaptics
 ## 声音软件包
 
 ```bash
-pacman -S alsa-utils pulseaudio pulseaudio-alsa kmix
+pacman -S alsa-utils pulseaudio pulseaudio-alsa xfce4-pulseaudio-plugin pulsemix
 alsamixer
 aplay -l        #得到名字
 nano ~/.asoundrc or /etc/asound.conf
@@ -488,7 +488,7 @@ EndSection
 ## 蓝牙
 
 ```bash
-pacman -S bluez bluez-utils bluedevil
+pacman -S bluez bluez-utils bluedevil blueman
 systemctl enable bluetooth
 bluetoothctl   #蓝牙命令行
 nano /etc/bluetooth/main.conf
