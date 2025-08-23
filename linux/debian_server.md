@@ -2,9 +2,10 @@
 
 # 版本号
 
-[Releases](https://www.debian.org/releases/index.zh-cn.html)
+[Releases](https://wiki.debian.org/DebianReleases)
 
-- Debian 13 "trixie"
+- Debian 14 "Forky"
+- Debian 13 "Trixie"
 - Debian 12 "bookworm"
 - Debian 11 "bullseye"
 - Debian 10 "buster"

@@ -1,0 +1,7 @@
+
+# List
+
+* RTL8723 150Mbps,1T1R,BLE4.2
+* XR819 65Mbps
+* XR819S 65Mbps BLE5.0
+* XR829 56Mbps BLE4.1
