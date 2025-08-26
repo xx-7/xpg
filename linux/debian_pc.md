@@ -99,7 +99,7 @@ rm ~/.config/kiorc # 删除已选择打开方式
 # https://wiki.debian.org/AtiHowTo#Installation
 
 sudo nano /etc/apt/sources.list
-deb http://deb.debian.org/debian bullseye main contrib non-free
+deb http://deb.debian.org/debian trixie main contrib non-free
 sudo apt update
 sudo apt install firmware-amd-graphics firmware-linux-nonfree libgl1-mesa-dri libglx-mesa0 mesa-vulkan-drivers xserver-xorg-video-all
 
@@ -112,7 +112,7 @@ sudo apt install firmware-amd-graphics firmware-linux-nonfree libgl1-mesa-dri li
 ```bash
 # https://wiki.debian.org/WiFi
 sudo nano /etc/apt/sources.list
-deb http://httpredir.debian.org/debian/ bullseye main contrib non-free
+deb http://httpredir.debian.org/debian/ trixie main contrib non-free
 sudo apt-get update
 sudo apt-get install firmware-iwlwifi
 ```
@@ -131,15 +131,15 @@ cp /etc/apt/sources.list /etc/apt/sources.listbak
 ### 测试源
 
 ```bash
-deb http://ftp.cn.debian.org/debian trixie main contrib non-free
-deb http://ftp.cn.debian.org/debian trixie-updates main contrib non-free
+deb http://ftp.cn.debian.org/debian forky main contrib non-free
+deb http://ftp.cn.debian.org/debian forky-updates main contrib non-free
 ```
 
 ### 稳定源
 
 ```bash
-deb http://ftp.cn.debian.org/debian bookworm main contrib non-free
-deb http://ftp.cn.debian.org/debian/debian-security bookworm-updates main contrib non-free
+deb http://ftp.cn.debian.org/debian trixie main contrib non-free
+deb http://ftp.cn.debian.org/debian/debian-security trixie-updates main contrib non-free
 ```
 
 ```bash

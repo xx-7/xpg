@@ -7,6 +7,9 @@
 sudo apt install clang cmake git ninja-build pkg-config libgtk-3-dev liblzma-dev libstdc++-12-dev
 
 
+sudo pacman -S xdg-user-dirs zenity
+
+
 cd /optd/opt
 curl -OL https://storage.googleapis.com/flutter_infra_release/releases/stable/linux/flutter_linux_3.27.2-stable.tar.xz
 tar xf flutter_linux_3.27.2-stable.tar.xz

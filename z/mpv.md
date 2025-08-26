@@ -15,6 +15,15 @@ fullscreen=yes
 sub-auto=all
 sub-file-paths=subs
 
+ao=alsa
+audio-device=auto
+
+
+# 驱动列表
+mpv --ao=help
+
+# 设备列表
+mpv --audio-device=help
 
 # 旋转
 nano ~/.config/mpv/input.conf

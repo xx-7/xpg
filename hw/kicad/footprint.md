@@ -1,25 +1,6 @@
+# 封装
 
-# kicad
-
-```bash
-# 安装
-paru -S kicad kicad-library kicad-library-3d
-
-sudo apt install kicad-packages3d
-
-# 删除设置缓存
-rm -rf ~/.cache/kicad
-rm -rf ~/.config/kicad
-
-```
-
-## 库
-
-- [esp](https://github.com/espressif/kicad-libraries)
-- [snap](https://www.snapeda.com/)
-
-
-# 封装 - 层
+## 层
 
 * Cu            铜箔层 定义焊盘所在层
 * Paste         助焊层 定义在钢网上开孔 
@@ -52,4 +33,3 @@ rm -rf ~/.config/kicad
 * 栅格: 0.1mm
 * 焊盘设置->间距重写->阻焊层扩展: 0.07mm
 * IPC-7351规定一般中等密度电路板Courtyard层与实际外框或焊盘距离为courtyard margin:0.25mm
-
