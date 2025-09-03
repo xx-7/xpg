@@ -318,11 +318,11 @@ Enabled=false
 # flameshot 添加截图快捷键 System Settings -> Shortcuts -> Flameshot -> Take screenshot -> Shift+F2
 
 sudo pacman -S dolphin konsole nfs-utils kscreen
-sudo pacman -S nano nodejs mpv simplescreenrecorder unarchiver ttf-fira-code kate sqlitebrowser gimp gwenview evince flameshot remmina freerdp keepassxc
+sudo pacman -S nano nodejs mpv simplescreenrecorder unarchiver ttf-fira-code kate sqlitebrowser gimp gwenview evince remmina freerdp keepassxc
 paru -S firefox google-chrome visual-studio-code-bin jdk8-openjdk jdk11-openjdk baidunetdisk-bin
 
 # stl step viewer
-paru -S fstl mayo-git
+paru -S fstl mayo-git hotshots
 
 paru -S edrawmax-cn 
 
@@ -440,6 +440,7 @@ pacman -S xf86-input-synaptics
 ## 声音软件包
 
 ```bash
+# 录屏声音小换pipewire
 pacman -S alsa-utils pulseaudio pulseaudio-alsa xfce4-pulseaudio-plugin pulsemix
 alsamixer
 aplay -l        #得到名字

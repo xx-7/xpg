@@ -74,3 +74,9 @@ alias qls='sudo systemctl start libvirtd && sudo systemctl start spice-vdagentd'
 alias qcb='cd ../ && rm -rf build && rm -rf build.ninja'
 alias qgb='mkdir build && cd build && cmake ../'
 alias qgbn='mkdir build.ninja && cd build.ninja && cmake ../ -G Ninja'
+
+
+alias co4='sudo cryptsetup open /dev/sda4 rfs'
+alias mo4='sudo mount /dev/mapper/rfs /rfs'
+alias phs='python -m http.server'
+alias qls='sudo systemctl start libvirtd && sudo systemctl start spice-vdagentd'
