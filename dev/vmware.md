@@ -11,5 +11,8 @@ sudo vmware-installer -l
 # 卸载
 sudo vmware-installer -u vmware-workstation
 
+# vmware pro 针对个人已免费
+paru -S vmware-workstation
+
 
 ```
