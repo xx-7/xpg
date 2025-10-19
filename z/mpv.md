@@ -3,9 +3,13 @@
 # 配置
 ```bash
 
-# 标题
+
+# window
+# C:\Users\<YourUsername>\AppData\Roaming\mpv\config
+
 nano ~/.config/mpv/config
 
+# 标题
 title='${filename} - mpv'
 script-opts='osc-title=${filename}'
 
