@@ -20,3 +20,14 @@ tdl chat export -c  12345678 --with-content --proxy socks5://127.0.0.1:11028
 tdl dl -u  https://t.me/c/12345678/123  --proxy socks5://127.0.0.1:11028
 
 ```
+
+
+```bash
+
+# https://github.com/JoeanAmier/TikTokDownloader
+py main.py
+
+
+# cookie-name:odin_tt 搜cookie关键字
+
+```
