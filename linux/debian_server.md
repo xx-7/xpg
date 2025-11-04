@@ -62,43 +62,7 @@ ifdown eno1:0
 # auto: 开机启动
 # allow-hotplug: 网线路动态热插拔启动
 
-# 不配置gateway 就不会作为默认网关出口 多网卡设置一个就可以 
-
-```
-
-## ssh
-
-```bash
-# generate key
-ssh-keygen -t rsa
-
-# ssh client
-ssh -i ~/.ssh/id_rsa USER@SERVER
-#or
-nano ~/.ssh/config
-Host www.domain.com www2.domain.com
-port 77
-PreferredAuthentications publickey
-IdentityFile ~/.ssh/id_rsa_local
-
-# ssh server
-apt install openssh-server
-mkdir -p ~/.ssh/
-nano /etc/ssh/sshd_config
-
-
-StrictModes no
-PermitRootLogin yes
-
-RSAAuthentication yes
-PubkeyAuthentication yes
-AuthorizedKeysFile      .ssh/rsa_wx.pub #rsa_pub pub key file
-
-PasswordAuthentication no
-
-systemctl restart sshd
-
-nano .ssh/authorized_keys
+# 不配置gateway 就不会作为默认网关出口 多网卡设置一个就可以
 
 ```
 

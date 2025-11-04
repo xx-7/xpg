@@ -28,14 +28,14 @@ sudo apt install xfce4
 # 任务bar 改到下面
 # Settings Editor -> xfce4 pannel -> position -> p=10
 
-# 4k 2倍 放大 只能改整数倍 
+# 4k 2倍 放大 只能改整数倍
 # Settings Editor -> xsettings -> Gdk -> WindowScalingFactor -> 2
 
 # 图标
 # https://github.com/vinceliuice/Tela-icon-theme
 
 # 目录
-# 默认theme 
+# 默认theme
 # 用户 ~/.themes  系统 /usr/share/themes
 # 默认icons
 # 用户 ~/.icons  系统 /usr/share/icons
@@ -76,7 +76,7 @@ export LC_ALL=en_US.UTF-8
 
 # qt 程序 缩放
 nano ~/.xsessionrc
-export QT_AUTO_SCREEN_SCALE_FACTOR=0  
+export QT_AUTO_SCREEN_SCALE_FACTOR=0
 export QT_SCALE_FACTOR=1.75
 
 
@@ -243,7 +243,7 @@ sudo apt clean all
 sudo apt list
 sudo apt list --installed
 
-sudo dpkg -i xx_amd64.deb 
+sudo dpkg -i xx_amd64.deb
 
 sudo dpkg -l  # installed
 
@@ -278,40 +278,6 @@ Section "Monitor"
     Identifier  "DIV-D-0"
     Option      "LeftOf" "HDMI-A-0"
 EndSection
-```
-
-## ssh
-
-```bash
-# generate key
-ssh-keygen -t rsa
-
-# ssh client
-ssh -i ~/.ssh/id_rsa USER@SERVER
-#or
-nano ~/.ssh/config
-Host www.domain.com www2.domain.com
-port 77
-PreferredAuthentications publickey
-IdentityFile ~/.ssh/id_rsa_local
-
-# ssh server
-apt install openssh-server
-mkdir -p ~/.ssh/
-nano /etc/ssh/sshd_config
-
-
-StrictModes no
-PermitRootLogin yes
-
-RSAAuthentication yes
-PubkeyAuthentication yes
-AuthorizedKeysFile      .ssh/rsa_pub #rsa_pub pub key file
-
-PasswordAuthentication no
-
-systemctl restart sshd
-
 ```
 
 ## profile
@@ -374,14 +340,14 @@ sudo apt update
 apt install -t bookworm-backports kicad
 ```
 
-## yarn 
+## yarn
 
 ```bash
 
 curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add -
 echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list
 
-sudo apt update 
+sudo apt update
 sudo apt install yarn
 
 yarn create vite front --template react-ts
@@ -531,7 +497,7 @@ sudo fio -filename=/dev/sdb1 -direct=1 -iodepth 1 -thread -rw=randread -ioengine
 sudo fio -filename=/dev/sdb1 -direct=1 -iodepth 1 -thread -rw=randwrite -ioengine=psync -bs=4k -size=100G -numjobs=8 -runtime=180 -group_reporting -name=r100w_4k
 
 # 随机，70%读，30%写 4K
-sudo fio -filename=/dev/sdb1 -direct=1 -iodepth 1 -thread -rw=randrw -rwmixread=70 -ioengine=psync -bs=4k -size=100G -numjobs=8 -runtime=180 -group_reporting -name=r_70rw_4k 
+sudo fio -filename=/dev/sdb1 -direct=1 -iodepth 1 -thread -rw=randrw -rwmixread=70 -ioengine=psync -bs=4k -size=100G -numjobs=8 -runtime=180 -group_reporting -name=r_70rw_4k
 
 ```
 
@@ -551,7 +517,9 @@ scrcpy -Nr file.mp4
 
 
 ```
+
 ## GnuCash
+
 ```bash
 # https://wiki.debian.org/GnuCash
 # https://wiki.gnucash.org/wiki/Locale_Settings

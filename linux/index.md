@@ -1,44 +1,17 @@
 # 常用软件
 
-- 010editor         二进制编辑,可识别文件类型
-- flameshot         屏幕截图
-- freecad           模型制作
-- gnucash           复式记账
-- keepassxc         密码记录
-- keymon            显示键盘按键
-- kicad             电路设计
-- mpv               播放器
-- remmina           远程桌面连接
-
-
-# bash
-```bash
-# 批量改变权限
-chmod -R 777 /home/linux
-
-# 解压乱码
-pacman -S unarchiver
-unar -e GBK test.zip
-
-# 查看分区
-sudo fdisk -l
-
-# 查看使用情况
-df -h
-
-# 查看目录占用大小
-du -h  ./
-
-# 查看盘UUID
-ls -l /dev/disk/by-uuid/
-
-# -c 取消任务 -h 关机 -r重启 now马上
-shutdown -r now
-
-```
-
+- 010editor 二进制编辑,可识别文件类型
+- flameshot 屏幕截图
+- freecad 模型制作
+- gnucash 复式记账
+- keepassxc 密码记录
+- keymon 显示键盘按键
+- kicad 电路设计
+- mpv 播放器
+- remmina 远程桌面连接
 
 # proc
+
 ```bash
 
 cat /proc/[pid]/status
@@ -59,6 +32,7 @@ cat /proc/[pid]/status
 | VmSwap | 进程所使用的交换区的大小                                 |
 
 # 终端样式
+
 ```bash
 PATH=$PATH:/opt/db/redis-4.0.11/bin
 PATH=$PATH:/optd/opt/gradle-5.5/bin
@@ -69,19 +43,21 @@ PS1='\033[01;33m\]\u@\h \033[01;34m\]\w\033[01;36m\]\$\033[01;00m\] '
 `source ~/.bash_profile`
 
 ## 转义
+
 > \h--主机名
 > \u--用户名
 > \w--当前工作目录的绝对路径 如：/usr/bin
-> \W--当前工作目录的基址名 如上例中的bin
-> \t--当前的系统时间：HH:MM:SS（24小时制）
-> \@--当前的系统时间，12小时制， 如：07:14 PM
+> \W--当前工作目录的基址名 如上例中的 bin
+> \t--当前的系统时间：HH:MM:SS（24 小时制）
+> \@--当前的系统时间，12 小时制， 如：07:14 PM
 > \d--如“Wed May 28”格式的日期
 > \n--换行符
-> \>$?--上以命令执行后的返回值，成功执行返回0，否则返回一个非零的数
+> \>$?--上以命令执行后的返回值，成功执行返回 0，否则返回一个非零的数
 > \!--该条命令在历史命令中的编号
-> \#--该条命令在这个shell中的编号
+> \#--该条命令在这个 shell 中的编号
 
 ## 颜色
+
 • 黑色 0;30
 • 红色 0;31
 • 绿色 0;32
@@ -90,46 +66,6 @@ PS1='\033[01;33m\]\u@\h \033[01;34m\]\w\033[01;36m\]\$\033[01;00m\] '
 • 紫色 0;35
 • 蓝绿色 0;36
 • 白色 0;37
-
-## 磁盘
-
-```bash
-# 查看分区
-sudo fdisk -l
-
-# 查看使用情况
-df -h
-
-# 查看盘UUID
-blkid
-
-# 查看目录占用大小
-du -h  ./
-
-# 查看目录占用大小设置遍历深度
-du -h --max-depth=1 ./
-
-# 给硬盘分区 进入m打印帮助 dos 分区表格式 ext4用主分区 w 保存退出
-sudo fdisk /dev/sdb
-# 格式化
-sudo mkfs -t ext4 /dev/sdb1
-# 临时挂载
-sudo mount /dev/sdb1 /optd
-
-# 自动挂盘
-sudo nano /etc/fstab
-UUID=b141d23c-0f49-48a0-aaaa-80f25b30bd8f /optd ext4 defaults 0 2
-```
-
-## ssh
-
-```bash
-nano ~/.ssh/config
-Host www.domain.com
-port 77
-PreferredAuthentications publickey
-IdentityFile ~/.ssh/id_rsa_local
-```
 
 ## trojan
 
@@ -147,7 +83,6 @@ cp ./examples/client.json-example config.json
 ./trojan
 
 ```
-
 
 ## 010Editor
 

@@ -1,4 +1,3 @@
-
 ```bash
 
 sudo deluser --remove-home admin
@@ -17,6 +16,9 @@ cat /etc/group
 
 # 增加组
 sudo groupadd usbfs
+
+useradd -m -s /bin/bash fex
+
 #查看组id
 cat /etc/group | grep usbfs
 
@@ -27,7 +29,7 @@ sudo usermod -r -G usbfs fex
 
 ```
 
-# usb权限
+# usb 权限
 
 ```bash
 
