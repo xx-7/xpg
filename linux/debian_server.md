@@ -64,6 +64,10 @@ ifdown eno1:0
 
 # 不配置gateway 就不会作为默认网关出口 多网卡设置一个就可以
 
+# 查看网卡详情,连接速率这些
+sudo apt install ethtool
+sudo ethtool eno1
+
 ```
 
 ## Mysql
