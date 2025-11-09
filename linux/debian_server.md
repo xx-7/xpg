@@ -222,7 +222,9 @@ net.ipv4.tcp_keepalive_time = 30
 net.ipv4.ip_local_port_range = 2048 65000
 fs.file-max = 524288
 fs.inotify.max_user_watches=524288
-net.ipv6.conf.all.disable_ipv6=1
+net.ipv6.conf.all.disable_ipv6 = 1
+net.ipv6.conf.default.disable_ipv6 = 1
+net.ipv6.conf.lo.disable_ipv6 = 1
 
 
 # disable_ipv6 有时候系统只开ipv6自动启动，disable网卡不会随系统启动
