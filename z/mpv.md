@@ -1,6 +1,7 @@
 [TOC]
 
 # 配置
+
 ```bash
 
 
@@ -100,8 +101,7 @@ ctrl+t cycle-values video-rotate 0 90 180 270
 
 # [官方文档](https://mpv.io/manual/stable/)
 
-
-# 摄像头 
+# 摄像头
 
 ```bash
 
@@ -114,5 +114,7 @@ mpv --demuxer-lavf-o=video_size=4656x3496,input_format=mjpeg av://v4l2:/dev/vide
 
 # video-rotate 旋转角度
 mpv --demuxer-lavf-o=video_size=1920x1080,input_format=mjpeg av://v4l2:/dev/video0 --profile=low-latency --video-rotate=180
+
+mpv --demuxer-lavf-o=video_size=1280x720,input_format=mjpeg av://v4l2:/dev/video0 --profile=low-latency
 
 ```
