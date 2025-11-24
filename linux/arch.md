@@ -1,6 +1,6 @@
 [TOC]
 
-# 经常有更新包
+- 经常有更新包(改用 debian,要新软件自己编译)
 
 # 清除缓存
 
@@ -11,6 +11,7 @@ rm -rf ~/.cache/paru/
 ```
 
 # 更新证书报错
+
 ```bash
 
 # 两种处理方式可以试
@@ -39,7 +40,7 @@ sudo dd bs=4M if=./archlinux-2022.02.01-x86_64.iso  of=/dev/sdX conv=fsync oflag
 # 可以在 fdisk 或 gdisk 中创建一个从 34 扇区开始，一直到 2047
 # GUID 21686148-6449-6E6F-744E-656564454649  类型 根据分区软件不同: BIOS boot/ef02/bois_grub
 
-/boot/EFI  /dev/sdX1             #512MB 启动目录 
+/boot/EFI  /dev/sdX1             #512MB 启动目录
 [SWAP]     /dev/sdX2            #交换区 内存的两倍
 /          /dev/sdX3                 #剩余  根目录
 
@@ -119,7 +120,7 @@ pacman -S dosfstools grub efibootmgr
 grub-install --target=x86_64-efi --efi-directory=/boot/EFI --bootloader=Arch --removable
 grub-mkconfig -o /boot/grub/grub.cfg
 
-# BIOS with MBR 方式引导启动 
+# BIOS with MBR 方式引导启动
 pacman -S grub os-prober
 grub-install --target=i386-pc /dev/sdX
 grub-mkconfig -o /boot/grub/grub.cfg
@@ -158,7 +159,9 @@ Defaults:fex rootpw
 Defaults:fex timestamp_timeout=20
 fex ALL=(ALL) ALL
 ```
+
 ## 网络
+
 ```bash
 # 注意用NetworkManager管理过后DNS会被清空
 sudo pacman -S net-tools networkmanager plasma-nm
@@ -166,7 +169,7 @@ sudo pacman -S net-tools networkmanager plasma-nm
 sudo systemctl enable NetworkManager
 
 # managed =  false 不管理/etc/network/interfaces已定义接口
-cat /etc/NetworkManager/NetworkManager.conf 
+cat /etc/NetworkManager/NetworkManager.conf
 [main]
 plugins=ifupdown,keyfile
 
@@ -189,7 +192,7 @@ DNS=10.8.8.1
 systemctl restart systemd-networkd
 
 # 启动停止网口
-ip link set $INTERFACE up|down 
+ip link set $INTERFACE up|down
 
 # 配置DNS
 sudo nano /etc/resolv.conf
@@ -207,7 +210,7 @@ sudo resolvectl flush-caches
 pacman -S bumblebee mesa xf86-video-intel nvidia
 pacman -S xorg-server
 
-# 4k 
+# 4k
 # System Settings -> Appearance -> Fonts  check Force font DPI   default 96    150% 144  175%  168
 ```
 
@@ -230,16 +233,16 @@ nano /etc/sddm.conf
 [Theme]
 Current=breeze
 
-# login time format 
+# login time format
 # https://forum.kde.org/viewtopic.php?t=130484
 # nano /usr/share/sddm/themes/breeze/components/Clock.qml
-# change: 
+# change:
 
 # text: Qt.formatTime(timeSource.data["Local"]["DateTime"])
 # to:
 # text: Qt.formatTime(timeSource.data["Local"]["DateTime"],"hh:mm:ss")
 
-# text: Qt.formatDate(timeSource.data["Local"]["DateTime"], Qt.DefaultLocaleLongDate) 
+# text: Qt.formatDate(timeSource.data["Local"]["DateTime"], Qt.DefaultLocaleLongDate)
 # to:
 # text: Qt.formatDate(timeSource.data["Local"]["DateTime"], "yyyy/MM/dd")
 ```
@@ -289,7 +292,7 @@ sudo nano /etc/profile
 # User
 nano ~/.bash_profile
 export  JAVA_HOME=/usr/lib/jvm/java-8-openjdk
-export  CLASSPATH=$CLASSPATH:$JAVA_HOME/lib:$JAVA_HOME/jre/lib 
+export  CLASSPATH=$CLASSPATH:$JAVA_HOME/lib:$JAVA_HOME/jre/lib
 
 PATH=$PATH:$JAVA_HOME/bin:$JAVA_HOME/jre/bin
 export PATH=$PATH:/optd/opt/gradle-5.5/bin
@@ -324,7 +327,7 @@ paru -S firefox google-chrome visual-studio-code-bin jdk8-openjdk jdk11-openjdk 
 # stl step viewer
 paru -S fstl mayo-git hotshots
 
-paru -S edrawmax-cn 
+paru -S edrawmax-cn
 
 # ./MindMaster --no-sandbox
 paru -S mindmaster_cn
@@ -384,7 +387,7 @@ pacman -Sw package_name                       #下载不安装
 pacman -U /path/pkg.tar.gz                    #安装本地包
 
 #卸载软件
-pacman -R package_name                        #删除单个软件包，保留其全部已经安装的依赖关系 
+pacman -R package_name                        #删除单个软件包，保留其全部已经安装的依赖关系
 pacman -Rs package_name                       #删除指定软件包，及其所有没有被其他已安装软件包使用的依赖关系
 
 #查询
@@ -396,6 +399,7 @@ pacman -Qo /etc/passwd      #查找某个文件属于哪个包
 
 pacman -Ss plasma           #搜索plasma相关的包
 ```
+
 ## 驱动
 
 ```bash
@@ -424,7 +428,6 @@ program_name
 
 ```
 
-
 ## 输入设备
 
 ```bash
@@ -451,7 +454,7 @@ pcm.!default {
 }
 
 ctl.!default {
-	type hw           
+	type hw
 	card PCH
 }
 defaults.pcm.rate_converter "samplerate_best"      #  高质量采样 先安装 alsa-plugins,libsamplerate。
@@ -461,7 +464,7 @@ defaults.pcm.rate_converter "samplerate_best"      #  高质量采样 先安装 
 
 ```bash
 aplay -l     #查看列表
-sudo nano /etc/asound.conf 
+sudo nano /etc/asound.conf
 defaults.pcm.card 0
 defaults.pcm.device 3
 defaults.ctl.card 0
@@ -537,7 +540,7 @@ sudo systemctl enable powertop
 ## PPTP Client
 
 ```bash
-#https://wiki.archlinux.org/index.php/PPTP_Client 
+#https://wiki.archlinux.org/index.php/PPTP_Client
 sudo pacman -S pptpclient
 
 #配置jp
@@ -605,7 +608,7 @@ sudo pacman -S p7zip
 x 是安装原来的目录结构解压
 e 是忽略目录结构，都解压到跟目录
 -o 输出目录非必须
-' 
+'
 ```
 
 ## openssl
@@ -615,7 +618,7 @@ openssl enc -e -aes256 -out test.tar.gz
 openssl enc -d -aes256 -in test.tar.gz
 ```
 
-## 不识别U盘
+## 不识别 U 盘
 
 ```bash
 #查看是否加载usb-storage
@@ -661,7 +664,7 @@ sudo systemctl disable mysqld
 sudo systemctl start mysqld
 ```
 
-## 安装deb包
+## 安装 deb 包
 
 ```bash
 paru -S debtap
@@ -680,7 +683,7 @@ sudo pacman -S v2ray
 yay -S v2raya
 ```
 
-## 图片全成pdf
+## 图片全成 pdf
 
 ```bash
 sudo pacman -S imagemagick
@@ -750,7 +753,6 @@ sudo systemctl disable rsh@
 sudo systemctl disable talk
 sudo systemctl disable telnet@
 ```
-
 
 ## cdc-acm
 
@@ -846,7 +848,7 @@ VBoxManage setextradata "VM Name" "VBoxInternal/Devices/smc/0/Config/GetKeyFromR
 VBoxManage setextradata "VM Name" VBoxInternal2/EfiGraphicsResolution 1920x1200
 VBoxManage setextradata "VM Name" VBoxInternal2/EfiGopMode 4
 
-# Warning vboxdrv kernel module is not loaded 
+# Warning vboxdrv kernel module is not loaded
 # 安装后要重启
 sudo pacman -S virtualbox-host-modules-arch
 
@@ -861,25 +863,25 @@ sudo usermod -aG vboxusers USERNAME
 ```bash
 
 # https://github.com/libimobiledevice/libimobiledevice
-sudo pacman -S libimobiledevice 
-paru -S ideviceinstaller 
+sudo pacman -S libimobiledevice
+paru -S ideviceinstaller
 
 
 ideviceinstaller -i "XXX.ipa"
 
 #List attached devices or print device name of given device
 idevice_id
-#Create or restore backup for devices (legacy)	
+#Create or restore backup for devices (legacy)
 idevicebackup
-# Create or restore backups for devices running iOS 4 or later	
+# Create or restore backups for devices running iOS 4 or later
 idevicebackup2
-# Capture Bluetooth HCI traffic from a device (requires log profile)	
+# Capture Bluetooth HCI traffic from a device (requires log profile)
 idevicebtlogger
 # Retrieve crash reports from a device
 idevicecrashreport
 # Display the current date or set it on a device
 idevicedate
-# Interact with the debugserver service of a device	
+# Interact with the debugserver service of a device
 idevicedebug
 # Proxy a debugserver connection from a device for remote debugging
 idevicedebugserverproxy
@@ -887,11 +889,11 @@ idevicedebugserverproxy
 idevicediagnostics
 # Make a device enter recovery mode
 ideviceenterrecovery
-# Mount disk images on the device	
+# Mount disk images on the device
 ideviceimagemounter
-# Show information about a connected device	
+# Show information about a connected device
 ideviceinfo
-# Display or set the device name	
+# Display or set the device name
 idevicename
 # Post or observe notifications on a device
 idevicenotificationproxy
@@ -899,11 +901,11 @@ idevicenotificationproxy
 idevicepair
 # Manage provisioning profiles on a device
 ideviceprovision
-# Gets a screenshot from the connected device 	
+# Gets a screenshot from the connected device
 idevicescreenshot
-# Simulate location on device	
+# Simulate location on device
 idevicesetlocation
 # Relay syslog of a connected device
-idevicesyslog 	
+idevicesyslog
 
 ```
