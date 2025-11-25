@@ -18,7 +18,7 @@ apt install kde-plasma-desktop
 ## xfce
 
 ```bash
-sudo apt install xfce4
+sudo apt install xfce4 xfce4-terminal
 
 # 主题复制到 ~/.themes 目录下
 
@@ -339,10 +339,16 @@ deb http://deb.debian.org/debian bookworm-backports main
 sudo apt update
 
 apt install -t bookworm-backports kicad
+
+
+# code 
+# https://wiki.debian.org/VisualStudioCode
+curl https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > microsoft.gpg
+sudo install -o root -g root -m 644 microsoft.gpg /etc/apt/keyrings/microsoft-archive-keyring.gpg
+sudo sh -c 'echo "deb [arch=amd64,arm64,armhf signed-by=/etc/apt/keyrings/microsoft-archive-keyring.gpg] https://packages.microsoft.com/repos/code stable main" > /etc/apt/sources.list.d/vscode.list'
 ```
 
 ## yarn
-
 ```bash
 
 curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add -
@@ -422,8 +428,8 @@ sudo apt install typora
 ## Chrome
 
 ```bash
-wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | apt-key add
-sudo echo "deb http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google.list
+wget -q -O - https://dl.google.com/linux/linux_signing_key.pub | sudo tee /etc/apt/trusted.gpg.d/google.asc >/dev/null
+sudo echo "deb http://dl.google.com/linux/chrome/deb/ stable main" > /etc/apt/sources.list.d/google.list
 sudo apt update
 sudo apt install google-chrome-stable
 ```
