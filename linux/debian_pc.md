@@ -41,8 +41,22 @@ sudo apt install xfce4 xfce4-terminal
 # 默认icons
 # 用户 ~/.icons  系统 /usr/share/icons
 
+sudo apt install light-locker
 # 自动锁屏
 sudo apt install xscreensaver
+
+# 启动
+xscreensaver -nosplash
+
+# 锁定
+xscreensaver-command  --lock
+
+# 自启动
+sudo nano /etc/xdg/autostart/screensaver.desktop
+[Desktop Entry]
+Name=Screensaver
+Type=Applicaton
+Exec=xscreensaver -nosplash
 
 # dpms查询
 xset q
@@ -302,12 +316,26 @@ source ~/.profile
 
 ```
 
+
+## jdk
+
+```bash
+
+wget https://download.oracle.com/java/21/latest/jdk-21_linux-x64_bin.tar.gz
+tar -zxvf jdk-21_linux-x64_bin.tar.gz
+export JAVA_HOME=/ufs/opt/jdk-21.0.9
+export PATH=$JAVA_HOME/bin:$PATH
+
+```
+
 ## 蓝牙音响
 
 ```bash
 
 sudo apt install pulseaudio pulseaudio-module-bluetooth pavucontrol bluez-firmware
 
+
+sudo apt install pipewire pipewire-audio pipewire-pulse xfce4-pulseaudio-plugin
 # https://wiki.debian.org/BluetoothUser#Can_connect.2C_but_not_to_audio
 sudo apt install pulseaudio-module-bluetooth
 pactl load-module module-bluetooth-discover
@@ -326,7 +354,7 @@ sudo apt install curl unar
 sudo apt install ttf-wqy-microhei fcitx-table-wbpy
 sudo apt install nfs-common mpv remmina fontforge
 sudo apt install sqlitebrowser shotcut gimp
-sudo apt install flameshot gwenview keepassxc
+sudo apt install ksnip gwenview keepassxc
 sudo apt install nodejs npm
 sudo apt install fonts-firacode p7zip-full
 sudo apt install qbittorrent libreoffice
