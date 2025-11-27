@@ -28,7 +28,6 @@ export PATH=$PATH:/ufs/opt/gradle-8.3/bin/
 # Rk
 export PATH=$PATH:/ufs/opt/rk/upgrade_tool/
 
-
 # flutter
 export PATH=$PATH:/ufs/opt/flutter/bin
 export FLUTTER_STORAGE_BASE_URL=https://storage.flutter-io.cn/

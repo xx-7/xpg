@@ -79,6 +79,15 @@ sudo apt install yarn
 fsck -y /dev/sda2 
 ```
 
+
+## lightdm装驱动后重启不进入图形界面
+
+```bash
+
+sudo apt install lightdm --reinstall
+
+```
+
 ## 其它
 
 ```bash

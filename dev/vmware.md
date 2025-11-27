@@ -15,4 +15,7 @@ sudo vmware-installer -u vmware-workstation
 paru -S vmware-workstation
 
 
+# debian
+# https://wiki.debian.org/VMware#VMware_Workstation_Pro.2FPlayer_17
+
 ```

@@ -58,7 +58,7 @@ sudo systemctl daemon-reload
 ## debian 
 
 ```bash
-sudo apt install apt-transport-https ca-certificates curl gnupg2 software-properties-common
+sudo apt install apt-transport-https ca-certificates curl gnupg2 lsb_release
 
 # 添加证书
 sudo mkdir -p /usr/share/keyrings
@@ -71,6 +71,10 @@ echo "deb [arch=amd64 signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] 
 sudo apt update
 
 sudo apt install docker-ce docker-ce-cli containerd.io
+
+# /usr/lib/systemd/system/docker.service
+ExecStart=/usr/bin/dockerd -H fd:// --containerd=/run/containerd/containerd.sock
+
 
 # 添加docker组 重新登录才生效
 sudo usermod -aG docker $USER

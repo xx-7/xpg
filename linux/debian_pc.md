@@ -130,6 +130,9 @@ sudo nano /etc/apt/sources.list
 deb http://httpredir.debian.org/debian/ trixie main contrib non-free
 sudo apt-get update
 sudo apt-get install firmware-iwlwifi
+
+# e5000 网卡驱动
+# https://www.realtek.com/Download/List?cate_id=584
 ```
 
 # 配置
@@ -317,10 +320,20 @@ source ~/.profile
 ```
 
 
-## jdk
+## dev
 
 ```bash
 
+# rust
+curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+
+
+# node.js
+wget https://nodejs.org/dist/v24.11.1/node-v24.11.1-linux-x64.tar.xz
+tar -zxvf node-v24.11.1-linux-x64.tar.xz
+export PATH=$PATH:/ufs/opt/node-v24.11.1-linux-x64/
+
+# jdk
 wget https://download.oracle.com/java/21/latest/jdk-21_linux-x64_bin.tar.gz
 tar -zxvf jdk-21_linux-x64_bin.tar.gz
 export JAVA_HOME=/ufs/opt/jdk-21.0.9
