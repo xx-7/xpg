@@ -49,13 +49,20 @@ conda list
 
 # 环境列表
 conda env list
+
 # 新建环境
 conda create -n y8 python=3.8
+
 # 激活环境
 conda activate y8
 conda deactivate
+
 # 删除环境
 conda-env remove -n y8
+conda remove -n y8 --all
+
+# 环境改名
+conda rename -n y12 y11
 
 ```
 
