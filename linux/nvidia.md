@@ -39,6 +39,8 @@ sudo dpkg --add-architecture i386 # 添加32位架构支持
 sudo apt update # 更新软件仓库元数据
 sudo apt install libc6:i386
 
+
+# https://www.nvidia.com/en-us/drivers/
 # alt + ctrl + f2 切换到命令行 gui中容易出错
 sudo chmod a+x NVIDIA-Linux-x86_64-570.144.run # 赋予run程序可执行权限
 sudo ~/NVIDIA-Linux-x86_64-570.144.run
@@ -55,5 +57,16 @@ sudo ~/NVIDIA-Linux-x86_64-570.144.run
 
 # 验证
 nvidia-smi
+
+```
+
+# CUDA
+
+```bash
+
+
+# https://docs.nvidia.com/cuda/cuda-installation-guide-linux/#pre-installation-actions
+wget https://developer.download.nvidia.com/compute/cuda/13.0.2/local_installers/cuda_13.0.2_580.95.05_linux.run
+sudo sh cuda_13.0.2_580.95.05_linux.run
 
 ```

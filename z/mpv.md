@@ -20,7 +20,8 @@ fullscreen=yes
 sub-auto=all
 sub-file-paths=subs
 
-ao=alsa
+
+ao=pipewire
 audio-device=auto
 
 

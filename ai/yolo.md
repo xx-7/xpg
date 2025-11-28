@@ -4,6 +4,15 @@
 
 ```bash
 
+conda create -n labelimg python=3.8.5
+conda activate labelimg
+pip install labelimg
+
+labelImg
+
+# 指定图片目录 跟label文件
+labelImg ./labels ./labels/classes.txt
+
 ```
 
 # 训练
@@ -26,7 +35,7 @@
 
 # yaml conf file
 # cp ultralytics\ultralytics\cfg\datasets\coco8.yaml
-# conf.yaml
+# data.yaml
 
 path: data # root dir
 train: images/train
@@ -86,6 +95,9 @@ head:
 
 
 # 从 YAML 配置新建模型并从头训练
-yolo detect train data=conf.yaml model=yolo11n.yaml epochs=100 imgsz=640
+yolo detect train data=./data.yaml model=./mahm.yaml epochs=3000 imgsz=640 patience=50
+
+
+yolo export model=runs/detect/train2/weights/best.pt format=onnx
 
 ```
