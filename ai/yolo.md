@@ -15,6 +15,19 @@ labelImg ./labels ./labels/classes.txt
 
 ```
 
+# install
+
+```bash
+
+
+conda create -n y11 python=3.13
+
+# 装好cuda环境再装
+pip install ultralytics
+
+
+```
+
 # 训练
 
 ```bash
