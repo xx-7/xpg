@@ -14,7 +14,13 @@ cd vcpkg
 # env
 # VCPKG_ROOT    D:\vcpkg
 # Path          D:\vcpkg
-# Path          %VCPKG_ROOT%\installed\x64-windows\bin
+# Path          %VCPKG_ROOT%\installed\x64-windows-static\bin
+
+# 指定拉取版本
+vcpkg install openssl:x64-windows
+
+
+vcpkg install openssl:x64-windows-static
 
 ```
 
