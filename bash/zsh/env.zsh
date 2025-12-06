@@ -47,3 +47,9 @@ export JAR_TOOLS_ROOT=/ufs/opt/jar
 
 # jar
 export PATH=$PATH:/ufs/opt/jar
+
+
+# VCPKG
+export VCPKG_ROOT=/ufs/opt/vcpkg
+export VCPKG_INSTALLED_ROOT=$VCPKG_ROOT/installed
+export PATH=$PATH:$VCPKG_ROOT:$VCPKG_INSTALLED_ROOT/x64-linux/bin

@@ -27,34 +27,49 @@ git commit -a -m 'test'
 # 更新引用
 git push -u origin main
 
-#查看状态
+# 查看状态
 git status
 
-#新建分支
+# 新建分支
 git checkout -b feature_b
 
-#切换分支
+# 添加子模块
+git submodule add [url] [path]
+
+# 添加子模块 指定分支
+git submodule add -b [branchName] [url] [path]
+
+git submodule init .\sub-1\
+git submodule update .\sub-1\
+
+# 手动拉子模块
+git submodule update  --init .\sub-1\
+
+# 拉取时同步拉子模块
+git clone [主仓url] --recurse-submodules
+
+# 切换分支
 git checkout master
 
-#合并分支
+# 合并分支
 git merge feature_b
 
-#删除分支
+# 删除分支
 git branch -d feature_b
 
-#删除
+# 删除
 git rm * -r
 
-#拉取更新
+# 拉取更新
 git pull
 
-#查看文件不同，可加文件路径
+# 查看文件不同，可加文件路径
 git diff
 
-#自动合并失败,手动合并
+# 自动合并失败,手动合并
 git mergetool
 
-#放弃本地修改强拉远程
+# 放弃本地修改强拉远程
 git fetch origin
 git reset --hard origin/master
 git reset --hard origin/main
@@ -64,17 +79,17 @@ git reset --hard origin/main
 # --soft 不删除改动文件, 撤消commit 不撤消add
 # HEAD^ 上次 HEAD~2 上两次commit
 
-#回到某次提交
-git log 
+# 回到某次提交
+git log
 git reset --hard $COMMIT
 
-#撤消最后一次提交
+# 撤消最后一次提交
 git reset --mixed HEAD^
 
-#推送已经创建
+# 推送已经创建
 git remote add origin https://test.com/test/test.git
 
-#切换验证方式
+# 切换验证方式
 git remote -v
 git remote rm origin
 git remote add origin git@github.com:USER/PROJECT.git
