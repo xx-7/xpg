@@ -18,4 +18,8 @@ paru -S vmware-workstation
 # debian
 # https://wiki.debian.org/VMware#VMware_Workstation_Pro.2FPlayer_17
 
+# hiddle tray icon
+nano ~/.vmware/preferences
+pref.vmware.showTrayIcon = "FALSE"
+
 ```

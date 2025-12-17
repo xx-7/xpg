@@ -13,6 +13,15 @@ labelImg
 # 指定图片目录 跟label文件
 labelImg ./labels ./labels/classes.txt
 
+# cudnn
+# https://developer.nvidia.com/cudnn
+
+# onnxruntime 环境安装
+# https://onnxruntime.ai/docs/execution-providers/CUDA-ExecutionProvider.html#cuda-12x
+
+conda install nvidia::cudnn cuda-version=12
+
+
 ```
 
 # install
