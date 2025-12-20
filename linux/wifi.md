@@ -1,4 +1,3 @@
-
 # wifi
 
 ```bash
@@ -14,15 +13,15 @@ sudo systemctl restart networking
 sudo journalctl -u networking.service --since "1 hour ago"
 
 # 开启网卡
-sudo ip link set wlp6s0 up
+sudo ip link set wlp132s0f0 up
 
 # 关闭网卡
-sudo ip link set wlp6s0 down
+sudo ip link set wlp132s0f0 down
 
 
 sudo apt install wpasupplicant
 
-sudo systemctl stop wpa_supplicant.service   
+sudo systemctl stop wpa_supplicant.service
 sudo systemctl disable wpa_supplicant.service
 
 # wpa_cli 在 /usr/sbin/
@@ -36,7 +35,7 @@ ctrl_interface=DIR=/var/run/wpa_supplicant GROUP=netdev
 update_config=1
 EOF
 
-sudo wpa_supplicant -B -i wlp6s0 -c /etc/wpa_supplicant/wpa_supplicant.conf
+sudo wpa_supplicant -B -i wlp132s0f0 -c /etc/wpa_supplicant/wpa_supplicant.conf
 
 wpa_cli scan
 
@@ -52,11 +51,11 @@ wpa_cli enable_network 0
 wpa_cli status
 
 # 动态获取ip
-sudo apt install udhcpc 
-sudo udhcpc -n -q -i wlp6s0
+sudo apt install udhcpc
+sudo udhcpc -n -q -i wlp132s0f0
 
 # 添加路由
-sudo ip route add 192.168.1.0/24 dev wlp6s0
+sudo ip route add 192.168.1.0/24 dev wlp132s0f0
 sudo ip route show
 
 ```

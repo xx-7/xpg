@@ -1,8 +1,10 @@
 ## 记录
-### [Iterator](./iterator.md) 
+
+### [Iterator](./iterator.md)
 
 ## 开源库
-    - [SixtyFPS](https://github.com/sixtyfpsui/sixtyfps) 
+
+    - [SixtyFPS](https://github.com/sixtyfpsui/sixtyfps)
     - [Flume](https://github.com/zesterer/flume)
     - [Tokio](https://github.com/tokio-rs/tokio)
     - [Monoio](https://github.com/bytedance/monoio)
@@ -10,15 +12,20 @@
 ## 库
 
 ### bytecodealliance
-#### [wasmparser](./wasmparser.md) 
+
+#### [wasmparser](./wasmparser.md)
+
 #### fern 日志
 
 ## 安装更新
+
 ```bash
 curl https://sh.rustup.rs -sSf | sh
 rustup update
 ```
+
 ## 编译
+
 ```bash
 cargo run
 cargo run --example demo1
@@ -45,35 +52,38 @@ cargo build --target=x86_64-unknown-linux-gnu
 ```
 
 ```
-rustup component add  rust-src rls rust-analysis 
+rustup component add  rust-src rls rust-analysis
 
 cargo test -- --nocapture
 ```
 
 ## Cargo Config
+
 ```bash
-nano ~/.cargo/config
+nano ~/.cargo/config.toml
 
-[build]
-target = "x86_64-unknown-linux-gnu"
+# [build]
+# target = "x86_64-unknown-linux-gnu"
 
-[target.x86_64-pc-windows-gnu]
-linker = "x86_64-w64-mingw32-gcc"
+# [target.x86_64-pc-windows-gnu]
+# linker = "x86_64-w64-mingw32-gcc"
 
 [target.i686-pc-windows-gnu]
 linker = "i686-w64-mingw32-gcc"
 rustflags = "-C panic=abort"
 
 [target.x86_64-unknown-linux-musl]
-linker = "x86_64-linux-musl-gcc" 
+linker = "x86_64-linux-musl-gcc"
 
 [source.crates-io]
 registry = "https://github.com/rust-lang/crates.io-index"
 replace-with = 'ustc'
+
 [source.ustc]
-registry = "git://mirrors.ustc.edu.cn/crates.io-index"
-[source.tuna]
-registry = "https://mirrors.tuna.tsinghua.edu.cn/git/crates.io-index.git"
+registry = "https://mirrors.ustc.edu.cn/crates.io-index"
+
+[source.rsproxy]
+registry = "https://rsproxy.cn/crates.io-index"
 
 [net]
 git-fetch-with-cli = true
@@ -85,6 +95,7 @@ rm -rf ~/.cargo/.package-cache
 ```
 
 ## 关键字
+
 ```bash
 
 as break const continue crate if else struct enum true false fn
@@ -95,12 +106,14 @@ dyn main
 ```
 
 ## 保留字
+
 ```bash
 abstract become box do final macro override priv typeof
 unsized virtual yield try
 ```
 
 ## rustfmt.toml
+
 ```toml
 max_width = 180
 ```

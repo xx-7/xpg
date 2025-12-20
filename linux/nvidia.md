@@ -42,8 +42,9 @@ sudo apt install libc6:i386
 
 # https://www.nvidia.com/en-us/drivers/
 # alt + ctrl + f2 切换到命令行 gui中容易出错
+wget https://us.download.nvidia.com/XFree86/Linux-x86_64/580.105.08/NVIDIA-Linux-x86_64-580.105.08.run
 sudo chmod a+x NVIDIA-Linux-x86_64-580.105.08.run # 赋予run程序可执行权限
-sudo ~/NVIDIA-Linux-x86_64-580.105.08.run
+sudo ./NVIDIA-Linux-x86_64-580.105.08.run
 
 
 # 选类型  MIT
@@ -72,10 +73,17 @@ sudo sh cuda_13.0.2_580.95.05_linux.run
 
 
 export CUDA_HOME=/usr/local/cuda-13.0
-export LD_LIBRARY_PATH=/usr/local/cuda-13.0/lib64:$LD_LIBRARY_PATH
-export PATH=/usr/local/cuda-13.0/bin:$PATH
+export CUDA_ROOT=$CUDA_HOME
+export LD_LIBRARY_PATH=$CUDA_HOME/lib64:$LD_LIBRARY_PATH
+export PATH=$CUDA_HOME/bin:$PATH
 
 nvcc --version
 
+# 编译示例看cuda验证安装是否正常
+git clone git@github.com:NVIDIA/cuda-samples.git
+cd cuda-samples
+mkdir build && cd build
+cmake ..
+make -j$(nproc)
 
 ```

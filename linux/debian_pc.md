@@ -319,7 +319,6 @@ source ~/.profile
 
 ```
 
-
 ## dev
 
 ```bash
@@ -373,6 +372,11 @@ sudo apt install fonts-firacode p7zip-full
 sudo apt install qbittorrent libreoffice
 
 
+# 温度，硬件信息
+sudo apt install psensor hardinfo lm-sensors
+sudo sudo sensors-detect --auto
+
+
 # 安装sid的包
 sudo nano  /etc/apt/sources.list
 deb http://deb.debian.org/debian bookworm-backports main
@@ -382,7 +386,7 @@ sudo apt update
 apt install -t bookworm-backports kicad
 
 
-# code 
+# code
 # https://wiki.debian.org/VisualStudioCode
 curl https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > microsoft.gpg
 sudo install -o root -g root -m 644 microsoft.gpg /etc/apt/keyrings/microsoft-archive-keyring.gpg
@@ -390,6 +394,7 @@ sudo sh -c 'echo "deb [arch=amd64,arm64,armhf signed-by=/etc/apt/keyrings/micros
 ```
 
 ## yarn
+
 ```bash
 
 curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add -
