@@ -10,19 +10,22 @@ sudo apt install clang cmake git ninja-build pkg-config libgtk-3-dev liblzma-dev
 sudo pacman -S xdg-user-dirs zenity
 
 
-cd /optd/opt
-curl -OL https://storage.googleapis.com/flutter_infra_release/releases/stable/linux/flutter_linux_3.27.2-stable.tar.xz
+cd /ufs/opt
+curl -OL https://storage.googleapis.com/flutter_infra_release/releases/stable/linux/flutter_linux_3.38.5-stable.tar.xz
 tar xf flutter_linux_3.27.2-stable.tar.xz
 
 # env flutter
-export PATH=$PATH:/optd/opt/flutter/bin
+export PATH=$PATH:/ufs/opt/flutter/bin
 export FLUTTER_STORAGE_BASE_URL=https://storage.flutter-io.cn/
-export PUB_HOSTED_URL=https://pub-web.flutter-io.cn
-export FLUTTER_GIT_URL=https://mirrors.tuna.tsinghua.edu.cn/git/flutter-sdk.git
+export PUB_HOSTED_URL=https://pub.flutter-io.cn
+export FLUTTER_GIT_URL=https://github.com/flutter/flutter.git
 export CHROME_EXECUTABLE=/opt/google/chrome/chrome
 
-export ANDROID_SDK_ROOT=/optd/sdk
+export ANDROID_SDK_ROOT=/ufs/sdk
 
+
+sdkmanager --install 'platforms;android-36'
+sdkmanager --install 'build-tools;28.0.3'
 
 # win
 # https://docs.flutter.cn/community/china
@@ -31,15 +34,15 @@ Get-ChildItem Env:
 
 $ENV:ALL_PROXY = 'socks5://127.0.0.1:1080'
 
-$env:PUB_HOSTED_URL="https://mirror.sjtu.edu.cn/dart-pub";
-$env:FLUTTER_STORAGE_BASE_URL="https://mirror.sjtu.edu.cn"
-$env:FLUTTER_GIT_URL="https://mirrors.tuna.tsinghua.edu.cn/git/flutter-sdk.git"
+$env:PUB_HOSTED_URL="ttps://pub.flutter-io.cn";
+$env:FLUTTER_STORAGE_BASE_URL="https://storage.flutter-io.cn"
+$env:FLUTTER_GIT_URL="https://mirrors.ustc.edu.cn/flutter.git"
 
 
 # dart api
 # https://api.dart.dev
 
-# Android 要装 Android Studio 
+# Android 要装 Android Studio
 
 flutter config --android-studio-dir=/optd/opt/android-studio/
 
@@ -92,14 +95,14 @@ prefer_const_constructors: false
 
 ```
 
-
-# Document 
+# Document
 
 ## StatelessWidget or StatefulWidget
- * StatelessWidget和StatefulWidget没有本质区别，他们的所有属性都是不可变的。它们都没法更新，除非用一个新的Widget去替换它们。
- * StatefulWidget拥有一个可变的State。
 
-# android 改id闪退
+- StatelessWidget 和 StatefulWidget 没有本质区别，他们的所有属性都是不可变的。它们都没法更新，除非用一个新的 Widget 去替换它们。
+- StatefulWidget 拥有一个可变的 State。
+
+# android 改 id 闪退
 
 ```bash
 

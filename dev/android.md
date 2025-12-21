@@ -13,7 +13,7 @@ adb pair IP:PORT CODE
 adb devices
 adb pull <local> <remote>
 adb push <remote> <local>
-adb shell <command> 
+adb shell <command>
 adb install <path-to-apk>
 adb version
 adb kill-server
@@ -26,6 +26,7 @@ adb shell start
 adb reboot
 adb shutdown
 ```
+
 # ida debugger
 
 ```bash
@@ -33,7 +34,7 @@ adb root start-server
 adb push android_server64 /data/local/tmp/
 
 adb shell
-cd 
+cd
 chmod 755 /data/local/tmp/android_server64
 /data/local/tmp/android_server64
 
@@ -87,7 +88,7 @@ wget https://dl.google.com/android/repository/android-ndk-r26b-linux.zip
 
 unar android-ndk-r26b-linux.zip
 
-export PATH=$PATH:/optd/opt/android-ndk-r26b/
+export PATH=$PATH:/ufs/opt/android-ndk-r26b/
 
 
 ```
@@ -101,22 +102,22 @@ export PATH=$PATH:/optd/opt/android-ndk-r26b/
 
 # 命令行管理
 
-mkdir /optd/sdk
-export ANDROID_SDK_ROOT=/optd/sdk
+mkdir /ufs/sdk
+export ANDROID_SDK_ROOT=/ufs/sdk
 
 # https://developer.android.com/studio#command-line-tools-only
 wget https://dl.google.com/android/repository/commandlinetools-linux-11076708_latest.zip
 mkdir /optd/sdk/cmdline-tools/
 unar commandlinetools-linux-11076708_latest.zip -o /optd/sdk/cmdline-tools/
 
-cd /optd/sdk/cmdline-tools/ && mv cmdline-tools latest && cd -
+cd /ufs/sdk/cmdline-tools/ && mv cmdline-tools latest && cd -
 
 export PATH=$PATH:$ANDROID_SDK_ROOT/cmdline-tools/latest/bin
 
 
 sdkmanager --list_installed --sdk_root=/optd/sdk/
 
-sdkmanager --list_installed 
+sdkmanager --list_installed
 
 # 安装下初始环境, 其它的版本,ndk这些flutter 要用到自动会装
 sdkmanager --install platform-tools
@@ -128,6 +129,7 @@ export PATH=$PATH:$ANDROID_SDK_ROOT/platform-tools/
 
 
 ```
+
 # 反编译
 
 ```bash

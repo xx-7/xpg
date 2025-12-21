@@ -77,21 +77,32 @@ linker = "x86_64-linux-musl-gcc"
 
 [source.crates-io]
 registry = "https://github.com/rust-lang/crates.io-index"
-replace-with = 'ustc'
+replace-with = 'rsproxy-sparse'
 
 [source.ustc]
 registry = "https://mirrors.ustc.edu.cn/crates.io-index"
 
-[source.rsproxy]
+ [source.rsproxy]
 registry = "https://rsproxy.cn/crates.io-index"
 
+[source.rsproxy-sparse]
+registry = "sparse+https://rsproxy.cn/index/"
+
+[registries.rsproxy]
+index = "https://rsproxy.cn/crates.io-index"
+
 [net]
+retry=2
 git-fetch-with-cli = true
 
 
 ext install matklad.rust-analyzer
 
 rm -rf ~/.cargo/.package-cache
+
+export RUSTUP_DIST_SERVER="https://rsproxy.cn"
+export RUSTUP_UPDATE_ROOT="https://rsproxy.cn/rustup"
+
 ```
 
 ## 关键字
