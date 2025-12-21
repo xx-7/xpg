@@ -61,6 +61,9 @@ flutter_rust_bridge_codegen generate
 
 flutter run -d linux
 
+# gtk hidpi
+export GDK_SCALE=2
+
 ```
 
 # FAQ
