@@ -34,8 +34,8 @@ Get-ChildItem Env:
 
 $ENV:ALL_PROXY = 'socks5://127.0.0.1:1080'
 
-$env:PUB_HOSTED_URL="ttps://pub.flutter-io.cn";
-$env:FLUTTER_STORAGE_BASE_URL="https://storage.flutter-io.cn"
+$env:PUB_HOSTED_URL="https://mirrors.cloud.tencent.com/dart-pub";
+$env:FLUTTER_STORAGE_BASE_URL="https://mirrors.cloud.tencent.com/flutter"
 $env:FLUTTER_GIT_URL="https://mirrors.ustc.edu.cn/flutter.git"
 
 
