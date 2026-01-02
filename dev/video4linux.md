@@ -1,4 +1,27 @@
 
+# cmd
+
+```bash
+
+# 查询设备信息
+v4l2-ctl --list-formats-ext -d /dev/video0
+
+# 查询分辨率
+v4l2-ctl --get-fmt-video -d /dev/video0
+
+# 设置分辨率
+v4l2-ctl --set-fmt-video=width=320,height=240,pixelformat=YUYV -d /dev/video0
+
+# 查询帧率
+v4l2-ctl --get-parm -d /dev/video0
+
+# 设置帧率
+v4l2-ctl --set-parm=30 -d /dev/video0
+
+
+```
+
+
 # ioctl
 
 ```bash
