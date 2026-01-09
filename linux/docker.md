@@ -55,7 +55,7 @@ sudo systemctl daemon-reload
 
 ```
 
-## debian 
+## debian
 
 ```bash
 sudo apt install apt-transport-https ca-certificates curl gnupg2 lsb_release
@@ -271,5 +271,33 @@ docker build . \
     --build-arg "HTTPS_PROXY=http://proxy.example.com:8080/" \
     --build-arg "NO_PROXY=localhost,127.0.0.1,.example.com" \
 
+
+# 4.nginx 反向 docker.io
+
+# server
+
+nano /etc/nginx/conf.d/docker.conf
+
+server {
+  listen 5080;
+  server_name s.player-banks.com;
+  location /v2/ {
+    proxy_pass https://registry-1.docker.io/v2/;
+    proxy_set_header Host registry-1.docker.io;
+  }
+}
+
+systemctl restart nginx
+
+# local
+
+sudo nano /etc/docker/daemon.json
+
+{
+	"registry-mirrors": ["http://DOMAIN:5080"]
+}
+
+sudo systemctl daemon-reload
+sudo systemctl restart docker
 
 ```

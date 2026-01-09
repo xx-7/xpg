@@ -25,10 +25,10 @@ nano drivers/mtd/spi/spi_flash_ids.c
 
 nano arch/arm/dts/sun8i-v3s-licheepi-zero.dts
 
-&spi0 { 
+&spi0 {
         status ="okay";
-        xt25f128f:xt25f128f@0 { 
-                compatible = "jedec,spi-nor";
+        flash@0 {
+               compatible = "windbond,xt25f128b", "jedec,spi-nor";
                 reg = <0x0>;
                 spi-max-frequency = <50000000>;
                 #address-cells = <1>;
@@ -41,15 +41,15 @@ nano arch/arm/dts/sun8i-v3s-licheepi-zero.dts
 # /dev/mtdblock3 31:03 都可以
 nano ./include/configs/sun8i.h
 
-#define CONFIG_BOOTCOMMAND "sf probe 0; " \
-        "sf read 0x41800000 0x100000 0x10000; " \
-        "sf read 0x41000000 0x110000 0x400000; " \
-        "bootz 0x41000000 - 0x41800000"
+#define CONFIG_BOOTCOMMAND "setenv machid 1029; sf probe 0; " \
+        "sf read 0x41d00000 0x100000 0x9000; " \
+        "sf read 0x41000000 0x110000 0x260000; " \
+        "bootm 0x41000000"
 
-#define CONFIG_BOOTARGS "console=ttyS2,115200  root=31:03 ro rootfstype=jffs2 earlyprintk panic=5 rootwait " \
-        "mtdparts=spi0.0:1M(uboot)ro,64k(dtb)ro,4M(kernel)ro,10M(rootfs),-(extra)"
+#define CONFIG_BOOTARGS "console=ttyS0,115200 root=31:03 rw rootfstype=jffs2 earlyprintk panic=5 rootwait " \
+        "mtdparts=spi0.0:1M(uboot)ro,64k(sys_config)ro,3M(kernel)ro,10M(rootfs),512k(config),-(config2)"
 
 time make ARCH=arm CROSS_COMPILE=arm-linux-gnueabihf- 2>&1 | tee build.log
-cp u-boot-sunxi-with-spl.bin /project/dist/
+cp u-boot-sunxi-with-spl.bin /project/dist/uboot.bin
 
 ```
