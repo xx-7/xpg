@@ -30,6 +30,14 @@ cd /project/lichee/linux-3.4
 ./scripts/build_tiger-cdr.sh
 
 
+# 解压编译 fex 文件
+apt install sunxi-tools
+
+fex2bin sys_config.fex script.bin
+bin2fex script.bin sys_config.fex
+
+
+
 
 
 ```
