@@ -1,7 +1,41 @@
+# 三方
+
 ```bash
 
 
-unar buildroot/dl/gcc-linaro.tar.bz2 -o /opt
+wget http://releases.linaro.org/components/toolchain/binaries/7.2-2017.11/arm-linux-gnueabi/gcc-linaro-7.2.1-2017.11-x86_64_arm-linux-gnueabi.tar.xz
+wget http://releases.linaro.org/components/toolchain/binaries/7.2-2017.11/arm-linux-gnueabihf/gcc-linaro-7.2.1-2017.11-x86_64_arm-linux-gnueabihf.tar.xz
+tar -vxJf gcc-linaro-7.2.1-2017.11-x86_64_arm-linux-gnueabi.tar.xz
+cp -r ./gcc-linaro-7.2.1-2017.11-x86_64_arm-linux-gnueabi /opt/
+
+export PATH=$PATH:/opt/gcc-linaro-7.2.1-2017.11-x86_64_arm-linux-gnueabi/bin
+
+
+make ARCH=arm CROSS_COMPILE=arm-linux-gnueabi- uImage -j16
+
+make ARCH=arm CROSS_COMPILE=arm-linux-gnueabi- -j16 INSTALL_MOD_PATH=out modules
+
+make ARCH=arm CROSS_COMPILE=arm-linux-gnueabi- -j16 INSTALL_MOD_PATH=out modules_install
+
+# 出错无法找到 linux/compiler-gcc7.h
+cp include/linux/compiler-gcc4.h include/linux/compiler-gcc7.h
+
+
+# -s 代表页大小，普通spi nor flash的页大小是256字节，即0x100
+# -e 表示擦除的块大小，普通spi nor flash的块大小是64K字节，即0x10000
+# -p 表示分区大小，在生成时会擦除分区大小的flash初始化。
+# 这里必须和uboot里指定的分区大小一致，否则会出现脏页。
+mkfs.jffs2 -s 0x100 -e 0x10000 -p 0xAF0000 -d root -o jffs2.img
+
+
+```
+
+# 官方 bsp 包
+
+```bash
+
+
+unar buildroot/dl/gcc-linaro.tar.bz2 -o /project/linaro
 
 export PATH=$PATH:/opt/gcc-linaro/bin
 
@@ -37,6 +71,26 @@ fex2bin sys_config.fex script.bin
 bin2fex script.bin sys_config.fex
 
 
+# 修改 ion预留内存
+Device Drivers -> Graphics support -> Ion Memory Manager -> memory size(in MB) -> 4m,4m
+
+# 关闭android支持
+Device Drivers -> Staging Drivers -> 取消  Android Drivers
+
+
+# 关闭DISP
+Device Drivers -> Graphics support -> Support for frame buffer devices -> Video support for sunxi -> 取消  DISP Driver Support(sunxi-disp2)
+
+# 关 ALSA
+Device Drivers -> 取消 Sound card Support
+#  Device Drivers -> 取消 Common Clock Framework 不关编译CLK出错  或: 开 Generic sound devices -> Generic loopback driver (PCM)  # 不开编译CLK出错
+
+# Watchdog
+Device Drivers -> Watchdog Timer Support -> 取消 SUNXI Watchdog
+
+# 关部分usb 支持
+Device Drivers -> USB Support -> 取消 USB Gadget Support
+                                取消 SUNXI USB2.0 Dual Role Controller support
 
 
 

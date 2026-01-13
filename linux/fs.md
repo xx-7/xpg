@@ -35,8 +35,10 @@ du -h --max-depth=1 ./
 
 # 给硬盘分区 进入m打印帮助 dos 分区表格式 ext4用主分区 w 保存退出
 sudo fdisk /dev/sdb
+
 # 格式化
 sudo mkfs -t ext4 /dev/sdb1
+
 # 临时挂载
 sudo mount /dev/sdb1 /optd
 
