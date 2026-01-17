@@ -95,3 +95,24 @@ Device Drivers -> USB Support -> 取消 USB Gadget Support
 
 
 ```
+
+## csi lcd 端口复用
+
+```bash
+
+# 正常设置为csi pe 端口复用寄存器值
+# 配置错会打印日志 request pinctrl handle for device [csi1] failed!
+
+# 详细数据在 v3s 数据手册 230页 基地址: 0x01c20800
+
+devmem 0x01c20890
+0x22222222
+devmem 0x01c20894
+0x22222222
+devmem 0x01c20898
+0x02277777
+
+# 问题定位到在 linux-3.4/drivers/pinctrl/pinctrl-sun8iw8.c pe21, 22端口配置成csi0 实际在使用中是csi1 要过来重新编译就可以
+# pinctrl 是调用 pinctrl-sun8iw8.c 初始化信息, 然后读取sys_config fex.bin 根据名字配置
+
+```
