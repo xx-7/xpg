@@ -58,7 +58,7 @@ sudo systemctl daemon-reload
 ## debian
 
 ```bash
-sudo apt install apt-transport-https ca-certificates curl gnupg2 lsb_release
+sudo apt install apt-transport-https ca-certificates curl gnupg2
 
 # 添加证书
 sudo mkdir -p /usr/share/keyrings
@@ -66,7 +66,7 @@ curl -fsSL https://download.docker.com/linux/debian/gpg | sudo gpg --dearmor --y
 sudo chmod a+r /usr/share/keyrings/docker-archive-keyring.gpg
 
 # 添加源
-echo "deb [arch=amd64 signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://download.docker.com/linux/debian $(lsb_release -cs)  stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
+echo "deb [arch=amd64 signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://download.docker.com/linux/debian trixie stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
 
 sudo apt update
 

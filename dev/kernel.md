@@ -1,9 +1,8 @@
-
 # Log
 
 ```c
 # 级别
-#    0  pr_emerg / KERN_EMERG 
+#    0  pr_emerg / KERN_EMERG
 #    1  pr_alert / KERN_ALERT
 #    2  pr_crit / KERN_CRIT
 #    3  pr_err / KERN_ERR
@@ -24,7 +23,7 @@ int console_printk[4] = {
     DEFAULT_CONSOLE_LOGLEVEL,/*缺省的控制台日志级别：控制台日志级别的缺省值*/
 };
 
-#define console_loglevel (console_printk[0])             // 当前窗口级别 手动: Echo 7 > /proc/sys/kernel/printk
+#define console_loglevel (console_printk[0])             // 当前窗口级别 手动: echo 7 > /proc/sys/kernel/printk
 #define default_message_loglevel (console_printk[1])     // printk 未指定级别时级别
 #define minimum_console_loglevel (console_printk[2])     // 后台记录最小级别
 #define default_console_loglevel (console_printk[3])     // 内核启动时会默认为这个

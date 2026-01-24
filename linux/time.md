@@ -18,8 +18,11 @@ hwclock --systohc --localtime
 # centos
 yum install ntp
 
-# debain
+# debian
 sudo apt install ntpdate
+
+sudo apt install ntpsec-ntpdate
+sudo apt install util-linux-extra
 
 # arch
 sudo pacman -S ntp

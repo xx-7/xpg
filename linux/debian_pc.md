@@ -126,12 +126,11 @@ sudo apt install firmware-amd-graphics firmware-linux-nonfree libgl1-mesa-dri li
 
 ```bash
 # https://wiki.debian.org/WiFi
-sudo nano /etc/apt/sources.list
-deb http://httpredir.debian.org/debian/ trixie main contrib non-free
-sudo apt-get update
+sudo echo "deb [arch=amd64] http://httpredir.debian.org/debian/ trixie main contrib non-free" > /etc/apt/sources.list.d/httpredir.list
+
 sudo apt-get install firmware-iwlwifi
 
-# e5000 网卡驱动
+# e5000 网卡驱动  同 r8126
 # https://www.realtek.com/Download/List?cate_id=584
 ```
 
@@ -364,6 +363,10 @@ sudo apt install blueman
 # srecorder qBittorrent
 sudo apt install curl unar
 sudo apt install ttf-wqy-microhei fcitx-table-wbpy
+
+# fcitx5
+sudo apt-get install fcitx5 fcitx5-config-qt fcitx5-chinese-addons
+
 sudo apt install nfs-common mpv remmina fontforge
 sudo apt install sqlitebrowser shotcut gimp
 sudo apt install ksnip gwenview keepassxc
@@ -475,7 +478,7 @@ sudo apt install typora
 
 ```bash
 wget -q -O - https://dl.google.com/linux/linux_signing_key.pub | sudo tee /etc/apt/trusted.gpg.d/google.asc >/dev/null
-sudo echo "deb http://dl.google.com/linux/chrome/deb/ stable main" > /etc/apt/sources.list.d/google.list
+sudo echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" > /etc/apt/sources.list.d/google-chrome.list
 sudo apt update
 sudo apt install google-chrome-stable
 ```

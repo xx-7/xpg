@@ -5,14 +5,17 @@ sudo apt install bridge-utils
 
 sudo pacman -S bridge-utils
 
+sudo /etc/network/interfaces
+
 iface eth0 inet manual
+iface eth1 inet manual
 
 auto br0
 iface br0 inet static
    address 192.168.1.28
    netmask 192.168.1.0
    gateway 192.168.1.1
-   bridge_ports eth0
+   bridge_ports eth0 eth1
    bridge_stp off
    bridge_fd 0
 
