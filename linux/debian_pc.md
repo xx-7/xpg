@@ -41,7 +41,18 @@ sudo apt install xfce4 xfce4-terminal
 # 默认icons
 # 用户 ~/.icons  系统 /usr/share/icons
 
+# 系统默认安装了 light-locker
 sudo apt install light-locker
+
+# 默认装的lightdm 装这个可以设置页面
+sudo apt install lightdm-gtk-greeter-settings
+
+# 全局快捷键 Settings -> Keyboard -> Application Shortcuts
+
+# 设置锁屏时间
+sudo apt install xfce4-power-manager
+
+
 # 自动锁屏
 sudo apt install xscreensaver
 

@@ -1,5 +1,5 @@
 ### Node Npm
-```
+```bash
 
 # https://nodejs.org/en/
 
@@ -21,7 +21,7 @@ npm install -g cnpm --registry=https://registry.npm.taobao.org
 ```
 
 ### npm link 本地包
-```
+```bash
 cd ~/projects/node-redis    #go into the package directory
 npm link                    #creates global link
 cd ~/projects/node-bloggy   #go into some other package directory
@@ -29,7 +29,7 @@ npm link redis              #link-install the package
 ```
 
 ### 本地包
-```
+```bash
 npm install ../libname/dist
 
 # edit angular.json
@@ -69,7 +69,7 @@ yarn add webpack webpack-cli webpack-dev-server @webpack-cli/serve -D
 ```
 
 #### Html
-```
+```bash
 # 安装
 yarn add html-webpack-plugin clean-webpack-plugin -D
 
@@ -85,7 +85,7 @@ yarn add html-webpack-plugin clean-webpack-plugin -D
 
 ```
 #### babel
-```
+```bash
 #安装
 yarn add babel-loader @babel/core @babel/cli @babel/preset-env @babel/preset-react -D
 
@@ -112,7 +112,7 @@ yarn add babel-loader @babel/core @babel/cli @babel/preset-env @babel/preset-rea
 ```
 
 ### Angular
-```
+```bash
 npm install -g @angular/cli
 ng new hello
 cd hello
@@ -128,7 +128,7 @@ ng g directive hello
 [cli](https://angular.io/cli/generate#component)
 
 ### Create-react-app
-```
+```bash
 npx create-react-app hello
 
 sudo npm install -g create-react-app
@@ -137,7 +137,7 @@ create-react-app hello
 ```
 
 ### React-app-rewired
-```
+```bash
 /* config-overrides.js */
 
 module.exports = function override(config, env) {
@@ -152,7 +152,7 @@ npm install react-app-rewired --save-dev
 ```
 
 ### React-Script React-app-rewired Mocker-api
-```
+```bash
 npm install mocker-api --save-dev
 
 vi mock/index.js
@@ -206,7 +206,7 @@ module.exports = override;
 ### 字体 Icon
 [fontmin](https://github.com/ecomfe/fontmin)
 
-```
+```bash
 npm install --save fontmin
 npm install --save gulp-rename
 

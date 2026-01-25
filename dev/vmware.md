@@ -22,4 +22,51 @@ paru -S vmware-workstation
 nano ~/.vmware/preferences
 pref.vmware.showTrayIcon = "FALSE"
 
+
+# 支持情况
+# https://knowledge.broadcom.com/external/article?legacyId=80807
+
+```
+
+
+# FAQ
+
+## 装驱动卡死
+
+```bash
+
+# /etc/default/grub 找到GRUB_CMDLINE_LINUX_DEFAULT="quiet"，改为以下内容：
+GRUB_CMDLINE_LINUX_DEFAULT="quiet ibt=off"
+
+# 更新initramfs
+sudo update-initramfs -u
+# 更新grub
+sudo update-grub2
+# 重启系统
+sudo reboot
+
+```
+
+## 不生成网卡
+
+```bash
+
+sudo vmware-netcfg
+# An up-to-date "libaio" or "libaio1" package from your system is preferred.
+# 提示还在, 但可以上网
+
+wget https://github.com/philipl/vmware-host-modules/archive/workstation-17.6.3.tar.gz
+
+tar -xzf vmware-host-modules-workstation-17.6.3.tar.gz
+
+cd vmware-host-modules-workstation-17.6.3/
+
+tar -cf vmmon.tar vmmon-only/
+
+tar -cf vmnet.tar vmnet-only/
+
+sudo cp -v vmmon.tar vmnet.tar  /usr/lib/vmware/modules/source/
+
+sudo vmware-modconfig --console --install-all
+
 ```

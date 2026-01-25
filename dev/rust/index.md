@@ -63,7 +63,8 @@ cargo test -- --nocapture
 ```bash
 nano ~/.cargo/config.toml
 
-# [build]
+[build]
+rustflags = ["-C", "link-args=-Wl,-rpath,@loader_path/libs"]
 # target = "x86_64-unknown-linux-gnu"
 
 # [target.x86_64-pc-windows-gnu]
