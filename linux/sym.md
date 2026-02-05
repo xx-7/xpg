@@ -27,7 +27,7 @@ export RUSTFLAGS="-C link-args=-Wl,-rpath,@loader_path/../libs"
 # 工具修改
 sudo apt install patchelf
 
-patchelf --print_rpath test
+patchelf --print-rpath test
 patchelf --add-rpath ./lib ./test
 patchelf --set-rpath ./lib ./test
 patchelf --remove-rpath ./test

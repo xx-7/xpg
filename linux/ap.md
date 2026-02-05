@@ -74,7 +74,10 @@ managed=false
 unmanaged-devices=interface-name:wlan0
 
 
-
+# nat上网
 sudo iptables -t nat -A POSTROUTING -s 192.168.1.0/24 -d 10.8.8.0/24 -j MASQUERADE
+
+# 转发端口
+sudo iptables -t nat -A PREROUTING -p tcp --dport 9966 -j DNAT --to-destination 192.168.1.67:9966
 
 ```
