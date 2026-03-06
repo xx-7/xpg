@@ -1,7 +1,7 @@
 
 
 ```bash
-
+sudo pacman -S network-manager-applet
 # 系统快捷方式文件目录
 ls -l /usr/share/applications/
 

@@ -118,4 +118,7 @@ mpv --demuxer-lavf-o=video_size=1920x1080,input_format=mjpeg av://v4l2:/dev/vide
 
 mpv --demuxer-lavf-o=video_size=1280x720,input_format=mjpeg av://v4l2:/dev/video0 --profile=low-latency
 
+
+mpv --demuxer-lavf-o=video_size=1920x1200,input_format=mjpeg av://v4l2:/dev/video0 --profile=low-latency 
+
 ```

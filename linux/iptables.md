@@ -22,6 +22,7 @@ iptables -L -n
 
 # nat 
 sudo iptables -t nat -A POSTROUTING -s 192.168.1.0/24  -j MASQUERADE
+
 # 只nat针对 10.8.8.0/24的访问
 sudo iptables -t nat -A POSTROUTING -s 192.168.1.0/24 -d 10.8.8.0/24 -j MASQUERADE
 
