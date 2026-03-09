@@ -61,6 +61,17 @@ nvidia-smi
 
 ```
 
+# Arch
+
+```bash
+
+sudo pacman -S nvidia-open nvidia-utils
+
+# 验证
+nvidia-smi
+
+```
+
 # CUDA
 
 ```bash

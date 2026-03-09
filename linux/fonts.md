@@ -66,7 +66,7 @@ fc-list :mono | grep 'WenQuan'
 </fontconfig>
 ```
 
-# Debian
+# Debian or Arch
 
 ```bash
 

@@ -508,6 +508,9 @@ nano /etc/pulse/system.pa
 load-module module-bluetooth-policy
 load-module module-bluetooth-discover
 #...
+
+
+sudo pacman -S pipewire pipewire-audio pipewire-pulse xfce4-pulseaudio-plugin pavucontrol
 ```
 
 ## lenovo throttling fix
