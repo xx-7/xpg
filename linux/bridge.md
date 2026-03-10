@@ -3,9 +3,7 @@
 # https://wiki.debian.org/BridgeNetworkConnections
 sudo apt install bridge-utils
 
-sudo pacman -S bridge-utils
-
-sudo /etc/network/interfaces
+sudo nano /etc/network/interfaces
 
 iface eth0 inet manual
 iface eth1 inet manual
@@ -52,6 +50,8 @@ sudo systemctl restart docker
 
 
 # arch
+
+paru -S bridge-utils
 
 sudo nano /etc/systemd/network/25-br0.netdev
 

@@ -4,14 +4,26 @@
 # https://catalog.update.microsoft.com/search.aspx?q=kb4474419
 # https://catalog.update.microsoft.com/search.aspx?q=4490628
 
+# arch
+sudo pacman -S linux-headers
 
 # 查看安装列表
 sudo vmware-installer -l
+
+# 配置网络
+sudo vmware-netcfg 
+
+# 初始化网络
+sudo vmware-networks --postinstall vmware-player,0,1
+
+# 启动网络 *注 桥接网络不会生成虚拟网卡信息 ip a看不到
+sudo vmware-networks --start
 
 # 卸载
 sudo vmware-installer -u vmware-workstation
 
 # vmware pro 针对个人已免费
+paru -S vmware-keymaps
 paru -S vmware-workstation
 
 
@@ -43,6 +55,12 @@ sudo update-initramfs -u
 # 更新grub
 sudo update-grub2
 # 重启系统
+sudo reboot
+
+# arch
+# Arch 如果关闭了ibt 内核会加核lts, 耍安装linux-lts-headers, N卡驱动应安装 nvidia-open-lts 
+sudo mkinitcpio -P
+sudo grub-mkconfig -o /boot/grub/grub.cfg
 sudo reboot
 
 ```

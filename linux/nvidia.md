@@ -67,6 +67,9 @@ nvidia-smi
 
 sudo pacman -S nvidia-open nvidia-utils
 
+# 关闭 ibt
+sudo pacman -S nvidia-open-lts nvidia-utils
+
 # 验证
 nvidia-smi
 
