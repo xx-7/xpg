@@ -49,10 +49,13 @@ sudo systemctl enable coturn
 
 # letsencrypt live和archive 目录默认root用户外没权限
 sudo chmod 755 /etc/letsencrypt/live
-sudo chmod 755 /etc/letsencrypt/live和archive
+sudo chmod -R 755 /etc/letsencrypt/archive
 
 # 查看日志
 sudo cat /var/log/messages | grep turnserver
+
+# 查看日志
+sudo journalctl -u coturn.service -n 50
 
 # 清空日志
 echo "" > /var/log/messages
