@@ -19,6 +19,8 @@ docker logs smp
 
 docker restart smp
 
+# https://simplex.chat/docs/server.html
+
 docker run -d \
     --name smp \
     -e "ADDR=YOUR_DOMAIN" \
@@ -41,6 +43,7 @@ key: /etc/opt/simplex/key.key
 
 EOF
 
+# https://simplex.chat/docs/xftp-server.html#configuration
 
 docker run -d \
     --name xftp \
