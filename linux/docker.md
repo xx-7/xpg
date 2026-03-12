@@ -22,6 +22,9 @@ docker run hello-world
 sudo mkdir /etc/docker
 sudo nano /etc/docker/daemon.json
 
+# 腾讯云内部可用: https://mirror.ccs.tencentyun.com
+
+
 {
 	"registry-mirrors": ["https://mirror.baidubce.com"],
     "storage-driver": "overlay2"

@@ -6,6 +6,7 @@
 # simplex 可在创建聊天后选择切换服务器进行通信
 # ios notifications 是要从 smp -> simplex.chat -> apple 所以服务器被墙情况下通知用不了
 # 最优方案是 smp, xtfp放墙外, webrtx coturn放墙内加速通话
+# https://status.simplex.chat/status/public
 
 mkdir -p /var/simplex/{xftp,smp}/{config,logs} && mkdir -p /var/simplex/xftp/files
 
