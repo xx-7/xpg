@@ -5,7 +5,7 @@
 sudo apt install coturn
 
 cat >> /etc/turnserver.conf << EOF
-tls-listening-port=5349
+tls-listening-port=7349
 
 listening-ip=0.0.0.0
 listening-port=3478
@@ -39,8 +39,10 @@ no-tlsv1_2
 
 EOF
 
-# URI: stun:YOUR_DOMAIN:5349
-# URI: turn:YOUR_USER:YOUR_PASS@YOUR_DOMAIN:5349
+# URI: stun:YOUR_DOMAIN:7349
+# URI: turn:YOUR_USER:YOUR_PASS@YOUR_DOMAIN:7349
+
+# 7349 防火墙要同时打开 tcp udp
 
 sudo systemctl restart coturn
 sudo systemctl enable coturn
