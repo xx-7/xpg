@@ -101,20 +101,6 @@ apt install redis-server
 nano /etc/redis/redis.conf
 ```
 
-## certbot
-
-```bash
-apt install certbot
-
-# 先要关防火墻 证书目录 /etc/letsencrypt/live/
-certbot certonly -d s.xxxx.com
-
-# 续期
-certbot renew
-
-# 复制时可以直接cp链接 不用到实际目录
-```
-
 ## iptables
 
 ```bash
