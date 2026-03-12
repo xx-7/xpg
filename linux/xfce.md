@@ -14,4 +14,7 @@ xscreensaver-command -lock
 # 启动命令前要加env 快捷方式文件后缀要是.desktop
 env LANGUAGE=zh_CN.utf8 LANG=zh_CN.utf8 LC_ALL=zh_CN.utf8 inkscape %F
 
+# 屏幕闪
+Settings Editor -> xfwm4 -> vblank_mode -> off
+
 ```
