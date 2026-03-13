@@ -13,4 +13,17 @@ cd /opt/propdir/bin &&  ./startup.sh
 cd /opt/propdir && nohup ./cor > nohup.log 2>&1 &
 
 
+cat >> /usr/lib/systemd/system/trojand.service << EOF
+[Unit]
+Description=trojan proxy d
+
+[Service]
+WorkingDirectory=/home/trojan
+ExecStart=/home/trojan/tser
+EOF
+
+
+sudo systemctl restart trojand
+
+
 ```
