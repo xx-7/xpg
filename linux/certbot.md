@@ -16,4 +16,11 @@ sudo certbot certonly --standalone -d YOUR_DOMAIN --key-type rsa --rsa-key-size 
 sudo certbot renew
 
 
+
+sudo certbot delete --cert-name example.com
+
+# 续期不显示输出
+/usr/bin/certbot renew --quiet
+
+
 ```
