@@ -14,7 +14,7 @@ sudo execstack -c ~lib/libnativemethods_lnx_64.so
 
 
 #env
-export CDS_INST_DIR=/ufs/opt/SPB2210
+export CDS_INST_DIR=/ufs/opt/SPB241
 export CDS_LIC_FILE=~/Downloads/cadence.lic
 export CDS_DIR=$CDS_INST_DIR
 export CONCEPT_INST_DIR=$CDS_DIR

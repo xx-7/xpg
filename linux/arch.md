@@ -301,7 +301,7 @@ sudo pacman -S nano nodejs mpv simplescreenrecorder unarchiver ttf-fira-code kat
 paru -S firefox google-chrome visual-studio-code-bin jdk8-openjdk jdk11-openjdk baidunetdisk-bin
 
 # stl step viewer
-paru -S fstl mayo-git hotshots
+paru -S fstl mayo-git flameshot
 
 paru -S edrawmax-cn
 

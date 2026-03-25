@@ -18,6 +18,7 @@ env LANGUAGE=zh_CN.utf8 LANG=zh_CN.utf8 LC_ALL=zh_CN.utf8 inkscape %F
 Settings Editor -> xfwm4 -> vblank_mode -> off
 
 
+# Settings -> Keyboard -> Application Shortcuts -> add -> Super + X -> flameshot gui
 flameshot gui
 
 
