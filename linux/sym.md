@@ -18,7 +18,7 @@ LD_LIBRARY_PATH=. ./main
 # 复制过去更新缓存, 如与其它程序有冲突有风险!!!
 sudo cp libfoo.so /usr/local/lib
 sudo ldconfig
-
+ldd
 # 编译时批定加载目录
 -Wl,-rpath,`pwd`
 # 不管用

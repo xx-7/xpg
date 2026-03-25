@@ -22,7 +22,7 @@ sudo nano /etc/modprobe.d/blacklist.conf
 blacklist nouveau
 options nouveau modeset=0
 
-# /etc/default/grub 找到GRUB_CMDLINE_LINUX_DEFAULT="quiet"，改为以下内容：
+# sudo 找到GRUB_CMDLINE_LINUX_DEFAULT="quiet"，改为以下内容：
 GRUB_CMDLINE_LINUX_DEFAULT="quiet rd.driver.blacklist=nouveau"
 
 # 更新initramfs
@@ -72,6 +72,14 @@ sudo pacman -S nvidia-open-lts nvidia-utils
 
 # 验证
 nvidia-smi
+
+
+# sudo 找到GRUB_CMDLINE_LINUX_DEFAULT="quiet"，改为以下内容：
+GRUB_CMDLINE_LINUX_DEFAULT="quiet nvidia_drm.modeset=1"
+
+grub-mkconfig -o /boot/grub/grub.cfg
+
+sudo cat /sys/module/nvidia_drm/parameters/modeset
 
 ```
 

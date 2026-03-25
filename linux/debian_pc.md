@@ -381,7 +381,7 @@ sudo apt-get install fcitx5 fcitx5-config-qt fcitx5-chinese-addons
 
 sudo apt install nfs-common mpv remmina fontforge
 sudo apt install sqlitebrowser shotcut gimp
-sudo apt install ksnip gwenview keepassxc
+sudo apt install flameshot gwenview keepassxc
 sudo apt install nodejs npm
 sudo apt install fonts-firacode p7zip-full
 sudo apt install qbittorrent libreoffice
