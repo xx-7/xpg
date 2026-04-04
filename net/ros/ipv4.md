@@ -54,8 +54,8 @@ add action=masquerade chain=srcnat comment="masquerade IPv4" out-interface=PPPOE
 add action=masquerade chain=srcnat comment="access to ONU" out-interface=wan1 src-address-list=lan_ipv4 dst-address-list=onu_ipv4
 
 /ip firewall mangle
-add action=change-mss chain=forward comment="fix IPv4 mss for WAN" new-mss=1440 passthrough=yes protocol=tcp tcp-flags=syn
-add action=accept chain=prerouting comment=" access to ONU" src-address-list=lan_ipv4 dst-address-list=onu_ipv4
+add action=change-mss chain=forward comment="fix IPv4 mss for WAN" new-mss=clamp-to-pmtu passthrough=yes protocol=tcp tcp-flags=syn
+add action=accept chain=prerouting comment="access to ONU" src-address-list=lan_ipv4 dst-address-list=onu_ipv4
 
 /ip settings
 set max-neighbor-entries=8192 rp-filter=loose tcp-syncookies=yes

@@ -14,6 +14,18 @@
 # 断开路由电源, 有线连接到路由第一个口, 按住复位键插入电源, 直到 netinstall drives 里出现设备松开
 # 浏览目录，选择包进行安装
 
+
+# ssh
+
+# 生成key: IP -> SSH
+# 开启服务: IP -> Services
+# 绑定key: System -> Users -> SSH Keys
+
+
+#   Packages
+#       ->  option  : busybox, keygen
+
+
 ```
 
 
