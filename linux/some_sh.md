@@ -18,6 +18,7 @@ cat >> /usr/lib/systemd/system/trojand.service << EOF
 Description=trojan proxy d
 
 [Service]
+User=vm
 WorkingDirectory=/opt/trojan
 ExecStart=/opt/trojan/tser
 EOF

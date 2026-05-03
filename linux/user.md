@@ -9,7 +9,7 @@ w
 id
 
 # 查看用户所属组
-groups fex
+groups vm
 
 # 查看所有用户组
 cat /etc/group
@@ -17,15 +17,15 @@ cat /etc/group
 # 增加组
 sudo groupadd usbfs
 
-useradd -m -s /bin/bash fex
+useradd -m -s /bin/bash vm
 
 #查看组id
 cat /etc/group | grep usbfs
 
 # 用户添加组
-sudo usermod -a -G usbfs fex
+sudo usermod -a -G usbfs vm
 # 用户添除组
-sudo usermod -r -G usbfs fex
+sudo usermod -r -G usbfs vm
 
 ```
 

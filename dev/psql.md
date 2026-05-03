@@ -3,11 +3,14 @@
 ```bash
 # https://www.postgresql.org/download/linux/debian/
 
+# debian13 不在需要添加
 sudo sh -c 'echo "deb https://apt.postgresql.org/pub/repos/apt $(lsb_release -cs)-pgdg main" > /etc/apt/sources.list.d/pgdg.list'
 
+# debian13 apt-key 已删除
 wget --quiet -O - https://www.postgresql.org/media/keys/ACCC4CF8.asc | sudo apt-key add -
 
 wget --quiet -O - https://www.postgresql.org/media/keys/ACCC4CF8.asc | apt-key add -
+
 
 sudo apt update
 
@@ -19,24 +22,26 @@ sudo systemctl restart postgresql
 
 sudo systemctl status postgresql
 
+
+# 要运行多个实例才需要另初始化，默认已经在 /var/lib/postgresql/17/ 初始化，要启动直接 systemctl，要改变目录，参照下面移动数据库
 ps -ef | grep postgresql
 
 sudo chmod 700 /zfs/pgsql/ 
 sudo chown postgres:postgres /zfs/pgsql/
 
 # 初始化
-sudo -u postgres /usr/lib/postgresql/16/bin/initdb -D /optd/opt/pgsql/data --locale en_US.UTF-8 --auth md5 --pwprompt
+sudo -u postgres /usr/lib/postgresql/17/bin/initdb -D /zfs/pgsql/data --locale en_US.UTF-8 --auth md5 --pwprompt
 
 # 创建节点
 sudo pg_createcluster 16 main --start
 
-sudo -u postgres /usr/lib/postgresql/16/bin/pg_ctl -D /optd/opt/pgsql/data -l logfile start
+sudo -u postgres /usr/lib/postgresql/17/bin/pg_ctl -D /zfs/pgsql/data -l logfile start
 
 # 显示节点
 pg_lsclusters
 
 # 启动节点
-sudo pg_ctlcluster 16 main start
+sudo pg_ctlcluster 17 main start
 
 sudo -u postgres psql
 
@@ -95,15 +100,21 @@ SHOW data_directory;
 
 sudo systemctl stop postgresql
 
+sudo mkdir -p /zfs/pgsql/
+sudo chmod 700 /zfs/pgsql/ 
+sudo chown postgres:postgres /zfs/pgsql/
+
 sudo rsync -av /var/lib/postgresql/ /zfs/pgsql
 
-sudo mv /var/lib/postgresql/16/main /var/lib/postgresql/16/main.bak
+sudo mv /var/lib/postgresql/17/main /var/lib/postgresql/17/main.bak
 
-sudo nano /etc/postgresql/16/main/postgresql.conf
+sudo nano /etc/postgresql/17/main/postgresql.conf
 # 修改位置
-data_directory = '/zfs/pgsql/16/main'
+data_directory = '/zfs/pgsql/17/main'
 
-sudo rm -rf /var/lib/postgresql/16
+sudo systemctl restart postgresql
+
+sudo rm -rf /var/lib/postgresql/17
 
 
 
@@ -124,6 +135,9 @@ sudo -u postgres createuser --interactive --password testuser
 
 CREATE DATABASE testdb;
 CREATE USER testuser with password 'testuser';
+
+ALTER DATABASE testdb OWNER TO testuser;
+
 GRANT ALL PRIVILEGES ON DATABASE testdb TO testuser;
 GRANT ALL PRIVILEGES ON ALL TABLES IN SCHEMA public TO testuser;
 GRANT USAGE, SELECT ON ALL SEQUENCES IN SCHEMA public TO testuser;
