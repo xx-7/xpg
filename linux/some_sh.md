@@ -17,6 +17,9 @@ cat >> /usr/lib/systemd/system/trojand.service << EOF
 [Unit]
 Description=trojan proxy d
 
+[Install]
+WantedBy=multi-user.target
+
 [Service]
 User=vm
 WorkingDirectory=/opt/trojan
