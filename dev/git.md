@@ -83,6 +83,11 @@ git reset --hard origin/main
 git log
 git reset --hard $COMMIT
 
+
+# 如果更新了 .gitignore 而原来这个文件已经被track,修改是无效的， 要先删除本地缓存
+git rm -r --cached .
+
+
 # 撤消最后一次提交
 git reset --mixed HEAD^
 

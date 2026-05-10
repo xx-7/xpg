@@ -39,4 +39,7 @@ ffmpeg -i "https://bb.com/a.m3u8" -bsf:a aac_adtstoasc -vcodec copy -c copy -crf
 # aac: 输出为AAC音频文件。
 ffmpeg -i INPUT.mp4 -r 10 -f image2 pic/v_%3d.jpg
 
+# 保存帧到图片
+ffmpeg -i input.mp4 -vf "crop=640:640:640:300" -vsync 0 imgs/%04d.png
+
 ```
