@@ -8,7 +8,8 @@ conda create -n labelimg python=3.8.5
 conda activate labelimg
 pip install labelimg
 
-labelImg
+
+
 
 # 指定图片目录 跟label文件
 labelImg ./labels ./labels/classes.txt
