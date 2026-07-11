@@ -67,8 +67,11 @@ nvidia-smi
 
 sudo pacman -S nvidia-open nvidia-utils
 
-# 关闭 ibt
+# nvidia-open-lts对应lts内核
 sudo pacman -S nvidia-open-lts nvidia-utils
+
+# dkms 任意内核
+sudo pacman -S nvidia-open-dkms nvidia-utils
 
 # 验证
 nvidia-smi
