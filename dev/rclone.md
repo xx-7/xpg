@@ -19,6 +19,7 @@ region = auto
 acl = private
 
 # $TAG 为配置节点名称 $NAME 桶名称
+# 复制默认会跳过大小和修改时间相同的
 
 # 查询所有桶
 rclone lsd TAG:
