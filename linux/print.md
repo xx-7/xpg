@@ -4,6 +4,11 @@
 
 sudo pacman -S cups
 
+sudo systemctl restart cups
+
+# kde 在系统设置里 Printers界面
+sudo pacman -S system-config-printer
+
 # kde 在系统设置里 Printers界面
 sudo pacman -S print-manager
 
