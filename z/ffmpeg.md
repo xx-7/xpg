@@ -42,4 +42,11 @@ ffmpeg -i INPUT.mp4 -r 10 -f image2 pic/v_%3d.jpg
 # 保存帧到图片
 ffmpeg -i input.mp4 -vf "crop=640:640:640:300" -vsync 0 imgs/%04d.png
 
+# 图片转成mp4  -t 10 10秒
+# 修正长宽: -vf "scale=trunc(iw/2)*2:trunc(ih/2)*2"
+ffmpeg -loop 1 -i IMG.jpg -vf "scale=trunc(iw/2)*2:trunc(ih/2)*2" -c:v libx264 -t 10 -pix_fmt yuv420p output.mp4
+
+# 图片转成mp4 30帧每秒
+ffmpeg -framerate 30 -i frame%03d.png -c:v libx264 -pix_fmt yuv420p output.mp4
+
 ```
