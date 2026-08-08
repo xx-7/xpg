@@ -1,5 +1,3 @@
-
-
 ```bash
 sudo pacman -S network-manager-applet
 # 系统快捷方式文件目录
@@ -33,8 +31,8 @@ sudo pacman -S xfce4-power-manager
 # System -> System power saving -> When inactive for -> Never
 #           Security -> Lock screen when system is going to sleep -> Uncheck
 
-# Display -> Display power management -> Put to sleep after -> 12 minutes 
-#                                     -> Switch off after -> 13 minutes 
+# Display -> Display power management -> Put to sleep after -> 12 minutes
+#                                     -> Switch off after -> 13 minutes
 xfce4-power-manager-settings
 
 sudo pacman -S xfce4-screensaver
@@ -46,5 +44,35 @@ xfce4-screensaver-preferences
 
 # 快捷键
 # Settings -> Keyboard -> Application Shortcuts -> add -> Super + L -> xfce-screensaver-command --lock
+
+```
+
+# chrome不弹文件框
+
+```bash
+
+systemctl --user stop xdg-desktop-portal.service
+
+systemctl --user edit xdg-desktop-portal.service
+
+[Unit]
+PartOf=
+Requisite=
+After=
+
+
+sudo pacman -S xdg-desktop-portal-gtk
+
+mkdir -p ~/.config/xdg-desktop-portal
+
+nano ~/.config/xdg-desktop-portal/xfce-portals.conf
+[preferred]
+default=gtk
+
+
+systemctl --user daemon-reload
+systemctl --user restart xdg-desktop-portal.service xdg-desktop-portal-gtk.service
+
+
 
 ```
