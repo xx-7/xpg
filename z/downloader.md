@@ -17,10 +17,20 @@ tdl chat ls --proxy socks5://127.0.0.1:11028
 tdl chat export -c  12345678 --with-content --proxy socks5://127.0.0.1:11028
 
 # 下载视频
+tdl dl -u  https://t.me/c/12345678/123  -u  https://t.me/c/12345678/124
 tdl dl -u  https://t.me/c/12345678/123  --proxy socks5://127.0.0.1:11028
 
-```
+# TDL配置全局代理
+export TDL_PROXY=socks5://127.0.0.1:11028
 
+# TDL线程数(默认4)
+export TDL_THREADS=6
+
+# TDL同时下载数(默认2)
+export TDL_LIMIT=3
+
+
+```
 
 ```bash
 
