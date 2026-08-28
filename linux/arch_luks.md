@@ -15,13 +15,12 @@ ls /sys/firmware/efi/efivars
 
 ```
 
-
 # 分区
 
 ```bash
 
 # 分区方案
-/boot  # 512MB 启动目录 
+/boot  # 512MB 启动目录
 [SWAP] # 16G swap
 /      # 剩余  根目录(加密)
 
@@ -36,7 +35,7 @@ g
 
 # 重复创建分区
 
-# 新建 
+# 新建
 # 分区类型选 p primary
 # first不选就默认, last不选全用
 n +512M
@@ -154,7 +153,7 @@ blkid /dev/sda3
 
 # 4. 新增systemd-boot的引导配置，并增加相关内核参数
 # options 解释 cryptdevice=UUID=加密容器的UUID，可以通过 blkid 命令查看:映射设备名 root=根分区"
-cat /boot/loader/entries/arch.conf   
+cat /boot/loader/entries/arch.conf
 title Arch Linux
 linux vmlinuz-linux
 initrd intel-ucode.img
@@ -178,7 +177,7 @@ reboot
 
 ```
 
-# 配置安装软件 
+# 配置安装软件
 
 ```bash
 
@@ -200,12 +199,6 @@ sudo pacman -S xorg xfce4 xorg-server lightdm lightdm-gtk-greeter xscreensaver
 # 不装桌面管理器,直接 startxfce4 启动
 
 sudo systemctl enable lightdm
-
-sudo pacman -S firefox mpv unarchiver gimp gwenview evince flameshot remmina
-
-paru -S ttf-fira-code adobe-source-code-pro-fonts ttf-lxgw-wenkai-mono-lite
-
-paru -S google-chrome visual-studio-code-bin jdk8-openjdk jdk11-openjdk
 
 # systemd 方式设置静态IP
 sudo nano /etc/systemd/network/eth0.network
