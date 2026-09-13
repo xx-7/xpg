@@ -65,7 +65,9 @@ nvidia-smi
 
 ```bash
 
-# chrome不显示: 重装 -> 不行先装cuda再重新
+sudo pacman -S nvidia-open nvidia-utils
+
+# chrome不显示: 重装 -> 不行先装cuda再重新 / dkms有时更新后会不显示
 sudo pacman -S nvidia-open nvidia-utils
 
 # nvidia-open-lts对应lts内核
@@ -77,13 +79,33 @@ sudo pacman -S nvidia-open-dkms nvidia-utils
 # 验证
 nvidia-smi
 
+# 列出显卡
+lspci -k -d ::03xx
 
-# sudo 找到GRUB_CMDLINE_LINUX_DEFAULT="quiet"，改为以下内容：
+# 自动配置 /etc/X11/xorg.conf
+nvidia-xconfig
+
+# screen failed to load driver: nvidia-drm
+
+# nvidia-utils 560.35.03-5 版本后默认启用 DRM
+sudo nano /etc/default/grub
+# 找到GRUB_CMDLINE_LINUX_DEFAULT="quiet"，改为以下内容：
 GRUB_CMDLINE_LINUX_DEFAULT="quiet nvidia_drm.modeset=1"
 
 grub-mkconfig -o /boot/grub/grub.cfg
 
 sudo cat /sys/module/nvidia_drm/parameters/modeset
+
+sudo pacman -S nvidia-dkms
+sudo dkms autoinstall
+
+# 更新initramfs
+sudo nano /etc/mkinitcpio.conf
+MODULES=(nvidia nvidia_modeset nvidia_uvm nvidia_drm)
+sudo mkinitcpio -P
+
+# Dual-GPU Intel/AMD + NVIDIA
+__NV_PRIME_RENDER_OFFLOAD=0 __GLX_VENDOR_LIBRARY_NAME=nvidia your_program_name
 
 ```
 
