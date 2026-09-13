@@ -22,7 +22,7 @@ flameshot gui
 # 截屏改成: xfce4-screenshooter 标注改成: xournal++
 # * flameshot在xfce N卡下老出错
 
-# Settings -> Keyboard -> Application Shortcuts -> add -> Super + X -> xfce4-screenshooter
+# Settings -> Keyboard -> Application Shortcuts -> add -> Super + X -> xfce4-screenshooter -r
 # Settings -> Keyboard -> Application Shortcuts -> add -> Super + F -> xournalpp
 sudo pacman -S xfce4-screenshooter xournalpp
 
