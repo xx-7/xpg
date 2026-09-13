@@ -65,6 +65,7 @@ nvidia-smi
 
 ```bash
 
+# chrome不显示: 重装 -> 不行先装cuda再重新
 sudo pacman -S nvidia-open nvidia-utils
 
 # nvidia-open-lts对应lts内核
